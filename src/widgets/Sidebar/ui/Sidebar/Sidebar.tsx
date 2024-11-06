@@ -2,6 +2,7 @@ import { classNames } from "shared/lib/classNames/classNames";
 import cls from './Sidebar.module.scss';
 import { useState } from "react";
 import { ThemeSwitcher } from "widgets/ThemeSwitcher";
+import { BugButton } from "app/providers/ErrorBoundary";
 
 
 interface SidebarProps {
@@ -21,7 +22,8 @@ export const Sidebar = ({className}: SidebarProps ) => {
             <div className={cls.switchers}>
                 <ThemeSwitcher />    
             </div>
-            
+
+            {/* <BugButton /> */}
         </div>
     );
 };
