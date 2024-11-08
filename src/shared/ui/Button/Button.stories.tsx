@@ -2,7 +2,8 @@ import React from 'react';
 import { ComponentStory, ComponentMeta } from '@storybook/react';
 import { ThemeDecorator } from 'shared/config/storybook/ThemeDecorator/ThemeDecorator';
 import { Theme } from 'app/providers/ThemeProvider';
-import { Button, ThemeButton } from './Button';
+import { Button, ButtonSize, ButtonTheme } from './Button';
+import { size } from 'lodash';
 
 
 
@@ -24,18 +25,67 @@ Primary.args = {
 export const Clear = Template.bind({});
 Clear.args = {
     children: 'Text',
-    theme: ThemeButton.CLEAR,
+    theme: ButtonTheme.CLEAR,
+};
+
+export const ClearInverted = Template.bind({});
+ClearInverted.args = {
+    children: 'Text',
+    theme: ButtonTheme.CLEAR_INVERTED,
 };
 
 export const Outline = Template.bind({});
 Outline.args = {
     children: 'Text',
-    theme: ThemeButton.OUTLINE,
+    theme: ButtonTheme.OUTLINE,
 };
 
-export const OutlineDark = Template.bind({});
-OutlineDark.args = {
+export const OutlineSizeL = Template.bind({});
+OutlineSizeL.args = {
     children: 'Text',
-    theme: ThemeButton.OUTLINE,
+    theme: ButtonTheme.OUTLINE,
+    size: ButtonSize.L
 };
-OutlineDark.decorators = [ThemeDecorator(Theme.DARK)];
+
+export const OutlineSizeXL = Template.bind({});
+OutlineSizeXL.args = {
+    children: 'Text',
+    theme: ButtonTheme.OUTLINE,
+    size: ButtonSize.XL
+};
+
+export const BackgroundTheme = Template.bind({});
+BackgroundTheme.args = {
+    children: 'Text',
+    theme: ButtonTheme.BACKGROUND,
+};
+
+export const BackgroundInverted = Template.bind({});
+BackgroundInverted.args = {
+    children: 'Text',
+    theme: ButtonTheme.BACKGROUND_INVERTED,
+};
+
+export const Square = Template.bind({});
+Square.args = {
+    children: '>>',
+    theme: ButtonTheme.BACKGROUND_INVERTED,
+    Square: true,
+};
+
+export const SquareSizeL = Template.bind({});
+SquareSizeL.args = {
+    children: '>>',
+    theme: ButtonTheme.BACKGROUND_INVERTED,
+    Square: true,
+    size: ButtonSize.L
+};
+
+export const SquareSizeLX = Template.bind({});
+SquareSizeLX.args = {
+    children: '>>',
+    theme: ButtonTheme.BACKGROUND_INVERTED,
+    Square: true,
+    size: ButtonSize.XL
+};
+
