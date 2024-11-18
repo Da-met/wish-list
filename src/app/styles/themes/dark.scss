@@ -1,9 +1,27 @@
-.app_dark_theme {
-    --bg-color: #0e0e75;
-    --inverted-bg-color: #e8e8ea;
 
-    --primary-color: #04ff04;
-    --secondary-color: #049604;
-    --inverted-primary-color: #0232c2;
-    --inverted-secondary-color: #3471f5;
+
+.app_dark_theme {
+    --bg-color: rgb(65,69,106);
+    --secondary-bg-color: rgb(254,234,215);
+
+    --primary-color: rgb(254,234,215);
+    --secondary-color: rgb(152,146,128);
+
+    --inverted-primary-color: rgb(65,69,106);
+    --inverted-secondary-color: rgb(2,3,68);
+
+    --bg-color-modal: rgb(254,234,215);
+
+    --bg-color-btn: rgb(15, 16, 91);
+    --inverted-bg-color-btn: rgb(186, 102, 100);
+    --bg-color-darker: rgb(76, 80, 117);
+
+    --border-first: rgb(65,69,106);
+    --inverted-border-first: rgb(186, 102, 100);
+
+    --btn-color-1: rgb(220, 223, 249);
+    --btn-color-2: rgb(152, 160, 220);
+    --btn-color-3: rgb(41, 48, 100);
+
 }
+

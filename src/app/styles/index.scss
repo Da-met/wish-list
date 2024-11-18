@@ -3,6 +3,10 @@
 @import "themes/normal";
 @import "themes/dark";
 
+body {
+    letter-spacing: 2px;
+}
+
 .app,
 .app_modal {
     font: var(--font-m);
@@ -12,6 +16,7 @@
 .app {
     background: var(--bg-color);
     min-height: 100vh;
+    
 }
 
 .content-page {

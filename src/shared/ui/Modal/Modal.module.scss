@@ -10,10 +10,19 @@
     color: var(--primary-color);
 }
 
-// .Modal.dark {
-//     --bg-color: #0e0e75;
-//     --primary-color: #04ff04;
-// }
+//----------------------------------
+.border {
+    padding: 10px 0 0 0;
+    position: relative;
+    box-shadow: 
+        0 -4px 0 0 var(--beige),   /* верхняя линия */
+        0 7px 0 0 var(--dark),    /* нижняя линия */
+        -4px 0 0 0 var(--light-beige),   /* левая линия */
+        5px 0 0 0 var(--dark);    /* правая линия */
+}
+
+
+//----------------------------------
 
 .overlay {
     width: 100%;
@@ -25,13 +34,19 @@
 }
 
 .content {
-    padding: 20px;
-    border-radius: 12px;
-    background: var(--bg-color);
+    // padding: 10px;
+    // border-radius: 12px;
+    // background: var(--border-first);
     transition: 0.3s transform;
     transform: scale(0.5);
-    max-width: 60%;
+    max-width: 100%;
+    background: 
+        radial-gradient(var(--dark) 20%, transparent 20%) 0 0, 
+        radial-gradient(rgba(0,0,0,20%) 1%, transparent 1%) 50px 50px;
+    background-size: 5px 5px;
 }
+
+
 
 .opened {
     pointer-events: auto;
@@ -48,3 +63,26 @@
         transform: scale(0.2);
     }
 }
+
+.btn {
+    display: flex;
+    align-items: center;
+    text-align: center;
+    padding: 3px 3px 3px 9px;
+    margin-left: auto;
+    margin-top: 0;
+    margin-right: 10px;
+    font-size: var(--font-size-xl);
+}
+
+.field {
+    margin-top: 15px;
+    background-color: var(--beige);
+
+    box-shadow: 
+    0 -4px 0 0 var(--dark),   /* верхняя линия */
+    // 0 6px 0 0 var(--dark),    /* нижняя линия */
+    // -3px 0 0 0 var(--beige),   /* левая линия */
+    // 4px 0 0 0 var(--dark);    /* правая линия */
+}
+

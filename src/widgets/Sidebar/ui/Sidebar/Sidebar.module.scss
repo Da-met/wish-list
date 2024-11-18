@@ -1,7 +1,7 @@
 .Sidebar {
     height: calc(100vh - var(--navbar-height));
     width: var(--sidebar-width);
-    background: var(--inverted-bg-color);
+    background: var(--secondary-bg-color);
 
     position: relative;
     transition: width 0.3s;
@@ -13,6 +13,7 @@
     display: flex;
     justify-content: center;
     width: 100%;
+    stroke: var(--inverted-primary-color);
 }
 
 .collapseBtn {

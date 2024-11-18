@@ -1,10 +1,26 @@
+
+
 .app_light_theme {
-    --bg-color: #e8e8ea;
-    --inverted-bg-color: #0e0e75;
+    --bg-color:  rgb(255, 251, 247);
+    --secondary-bg-color: rgb(186, 102, 100);
 
-    --primary-color: #0232c2;
-    --secondary-color: #3471f5;
+    --primary-color: rgb(65,69,106);
+    --secondary-color: rgb(2,3,68);
 
-    --inverted-primary-color: #04ff04;
-    --inverted-secondary-color: #049604;
+    --inverted-primary-color: rgb(254,234,215);
+    --inverted-secondary-color: rgb(152,146,128);
+
+    --bg-color-modal: rgb(254,234,215);
+
+    --bg-color-btn: rgb(185, 70, 66);
+    --inverted-bg-color-btn: rgb(2,3,68);
+    --bg-color-darker: rgb(186, 102, 100);
+
+    --border-first: rgb(186, 102, 100);
+    --inverted-border-first: rgb(65,69,106);
+    
+    --btn-color-1: rgb(252, 208, 208);
+    --btn-color-2: rgb(210, 145, 144);
+    --btn-color-3: rgb(165, 89, 87);
+    
 }
