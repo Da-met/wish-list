@@ -2,7 +2,7 @@ import { ReactNode } from 'react';
 import { render } from '@testing-library/react';
 import { MemoryRouter } from 'react-router-dom';
 import { StateSchema, StoreProvider } from 'app/providers/StoreProvider';
-import { DeepPartial } from '@reduxjs/toolkit';
+
 
 export interface ComponentRenderOptions {
     route?: string;
@@ -16,10 +16,10 @@ export function ComponentRender(component: ReactNode, options: ComponentRenderOp
     } = options;
 
     return render (
-        <StoreProvider initialState={initialState}>
-            <MemoryRouter initialEntries={[route]}>
-                {component}
-            </MemoryRouter>
-        </StoreProvider>
+        <MemoryRouter initialEntries={[route]}>
+            <StoreProvider initialState={initialState}>
+                    {component}
+            </StoreProvider>
+        </MemoryRouter>
     )
 }

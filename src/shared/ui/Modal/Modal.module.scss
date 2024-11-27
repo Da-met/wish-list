@@ -11,17 +11,15 @@
 }
 
 //----------------------------------
-.border {
-    padding: 10px 0 0 0;
-    position: relative;
-    box-shadow: 
-        0 -4px 0 0 var(--beige),   /* верхняя линия */
-        0 7px 0 0 var(--dark),    /* нижняя линия */
-        -4px 0 0 0 var(--light-beige),   /* левая линия */
-        5px 0 0 0 var(--dark);    /* правая линия */
-}
-
-
+// .border {
+//     padding: 10px 0 0 0;
+//     position: relative;
+//     box-shadow: 
+//         0 -4px 0 0 var(--beige),   /* верхняя линия */
+//         0 7px 0 0 var(--dark),    /* нижняя линия */
+//         -4px 0 0 0 var(--light-beige),   /* левая линия */
+//         5px 0 0 0 var(--dark);    /* правая линия */
+// }
 //----------------------------------
 
 .overlay {
@@ -33,19 +31,38 @@
     justify-content: center;
 }
 
+// .content {
+//     // padding: 10px;
+//     // border-radius: 12px;
+//     // background: var(--border-first);
+//     transition: 0.3s transform;
+//     transform: scale(0.5);
+//     max-width: 100%;
+//     background: 
+//         radial-gradient(var(--dark) 20%, transparent 20%) 0 0, 
+//         radial-gradient(rgba(0,0,0,20%) 1%, transparent 1%) 50px 50px;
+//     background-size: 5px 5px;
+// }
+
+
 .content {
-    // padding: 10px;
-    // border-radius: 12px;
-    // background: var(--border-first);
+    padding: 10px;
+    position: relative;
+    max-width: 100%;
+
+    border-radius: 12px;
+
     transition: 0.3s transform;
     transform: scale(0.5);
-    max-width: 100%;
-    background: 
-        radial-gradient(var(--dark) 20%, transparent 20%) 0 0, 
-        radial-gradient(rgba(0,0,0,20%) 1%, transparent 1%) 50px 50px;
-    background-size: 5px 5px;
-}
 
+    z-index: 1;
+	color: #fff;
+    border-top: 2px solid rgba(255,255,255,0.5);
+    border-left: 2px solid rgba(255,255,255,0.5);	
+	backdrop-filter: blur(5px);
+	
+	background: rgba(255, 255, 255, 0.139);
+}
 
 
 .opened {
@@ -72,17 +89,10 @@
     margin-left: auto;
     margin-top: 0;
     margin-right: 10px;
-    font-size: var(--font-size-xl);
+    font-size: var(--font-size-l);
 }
 
 .field {
-    margin-top: 15px;
-    background-color: var(--beige);
-
-    box-shadow: 
-    0 -4px 0 0 var(--dark),   /* верхняя линия */
-    // 0 6px 0 0 var(--dark),    /* нижняя линия */
-    // -3px 0 0 0 var(--beige),   /* левая линия */
-    // 4px 0 0 0 var(--dark);    /* правая линия */
+    margin-bottom: 10px;
 }
 

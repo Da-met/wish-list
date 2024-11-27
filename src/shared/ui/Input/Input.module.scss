@@ -1,6 +1,6 @@
 
 .Input {
-    color: var(--bg-color-darker);
+    color: var(--secondary-color);
     display: flex;
 }
 
@@ -9,5 +9,6 @@
 }
 
 .InputText {
-    color: var(--bg-color-btn);
+    color: var(--primary-color);
+    width: auto;
 } 

@@ -1,11 +1,12 @@
 
 
 .app_light_theme {
+    --img: url("https://api.neuro-holst.ru/api/v1/image/share/render/vdoV2AGRwoLw");
     --bg-color:  rgb(255, 251, 247);
     --secondary-bg-color: rgb(186, 102, 100);
 
-    --primary-color: rgb(65,69,106);
-    --secondary-color: rgb(2,3,68);
+    --primary-color: rgb(255, 255, 255);
+    --secondary-color: rgb(228, 228, 228);
 
     --inverted-primary-color: rgb(254,234,215);
     --inverted-secondary-color: rgb(152,146,128);

@@ -68,24 +68,30 @@ BackgroundInverted.args = {
 
 export const Square = Template.bind({});
 Square.args = {
-    children: '>>',
+    children: '>',
     theme: ButtonTheme.BACKGROUND_INVERTED,
-    Square: true,
+    square: true,
 };
 
 export const SquareSizeL = Template.bind({});
 SquareSizeL.args = {
-    children: '>>',
+    children: '>',
     theme: ButtonTheme.BACKGROUND_INVERTED,
-    Square: true,
+    square: true,
     size: ButtonSize.L
 };
 
-export const SquareSizeLX = Template.bind({});
-SquareSizeLX.args = {
-    children: '>>',
+export const SquareSizeXL = Template.bind({});
+SquareSizeXL.args = {
+    children: '>',
     theme: ButtonTheme.BACKGROUND_INVERTED,
-    Square: true,
+    square: true,
     size: ButtonSize.XL
 };
 
+export const Disabled = Template.bind({});
+SquareSizeXL.args = {
+    children: 'Text',
+    theme: ButtonTheme.OUTLINE,
+    disabled: true,
+};

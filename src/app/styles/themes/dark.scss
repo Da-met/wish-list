@@ -1,11 +1,13 @@
 
 
+
 .app_dark_theme {
+    --img: url("https://api.neuro-holst.ru/api/v1/image/share/render/emPK1Kxx6oqX");
     --bg-color: rgb(65,69,106);
     --secondary-bg-color: rgb(254,234,215);
 
-    --primary-color: rgb(254,234,215);
-    --secondary-color: rgb(152,146,128);
+    --primary-color: rgb(0, 0, 0);
+    --secondary-color: rgb(0, 0, 0);
 
     --inverted-primary-color: rgb(65,69,106);
     --inverted-secondary-color: rgb(2,3,68);
