@@ -1,13 +1,14 @@
 
 export interface Profile {
-    name: string;
-    img: string;
-    email: string;
-    password: string;
+    name?: string;
+    img?: string;
+    email?: string;
+    password?: string;
 }
 
 export interface ProfileSchema {
     data?: Profile;
+    form?: Profile;
     isLoading: boolean;
     error?: string;
     readonly: boolean;

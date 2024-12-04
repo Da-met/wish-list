@@ -1,5 +1,4 @@
-import { fireEvent, render, screen } from '@testing-library/react';
-import { Button, ButtonTheme } from 'shared/ui/Button/Button';
+import { fireEvent, screen } from '@testing-library/react';
 import { Sidebar } from './Sidebar';
 import { ComponentRender } from 'shared/lib/tests/componentRender/ComponentRender';
 

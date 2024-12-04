@@ -1,8 +1,22 @@
-import { fetchProfileData, profileReducer } from "entities/Profile";
-import { ProfileCard } from "entities/Profile/ui/ProfileCard/ProfileCard";
-import { useEffect } from "react";
-import { DynamicModuleLoader, ReducersList } from "shared/lib/components/DynamicModuleLoader/DynamicModuleLoader";
-import { useAppDispatch } from "shared/lib/hooks/useAppDispatch/useAppDispatch";
+import { classNames } from 'shared/lib/classNames/classNames';
+import { DynamicModuleLoader, ReducersList } from 'shared/lib/components/DynamicModuleLoader/DynamicModuleLoader';
+import {
+    fetchProfileData,
+    getProfileError,
+    getProfileForm,
+    getProfileIsLoading,
+    getProfileReadonly,
+    profileActions,
+    ProfileCard,
+    profileReducer,
+} from 'entities/Profile';
+import { useCallback, useEffect } from 'react';
+import { useAppDispatch } from 'shared/lib/hooks/useAppDispatch/useAppDispatch';
+import { useSelector } from 'react-redux';
+import { ProfilePageHeader } from './ProfilePageHeader/ProfilePageHeader';
+import { getUserAuthData } from 'entities/User';
+import cls from './ProfilePage.module.scss';
+
 
 
 const reducers: ReducersList = {
@@ -15,16 +29,46 @@ interface ProfilePageProps {
 }
 
 const ProfilePage = ({className}: ProfilePageProps) => {
+    const user = useSelector(getUserAuthData);
+
     const dispatch = useAppDispatch();
+    const formData = useSelector(getProfileForm);
+    const isLoading = useSelector(getProfileIsLoading);
+    const error = useSelector(getProfileError);
+    const readonly = useSelector(getProfileReadonly);
 
     useEffect(() => {
-        dispatch(fetchProfileData())
-    }, [dispatch])
+        if (user?.id) { // Проверяем, что объект пользователя уже загружен
+            dispatch(fetchProfileData(String(user.id)));
+        }
+    }, [dispatch, user]);
+
+
+    const onChangeName = useCallback((value?: string) => {
+        dispatch(profileActions.updateProfile({ name: value || '' }));
+    }, [dispatch]);
+
+    const onChangeImg = useCallback((file: File | null) => {
+        const imgURL = file ? URL.createObjectURL(file) : '';
+        dispatch(profileActions.updateProfile({  img: imgURL  }));
+        
+        console.log(file, imgURL)
+    }, [dispatch]);
+    
 
     return (
         <DynamicModuleLoader reducers={reducers} removeAfterUnmount>
-            <div >
-                <ProfileCard></ProfileCard>
+            <div className={cls.profilePageModule}>
+                <ProfilePageHeader/>
+
+                <ProfileCard 
+                    data={formData}
+                    isLoading={isLoading}
+                    error={error}
+                    readonly={readonly}
+                    onChangeName={onChangeName}
+                    onChangeImg={onChangeImg}
+                />
             </div>
         </DynamicModuleLoader>
     )

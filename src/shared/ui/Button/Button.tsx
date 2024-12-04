@@ -10,6 +10,7 @@ export enum ButtonTheme {
     BACKGROUND = 'background',
     BACKGROUND_INVERTED = 'backgroundInverted',
     X = 'x',
+    RED = 'red',
 }
 
 export enum ButtonSize {
