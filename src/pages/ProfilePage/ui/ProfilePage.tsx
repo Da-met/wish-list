@@ -48,11 +48,8 @@ const ProfilePage = ({className}: ProfilePageProps) => {
         dispatch(profileActions.updateProfile({ name: value || '' }));
     }, [dispatch]);
 
-    const onChangeImg = useCallback((file: File | null) => {
-        const imgURL = file ? URL.createObjectURL(file) : '';
-        dispatch(profileActions.updateProfile({  img: imgURL  }));
-        
-        console.log(file, imgURL)
+    const onChangeImg = useCallback((base64?: string | null) => {
+        dispatch(profileActions.updateProfile({ img: base64 }));
     }, [dispatch]);
     
 

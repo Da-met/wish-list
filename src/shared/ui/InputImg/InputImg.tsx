@@ -9,7 +9,7 @@ type HTMLInputProps = Omit<InputHTMLAttributes<HTMLInputElement>, 'value' | 'onC
 interface InputImgProps extends HTMLInputProps{
     className?: string;
     value?: string ; 
-    onChange?: (file: File | null) => void;
+    onChange?: (base64: string | null) => void; // Обработчик изменения с Base64
     readonly?: boolean;
 }
 
@@ -28,20 +28,23 @@ export const InputImg = memo((props: InputImgProps) => {
 
     // Обновляем превью, если value изменилось
     useEffect(() => {
-        if (value) {
-            setPreview(value);
-        }
+        setPreview(value || null);
     }, [value]);
 
     // Обработчик загрузки файла
     const handleFileChange = (event: React.ChangeEvent<HTMLInputElement>) => {
         const file = event.target.files?.[0] || null;
         if (file) {
-            const url = URL.createObjectURL(file); // Создаем blob-URL для превью
-            setPreview(url); // Показываем превью            
-            onChange?.(file); // Вызываем onChange с переданным файлом, чтобы передать его в верхние компоненты
+            const reader = new FileReader();
+            reader.onload = () => {
+                const base64 = reader.result as string;
+                setPreview(base64); // Устанавливаем превью
+                onChange?.(base64); // Передаём Base64 вверх
+            };
+            reader.readAsDataURL(file);
         } else {
             setPreview(null); // Если файл не выбран, сбрасываем превью
+            onChange?.(null); // Очищаем значение
         }
     };
 
@@ -64,7 +67,8 @@ export const InputImg = memo((props: InputImgProps) => {
                 </div>
             ) : (
                 <img
-                    src={preview?.startsWith('blob:') ? preview : `http://localhost:5000/${preview}`}
+                    src={preview}
+                    // src={preview?.startsWith('blob:') ? preview : `http://localhost:5000/${preview}`}
                     alt="Uploaded preview"
                     className={classNames(cls.ImagePreview, mods, [className])}
                 />

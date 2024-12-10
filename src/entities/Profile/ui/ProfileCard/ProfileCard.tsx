@@ -9,6 +9,7 @@ import { Profile } from "entities/Profile/model/types/profile";
 import { Loader } from "shared/ui/Loader/Loader";
 import { Input } from "shared/ui/Input/Input";
 import { InputImg } from "shared/ui/InputImg/InputImg";
+import { useMemo } from "react";
 
 
 interface ProfileCardProps {
@@ -18,7 +19,7 @@ interface ProfileCardProps {
     isLoading?: boolean;
     readonly?: boolean;
     onChangeName: (value?: string) => void;
-    onChangeImg: (file: File | null) => void;
+    onChangeImg: (base64: string | null) => void;
 }
 
 export const ProfileCard = (props: ProfileCardProps) => {
@@ -44,11 +45,17 @@ export const ProfileCard = (props: ProfileCardProps) => {
         )
     }
 
+    const preparedImg = useMemo(() => {
+        if (typeof data?.img === 'string') return data.img;
+        if (data?.img instanceof File) return URL.createObjectURL(data.img);
+        return undefined;
+    }, [data?.img]);
+
     return (
         <div className={classNames(cls.ProfileCard, {}, [className])}>
                 <InputImg 
                     className={cls.inputImg}
-                    value={data?.img} // URL текущей аватарки пользователя
+                    value={preparedImg} // URL текущей аватарки пользователя
                     onChange={onChangeImg} // Callback для изменения картинки
                     readonly={readonly}
                 />

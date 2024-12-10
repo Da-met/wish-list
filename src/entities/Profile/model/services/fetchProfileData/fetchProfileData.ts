@@ -9,14 +9,13 @@ import { getUserAuthData } from "entities/User";
 export const fetchProfileData = createAsyncThunk<Profile, string, ThunkConfig<string>>(
     'profile/fetchProfileData',
     async ( id, thunkApi ) => {
-        const {
-            extra,
-            rejectWithValue,
-        } = thunkApi;
+        const { extra, rejectWithValue } = thunkApi;
 
         try {
             const response = await extra.api.get<Profile>(`/user/auth/${id}`);
-
+            if(!response.data) {
+                throw new Error();
+            }
             return response.data;
         } catch (error) {
             console.log(error)

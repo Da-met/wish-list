@@ -1,7 +1,7 @@
 
 export interface Profile {
     name?: string;
-    img?: string;
+    img?: string | File | null;
     email?: string;
     password?: string;
 }

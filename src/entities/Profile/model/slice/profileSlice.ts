@@ -2,6 +2,7 @@ import { createSlice, PayloadAction } from '@reduxjs/toolkit';
 import { USER_LOCALSTORAGE_KEY } from 'shared/const/localstorage';
 import { Profile, ProfileSchema } from '../types/profile';
 import { fetchProfileData } from '../services/fetchProfileData/fetchProfileData';
+import { updateProfileData } from '../services/updateProfileData/updateProfileData';
 
 
 
@@ -22,9 +23,12 @@ export const profileSlice = createSlice({
         },
         cancelEdit: (state) => {
             state.readonly = true;
-            state.form = state.data;
+            state.form = {
+                name: state.data?.name || '',
+                img: state.data?.img || null,
+            }; // Восстанавливаем изначальные данные в form
         },
-        updateProfile: (state, action: PayloadAction<Profile>) => {
+        updateProfile: (state, action: PayloadAction<Partial<{ name: string; img: string | null }>>) => {
             state.form = {
                 ...state.form,
                 ...action.payload,
@@ -40,9 +44,30 @@ export const profileSlice = createSlice({
             .addCase(fetchProfileData.fulfilled, (state, action: PayloadAction<Profile>) => {
                 state.isLoading = false;
                 state.data = action.payload;
-                state.form = action.payload;
+                state.form = {
+                    name: action.payload.name,
+                    img: action.payload.img,
+                };
             })
             .addCase(fetchProfileData.rejected, (state, action) => {
+                state.isLoading = false;
+                state.error = action.payload;
+            })
+
+            .addCase(updateProfileData.pending, (state) => {
+                state.error = undefined;
+                state.isLoading = true;
+            })
+            .addCase(updateProfileData.fulfilled, (state, action: PayloadAction<Profile>) => {
+                state.isLoading = false;
+                state.data = action.payload;
+                state.form = {
+                    name: action.payload.name,
+                    img: action.payload.img,
+                };
+                state.readonly = true;
+            })
+            .addCase(updateProfileData.rejected, (state, action) => {
                 state.isLoading = false;
                 state.error = action.payload;
             });

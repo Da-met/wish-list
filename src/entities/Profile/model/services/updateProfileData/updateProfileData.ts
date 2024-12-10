@@ -16,13 +16,16 @@ export const updateProfileData = createAsyncThunk<
 
             const formData = getProfileForm(getState());
 
+            console.log(formData)
             try {
-                const response = await extra.api.put<Profile>(`/profile`, formData);
-
+                const response = await extra.api.put<Profile>(`user/auth/1`, formData);
                 return response.data;
+
+                
             } catch (e) {
                 console.log(e);
                 return rejectWithValue('error');
             }
         },
+
     );
