@@ -3,6 +3,7 @@ import { RoutePath } from 'shared/config/routeConfig/routeConfig';
 import MainIcon from 'shared/assets/icons/home.svg';
 import AboutIcon from 'shared/assets/icons/file-text.svg';
 import ProfileIcon from 'shared/assets/icons/user.svg';
+import WishesIcon from 'shared/assets/icons/grid.svg';
 
 
 export interface SidebarItemType {
@@ -28,6 +29,12 @@ export const SidebarItemsList: SidebarItemType[] = [
         Icon: ProfileIcon,
         text: "Профиль",
         authOnly: true,
+    },
+    {
+        path: RoutePath.wishes,
+        Icon: WishesIcon,
+        text: "Желания",
+        // authOnly: true,
     },
 
 ]

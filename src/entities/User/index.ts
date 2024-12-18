@@ -4,6 +4,10 @@ export {
 } from './model/selectors/getUserAuthData/getUserAuthData';
 
 export { 
+    getUserInited 
+} from './model/selectors/getUserInited/getUserInited';
+
+export { 
     userReducer, 
     userActions 
 } from './model/slice/userSlice';
@@ -13,7 +17,3 @@ export {
     User,
 } from './model/types/user';
 
-// export {getUserReadonly} from '../Profile/model/selectors/getProfileReadonly/getProfileReadonly';
-// export {getUserForm} from '../Profile/model/selectors/getProfileForm/getProfileForm';
-// export {getUserError} from '../Profile/model/selectors/getProfileError/getProfileError';
-// export {getUserIsLoading} from '../Profile/model/selectors/getProfileIsLoading/getProfileIsLoading';

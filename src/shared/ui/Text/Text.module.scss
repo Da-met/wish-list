@@ -1,13 +1,11 @@
 
 
 .title {
-    font: var(--font-l);
     color: var(--primary-color);
-    font-weight: 800;
+    font-weight: 1000 !important;
 }
 
 .text {
-    font: var(--font-m);
     color: var(--secondary-color);
 }
 
@@ -31,4 +29,36 @@
 
 .center {
     text-align: center;
+}
+
+
+.size_s {
+    .title {
+        font: var(--font-m);
+    }
+
+    .text {
+        font: var(--font-s);
+    }
+}
+
+.size_m {
+    .title {
+        font: var(--font-l);
+    }
+
+    .text {
+        font: var(--font-m);
+    }
+}
+
+.size_l {
+    .title {
+        font: var(--font-xl);
+        // font-weight: 900 !important;
+    }
+
+    .text {
+        font: var(--font-l);
+    }
 }

@@ -20,7 +20,8 @@
     position: absolute;
 
     right: -32px;
-    bottom: 25px;
+    bottom: 22px;
+    background-color: var(--secondary-bg-color);
 }
 
 .items {
@@ -35,6 +36,7 @@
     margin-top: 10px;
     display: flex;
     align-items: center;
+
 }
 
 .link {
@@ -43,8 +45,8 @@
 }
 
 .icon {
-    stroke: var(--inverted-primary-color)
-    
+    stroke: var(--inverted-primary-color);
+
 }
 
 .collapsed {
@@ -62,5 +64,6 @@
         opacity: 0;
         transition: 0.2s opacity;
         width: 0;
+        // height: 48px;
     }
 }
