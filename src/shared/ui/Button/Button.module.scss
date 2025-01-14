@@ -22,8 +22,12 @@
     outline: none;
 }
 
+.clear {
+    color: var(--primary-color);
+}
+
 .clearInverted{
-    color: var(--inverted-primary-color);
+    color: var(--primary-color);
 }
 
 
@@ -68,9 +72,10 @@
 
 
 .background {
-    background: var(--bg-color);
-    color: var(--primary-color);
+    background: var(--primary-color);
+    color: var(--bg-color);
     border: none;
+    border-radius: 60px;
 }
 
 .backgroundInverted {

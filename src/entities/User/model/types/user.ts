@@ -3,7 +3,7 @@
 export interface User {
     id?: number;
     name?: string;
-    // img: string;
+    img?: string;
     email?: string;
 }
 

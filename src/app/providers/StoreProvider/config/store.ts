@@ -6,24 +6,26 @@ import { createReducerManager } from "./ReducerManager";
 import { useDispatch } from "react-redux";
 import { $api } from "shared/api/api";
 import { NavigateOptions, To } from "react-router-dom";
+import { ScrollSaveReducer } from "features/scrollSave";
 
 
 export function createReduxStore(
     initialState?: StateSchema, 
     asyncReducers?: ReducersMapObject<StateSchema>,
-    navigate?: (to: To, options?: NavigateOptions) => void,
+    // navigate?: (to: To, options?: NavigateOptions) => void,
 ) {
     const rootReducers: ReducersMapObject<StateSchema> = {
         ...asyncReducers,
         counter: counterReducer,
         user: userReducer,
+        scrollSave: ScrollSaveReducer,
     }
 
     const reducerManager = createReducerManager(rootReducers);
 
     const extraArg: ThunkExtraArg = {
         api: $api,
-        navigate,
+        // navigate,
     }
 
     const store = configureStore({

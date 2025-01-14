@@ -15,9 +15,7 @@ const initialState: wishDetailsSchema = {
 export const wishDetailsSlice = createSlice({
     name: 'wishDetails',
     initialState,
-    reducers: {
-
-    },
+    reducers: {},
     extraReducers: (builder) => {
         builder
             .addCase(fetchWishById.pending, (state) => {

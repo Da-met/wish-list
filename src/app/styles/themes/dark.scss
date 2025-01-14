@@ -2,17 +2,14 @@
 
 
 .app_dark_theme {
-    --img: url("https://api.neuro-holst.ru/api/v1/image/share/render/emPK1Kxx6oqX");
+    --img: url("https://mir-s3-cdn-cf.behance.net/project_modules/2800_opt_1/c19a7325131907.56341f9b314cf.jpg");
     --bg-color: rgb(65,69,106);
-    --secondary-bg-color: rgb(254,234,215);
+    --secondary-bg-color: rgb(16,17,99);
 
-    --primary-color: rgb(0, 0, 0);
-    --secondary-color: rgb(0, 0, 0);
+    --primary-color: rgb(255, 231, 231);
+    --secondary-color: rgb(255, 231, 231);
 
-    --inverted-primary-color: rgb(65,69,106);
-    --inverted-secondary-color: rgb(2,3,68);
 
-    --bg-color-modal: rgb(254,234,215);
 
     --bg-color-btn: rgb(15, 16, 91);
     --inverted-bg-color-btn: rgb(186, 102, 100);
@@ -21,12 +18,16 @@
     --border-first: rgb(65,69,106);
     --inverted-border-first: rgb(186, 102, 100);
 
-    --btn-color-1: rgb(220, 223, 249);
-    --btn-color-2: rgb(152, 160, 220);
-    --btn-color-3: rgb(41, 48, 100);
+    // --btn-color-1: rgb(220, 223, 249);
+    // --btn-color-2: rgb(152, 160, 220);
+    // --btn-color-3: rgb(41, 48, 100);
 
 
     --skeleton-color: #1515ad;
     --skeleton-shadow: #2b2be8;
+
+
+    --listbox-bg: #0d0d6b;
+    --secondary-listbox-bg: rgb(5, 6, 63);
 }
 

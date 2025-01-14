@@ -1,0 +1,19 @@
+.sortWrapper {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+
+    margin-top: 15px;
+}
+
+.search {
+    margin-top: 16px;
+}
+
+.tabs {
+    margin-top: 16px;
+}
+
+.btn button+button{
+    margin-left: 25px;
+}

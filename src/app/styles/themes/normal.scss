@@ -1,17 +1,15 @@
 
 
 .app_light_theme {
-    --img: url("https://api.neuro-holst.ru/api/v1/image/share/render/vdoV2AGRwoLw");
+    --img: url("https://thumbor.forbes.com/thumbor/fit-in/0x0/filters%3Aformat%28jpg%29/https://specials-images.forbesimg.com/imageserve/6233b2383719f76ff0e707ee/0x0.jpg");
+    
     --bg-color:  rgb(255, 251, 247);
-    --secondary-bg-color: rgb(186, 102, 100);
+    --secondary-bg-color: rgb(232,212,222);
 
-    --primary-color: rgb(255, 255, 255);
-    --secondary-color: rgb(228, 228, 228);
+    --primary-color: rgb(51, 43, 140);
+    --secondary-color: rgb(41, 36, 97);
 
-    --inverted-primary-color: rgb(254,234,215);
-    --inverted-secondary-color: rgb(152,146,128);
 
-    --bg-color-modal: rgb(254,234,215);
 
     --bg-color-btn: rgb(185, 70, 66);
     --inverted-bg-color-btn: rgb(2,3,68);
@@ -20,11 +18,15 @@
     --border-first: rgb(186, 102, 100);
     --inverted-border-first: rgb(65,69,106);
     
-    --btn-color-1: rgb(252, 208, 208);
-    --btn-color-2: rgb(210, 145, 144);
-    --btn-color-3: rgb(165, 89, 87);
+    // --btn-color-1: rgb(252, 208, 208);
+    // --btn-color-2: rgb(210, 145, 144);
+    // --btn-color-3: rgb(165, 89, 87);
     
 
     --skeleton-color: #ffffff;
     --skeleton-shadow: rgba( 0 0 0 / 20%);
+
+
+    --listbox-bg: #d5d5d7;
+    --secondary-listbox-bg: rgb(232,212,222);
 }

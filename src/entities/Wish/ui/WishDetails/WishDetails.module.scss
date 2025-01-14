@@ -8,25 +8,39 @@
     z-index: 1;
 
     width: 900px;
-    padding: 20px;
+    padding: 40px;
 
-	color: #fff;
     border-top: 2px solid rgba(255,255,255,0.5);
     border-left: 2px solid rgba(255,255,255,0.5);	
 	backdrop-filter: blur(5px);
-	
 	background: rgba(255, 255, 255, 0.139);
 }
 
-.title {
-    margin-top: 20px;
+.glassBtn {
+    z-index: 1;
+    width: 400px;
+    padding: 15px;
+	color: var(--primary-color);
+
+    border-top: 2px solid rgba(255,255,255,0.5);
+    border-left: 2px solid rgba(255,255,255,0.5);	
+	backdrop-filter: blur(5px);
+    // border-radius: 50px;
+
+	background: rgba(255, 255, 255, 0.139);
+    font-weight: 800;
 }
+
+
 
 .wishImg {
     height: 550px;
-    width: 370px;
+    width: 390px;
     object-fit: cover;	
+    opacity: 0.65;
 }
+
+
 
 .wrapper {
     display: flex;
@@ -39,6 +53,14 @@
 .wrapperUser {
     display: flex;
     align-items: center;
+    
+}
+
+.top {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+
     margin-bottom: 40px;
 }
 
@@ -58,7 +80,7 @@
 
 .btnWrapper {
    display: block; 
-   margin-top: 30px;
+   margin-top: 50px;
 }
 
 .btn {
@@ -68,13 +90,45 @@
     margin-bottom: 10px;
 }
 
+.btnReserv {
+    width: 100%;
+}
+
 .reserverWrapper {
+    width: 398px;
     position: absolute;
-    bottom: 50px;
+    bottom: 40px;
 }
 
 .time {
-    margin-top: 20px;
+    // margin-top: 20px;
     font-size: 14px;
     color: var(--primary-color);
+
+}
+
+
+.skeletonImg {
+    margin-right: 20px;
+}
+
+.bottomBtn {
+    // width: 900px;
+    display: flex;
+    margin-top: 50px;
+    margin-left: auto;
+    margin-right: auto;
+    justify-content: center;
+}
+
+.bottomBtn button+button{
+    margin-left: 40px;
+}
+
+.editBtn {
+    // display: flex;
+    // margin: 0 auto;
+    // margin-left: auto;
+    // margin-right: auto;
+    // margin-top: 50px;
 }

@@ -1,4 +1,6 @@
 
 export {
     WishesPageAsync as WishesPage,
-} from './ui/WishesPage.async';
+} from './ui/WishesPage/WishesPage.async';
+
+export type { WishPageSchema } from './model/types/wishPageSchema';

@@ -6,10 +6,14 @@ import { Wish } from "../../types/wish";
 
 
 
-export const fetchWishById = createAsyncThunk<Wish, string, ThunkConfig<string>>(
+export const fetchWishById = createAsyncThunk<Wish, string | undefined, ThunkConfig<string>>(
     'wishDetails/fetchWishById',
     async ( id, thunkApi ) => {
         const { extra, rejectWithValue } = thunkApi;
+
+        if (!id) {
+            throw new Error('');
+        }
 
         try {
             const response = await extra.api.get<Wish>(`/wish/${id}`);

@@ -1,0 +1,21 @@
+.WishList {
+    max-width: 1500px;
+    margin-left: auto;
+    margin-right: auto;
+
+    // z-index: ;
+    // display: flex;
+
+}
+
+
+.wrapper {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+}
+
+.card {
+    margin-right: 30px;
+    margin-bottom: 30px;
+}

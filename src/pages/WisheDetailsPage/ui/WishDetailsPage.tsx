@@ -3,6 +3,7 @@ import { memo } from 'react';
 import cls from './WishDetailsPage.module.scss';
 import { WishDetails } from 'entities/Wish';
 import { useParams } from 'react-router-dom';
+import { Page } from 'widgets/Page/Page';
 
 interface WishDetailsPageProps {
     className?: string;
@@ -21,9 +22,9 @@ const WishDetailsPage = (props: WishDetailsPageProps) => {
     }
 
     return (
-        <div className={classNames(cls.WishDetailsPage, {}, [className])}>
+        <Page className={classNames(cls.WishDetailsPage, {}, [className])}>
             <WishDetails id={id}/>
-        </div>
+        </Page>
     );
 };
 

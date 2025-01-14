@@ -2,9 +2,10 @@ import { ReducersMapObject } from '@reduxjs/toolkit';
 import { Story } from '@storybook/react';
 import { StateSchema, StoreProvider } from 'app/providers/StoreProvider';
 import { Theme, ThemeProvider } from 'app/providers/ThemeProvider';
-import { profileReducer } from 'entities/Profile';
+
 import { wishDetailsReducer } from 'entities/Wish/model/slice/wishDetailsSlice';
 import { loginReducer } from 'features/AuthByUserName/model/slice/loginSlice';
+import { profileReducer } from 'features/editableProfileCard/model/slice/profileSlice';
 import { ReducersList } from 'shared/lib/components/DynamicModuleLoader/DynamicModuleLoader';
 
 

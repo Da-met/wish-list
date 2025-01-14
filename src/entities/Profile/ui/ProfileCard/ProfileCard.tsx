@@ -1,4 +1,4 @@
-import { getProfileData } from "entities/Profile/model/selectors/getProfileData/getProfileData";
+import { getProfileData } from "features/editableProfileCard/model/selectors/getProfileData/getProfileData";
 import { User } from "entities/User";
 import { useSelector } from "react-redux";
 import { classNames, Mods } from "shared/lib/classNames/classNames";
@@ -66,6 +66,7 @@ export const ProfileCard = (props: ProfileCardProps) => {
                     className={cls.input}
                     onChange={onChangeName}
                     readonly={readonly}
+                    data-testid="ProfileCard.firstname"
                 />
 
 

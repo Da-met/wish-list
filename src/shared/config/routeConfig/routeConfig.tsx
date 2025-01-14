@@ -3,6 +3,7 @@ import { MainPage } from "pages/MainPage"
 import { NotFoundPage } from "pages/NotFoundPage"
 import { ProfilePage } from "pages/ProfilePage"
 import { WishDetailsPage } from "pages/WisheDetailsPage"
+import { WishEditPage } from "pages/WishEditPage"
 import { WishesPage } from "pages/WishesPage"
 
 import { RouteProps } from "react-router-dom"
@@ -17,6 +18,8 @@ export enum AppRoutes {
     PROFILE = 'profile',
     WISHES = 'wishes',
     WISH_DETAILS = 'wish_details',
+    WISH_CREATE = 'wish_create',
+    WISH_EDIT = 'wish_edit',
 
     NOT_FOUND = 'not_found',
 }
@@ -24,9 +27,11 @@ export enum AppRoutes {
 export const RoutePath: Record<AppRoutes, string> = {
     [AppRoutes.MAIN]: '/',
     [AppRoutes.ABOUT]: '/about',
-    [AppRoutes.PROFILE]: '/profile',
+    [AppRoutes.PROFILE]: '/profile/', // +id 
     [AppRoutes.WISHES]: '/wishes',
-    [AppRoutes.WISH_DETAILS]: '/wish/', // +id wish
+    [AppRoutes.WISH_DETAILS]: '/wishes/', // +id wish
+    [AppRoutes.WISH_CREATE]: '/wishes/new', 
+    [AppRoutes.WISH_EDIT]: '/wishes/:id/edit', // +id wish
 
     [AppRoutes.NOT_FOUND]: '*',
 }
@@ -41,7 +46,7 @@ export const routeConfig: Record<AppRoutes, AppRoutesProps> = {
         element: <AboutPage />
     },
     [AppRoutes.PROFILE]: {
-        path: RoutePath.profile,
+        path: `${RoutePath.profile}:id`,
         element: <ProfilePage />,
         authOnly: true,
     },
@@ -54,6 +59,16 @@ export const routeConfig: Record<AppRoutes, AppRoutesProps> = {
         path: `${RoutePath.wish_details}:id`,
         element: <WishDetailsPage />,
         // authOnly: true,
+    },
+    [AppRoutes.WISH_CREATE]: {
+        path: `${RoutePath.wish_create}`,
+        element: <WishEditPage />,
+        authOnly: true,
+    },
+    [AppRoutes.WISH_EDIT]: {
+        path: `${RoutePath.wish_edit}`,
+        element: <WishEditPage />,
+        authOnly: true,
     },
 
 
