@@ -1,12 +1,11 @@
 import { createEntityAdapter, createSlice, PayloadAction } from '@reduxjs/toolkit';
-import { StateSchema } from 'app/providers/StoreProvider';
-import { Wish } from 'entities/Wish';
+import { StateSchema } from '@/app/providers/StoreProvider';
+import { Wish } from '@/entities/Wish';
 import { WishPageSchema } from '../types/wishPageSchema';
 import { fetchWishesList } from '../services/fetchWishesList/fetchWishesList';
-import { WishesSortField } from 'entities/Wish/index';
-import { SortFilter, SortOrder } from 'shared/types';
+import { WishesSortField } from '@/entities/Wish/index';
+import { ScopeFilter, SortOrder, StatusFilter } from '@/shared/types';
 
-// import { ARTICLES_VIEW_LOCALSTORAGE_KEY } from 'shared/const/localstorage';
 
 
 const wishAdapter = createEntityAdapter<Wish>({
@@ -29,14 +28,14 @@ const wishesPageSlice = createSlice({
         page: 1,
         hasMore: true,
 
-        
         _inited: false,
         limit: 6,
         sort: WishesSortField.CREATED,
         search: '',
         order: 'asc',
 
-        filter: 'all',
+        scope: 'all',
+        status: 'active',
     }),
     reducers: {
         setPage: (state, action: PayloadAction<number>) => {
@@ -52,8 +51,12 @@ const wishesPageSlice = createSlice({
         setSearch: (state, action: PayloadAction<string>) => {
             state.search = action.payload;
         },
-        setFilter: (state, action: PayloadAction<SortFilter>) => {
-            state.filter = action.payload;
+        // НОВОЕ:
+        setScope: (state, action: PayloadAction<ScopeFilter>) => {
+            state.scope = action.payload;
+        },
+        setStatus: (state, action: PayloadAction<StatusFilter>) => {
+            state.status = action.payload;
         },
 
         initState: (state) => {
@@ -66,17 +69,12 @@ const wishesPageSlice = createSlice({
             .addCase(fetchWishesList.pending, (state, action) => {
                 state.error = undefined;
                 state.isLoading = true;
-
                 if (action.meta.arg.replace) {
                     wishAdapter.removeAll(state);
                 }
             })
-            .addCase(fetchWishesList.fulfilled, (
-                state,
-                action,
-            ) => {
+            .addCase(fetchWishesList.fulfilled, ( state, action ) => {
                 state.isLoading = false;
-                // wishAdapter.addMany(state, action.payload);
                 state.hasMore = action.payload.length >= state.limit;
 
                 if (action.meta.arg.replace) {

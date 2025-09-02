@@ -1,5 +1,5 @@
-import { StateSchema } from 'app/providers/StoreProvider';
-import { WishesSortField } from 'entities/Wish';
+import { StateSchema } from '@/app/providers/StoreProvider';
+import { WishesSortField } from '@/entities/Wish';
 
 
 
@@ -18,4 +18,6 @@ export const getWishesPageSort = (state: StateSchema) => state.wishesPage?.sort 
 
 export const getWishesPageSearch = (state: StateSchema) => state.wishesPage?.search ?? '';
 
-export const getWishesPageFilter = (state: StateSchema) => state.wishesPage?.filter ?? 'all';
+
+export const getWishesPageScope = (state: StateSchema) => state.wishesPage?.scope ?? 'all';
+export const getWishesPageStatus = (state: StateSchema) => state.wishesPage?.status ?? 'active';

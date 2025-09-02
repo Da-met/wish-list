@@ -1,8 +1,4 @@
 
-// export enum WishesSortField {
-//     TITLE = 'title',
-//     CREATED = 'createdAt',
-// }
 
 export interface wishUser {
     img: string,
@@ -15,8 +11,22 @@ export interface Wish {
     description: string;
     img: string;
     url: string;
-    is_reserved: boolean;
+
+    // is_reserved: boolean;
+    reservation: {
+        id: number,
+        user_id: number,
+    };
+    isReserved: boolean,
+
     user_id: number;
+    list_id: number;
+    list?: {
+        id: number;
+        name: string;
+    };
     createdAt: string;
     user: wishUser;
+
+    completed?: boolean;
 }

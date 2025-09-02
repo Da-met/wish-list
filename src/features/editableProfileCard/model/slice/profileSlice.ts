@@ -1,5 +1,5 @@
 import { createSlice, PayloadAction } from '@reduxjs/toolkit';
-import { USER_LOCALSTORAGE_KEY } from 'shared/const/localstorage';
+
 import { Profile } from '../../../../entities/Profile/model/types/profile';
 import { fetchProfileData } from '../services/fetchProfileData/fetchProfileData';
 import { updateProfileData } from '../services/updateProfileData/updateProfileData';
@@ -28,6 +28,7 @@ export const profileSlice = createSlice({
                 id: state.data?.id || undefined,
                 name: state.data?.name || '',
                 img: state.data?.img || null,
+                birthday: state.data?.birthday || '',
             }; // Восстанавливаем изначальные данные в form
         },
         updateProfile: (state, action: PayloadAction<Partial<{ name: string; img: string | null }>>) => {
@@ -36,6 +37,13 @@ export const profileSlice = createSlice({
                 ...action.payload,
             };
         },
+        clearProfile: (state) => {
+            state.data = undefined;
+            state.form = undefined;
+            state.isLoading = false;
+            state.error = undefined;
+            state.validateErrors = undefined;
+        }
     },
     extraReducers: (builder) => {
         builder
@@ -50,6 +58,7 @@ export const profileSlice = createSlice({
                     id: state.data?.id || undefined,
                     name: action.payload.name,
                     img: action.payload.img,
+                    birthday: action.payload.birthday,
                 };
             })
             .addCase(fetchProfileData.rejected, (state, action) => {
@@ -68,6 +77,7 @@ export const profileSlice = createSlice({
                     id: state.data?.id || undefined,
                     name: action.payload.name,
                     img: action.payload.img,
+                    birthday: action.payload.birthday,
                 };
                 state.readonly = true;
             })

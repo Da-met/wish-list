@@ -1,0 +1,167 @@
+.wrapper {
+    max-width: 1400px;
+    margin-left: auto;
+    margin-right: auto;
+    border-radius: 35px;
+    background-color: var(--background);
+
+    // padding-bottom: 40px;
+}
+
+.padding {
+    padding: 30px 40px 0 40px;
+
+    @media (max-width: 830px) {
+        padding: 20px 30px 0 30px;
+    }
+    @media (max-width: 480px) {
+        padding: 15px 20px 0 20px;
+    }
+}
+
+.title {
+    padding-bottom: 20px;
+
+    @media (max-width: 830px) {
+        padding-bottom: 10px;
+    }
+}
+
+
+// .title p {
+//     color: var(--accent-color-4);
+//     @media (max-width: 830px) {
+//         font-size: 18px !important;
+//     }
+//     @media (max-width: 480px) {
+//         font-size: 16px !important;
+//     }
+// }
+
+.description {
+    @media (max-width: 830px) {
+        font-size: 12px;
+        line-height: 16px;
+    }
+    @media (max-width: 480px) {
+        font-size: 10px;
+        line-height: 14px;
+    }
+}
+
+.canIDo {
+    margin-top: 30px;
+    margin-bottom: 30px;
+}
+.canIDoName, .stepsTitle {
+    color: var(--accent-color-4);
+}
+
+.wrapperCards {
+    display: flex;
+    text-align: center;
+    padding-top: 15px;
+    margin-left: auto;
+    margin-right: auto;
+
+    @media (max-width: 740px) {
+        display: block;
+    }
+}
+
+.wrapperCards div+div{
+    margin-left: 40px;
+
+    @media (max-width: 1210px) {
+        margin-left: 20px;
+    }
+    @media (max-width: 740px) {
+        margin: 10px 0;
+    }
+}
+
+.centr {
+    display: flex;
+}
+
+.card {
+    text-align: center;
+    padding: 20px;
+
+    //ТЕНЬ
+    box-shadow: 1px 9px 14px 12px var(--shadow);
+    border-radius: 35px;
+
+    width: 200px;
+    font-size: 12px;
+    color: var(--secondary-color);
+
+    @media (max-width: 1210px) {
+        padding: 13px;
+        line-height: 14px; 
+    }
+    @media (max-width: 1100px) {
+        width: 150px;
+    }
+    @media (max-width: 910px) {
+        width: 130px;
+        font-size: 10px;
+        line-height: 12px; 
+    }
+    @media (max-width: 740px) {
+        display: flex;
+        align-items: center;
+        width: auto;
+        padding: 0 15px;
+    }
+}
+.card p {
+    @media (max-width: 740px) {
+        text-align: left;
+    }
+    
+}
+
+.card svg{
+    stroke: var(--secondary-color);
+    margin: 20px;
+
+    @media (max-width: 1100px) {
+        margin: 10px;
+    }
+    @media (max-width: 740px) {
+        width: 30px;
+        height: 30px;
+        margin: 7px 20px 7px 0;
+    }
+}
+
+.goBlock {
+    margin-top: 40px;
+    padding-bottom: 40px;
+}
+
+
+.stepsTitle {
+    margin-bottom: 10px;
+}
+.step {
+    margin-bottom: 15px;
+    margin-left: 30px;
+}
+
+.step p+p {
+    margin-top: 5px;
+}
+
+.bottomText {
+    padding-top: 40px;
+}
+
+.ctaText {
+    padding-bottom: 15px;
+    color: var(--accent-color-4);
+}
+.ctaText p+p {
+    margin-top: 5px;
+}

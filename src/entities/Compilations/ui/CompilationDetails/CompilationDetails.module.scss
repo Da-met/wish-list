@@ -1,0 +1,50 @@
+.CompilationDetails, .cls.CompilationDetails_list {
+    max-width: 1050px;
+    // margin-bottom: 40px;
+    margin-left: auto;
+    margin-right: auto;
+}
+
+.preview {
+    display: flex;
+    margin-top: 40px;
+
+    border-top: 2px solid var(--glass-border);
+    border-left: 2px solid var(--glass-border);
+    backdrop-filter: blur(5px);
+    background: var(--glass-background2);
+    transition: 0.2s;
+
+    position: relative;
+    
+}
+
+.preview_img {
+    height: 100%;
+    width: 38%;
+    object-fit: cover;
+    position: absolute;
+}
+
+.preview_description{
+    margin: 50px 50px 40px 42%;
+    // position: relative;
+    width: 60%;
+}
+
+.preview_description div+div {
+    padding-top: 30px;
+}
+
+.time { 
+    // position: absolute;
+    bottom: 0;
+
+    display: flex;
+    justify-content: center;
+    width: 100%;
+}
+
+.CompilationDetails_list {
+    margin-top: 50px;
+}

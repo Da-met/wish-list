@@ -1,10 +1,27 @@
 .Sidebar {
-    height: calc(100vh - var(--navbar-height));
+    height: calc(100vh - var(--navbar-height) - 70px);
     width: var(--sidebar-width);
-    background: var(--secondary-bg-color);
+    // background: var(--secondary-bg-color);
 
     position: relative;
     transition: width 0.3s;
+
+    // border: 4px var(--accent-color-1) solid;
+    margin-left: 20px;
+    margin-top: 30px;
+    border-radius: 35px;
+    background-color: var(--accent-color-1);
+    z-index: 10;
+
+    @media (max-width: 830px) {
+        margin-left: 10px;
+        width: calc(var(--sidebar-width) - 20px);
+    }
+    @media (max-width: 480px) {
+        margin-top: 20px;
+        height: calc(100vh - var(--navbar-height) - 40px);
+        width: calc(var(--sidebar-width) - 60px);
+    }
 }
 
 .switchers {
@@ -13,20 +30,41 @@
     display: flex;
     justify-content: center;
     width: 100%;
-    stroke: var(--primary-color);
+    stroke: var(--accent-color-4);
+}
+
+.btnWrap {
+    display: flex;
+    position: absolute;
+    width: 100%;
+    align-items: center;
+    padding-top: 30px;
+    flex-direction: column;
+
+    @media (max-width: 480px) {
+        padding-top: 15px;
+    }
+    @media (max-width: 380px) {
+        padding-top: 5px;
+    }
 }
 
 .collapseBtn {
     position: absolute;
+    display: flex;
+    width: 100%;
+    justify-content: center;
+    // right: -32px;
+    // bottom: 22px;
+    color: var(--accent-color-4);
+    font-weight: 200;
 
-    right: -32px;
-    bottom: 22px;
-    background-color: var(--secondary-bg-color);
+    z-index: 1000;
 }
 
 .items {
     margin-top: 20px;
-    margin-left: 30px;
+    // margin-left: auto;
     display: flex;
     flex-direction: column;
 
@@ -36,7 +74,11 @@
     margin-top: 10px;
     display: flex;
     align-items: center;
+    text-align: center;
 
+    @media (max-width: 480px) {
+        margin-top: 5px;
+    }
 }
 
 .link {
@@ -46,8 +88,8 @@
 
 .icon {
     stroke: var(--primary-color);
-
 }
+
 
 .collapsed {
     width: var(--sidebar-width-collapsed);
@@ -66,5 +108,12 @@
         transition: 0.2s opacity;
         width: 0;
         // height: 48px;
+    }
+
+    @media (max-width: 830px) {
+        width: calc(var(--sidebar-width-collapsed) - 30px) !important;
+    }
+    @media (max-width: 480px) {
+        width: calc(var(--sidebar-width-collapsed) - 40px) !important;
     }
 }

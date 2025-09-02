@@ -1,19 +1,19 @@
-import { classNames } from 'shared/lib/classNames/classNames';
+import { classNames } from '@/shared/lib/classNames/classNames';
 import { memo, useCallback} from 'react';
 
 import { useSelector } from 'react-redux';
-import { useAppDispatch } from 'shared/lib/hooks/useAppDispatch/useAppDispatch';
+import { useAppDispatch } from '@/shared/lib/hooks/useAppDispatch/useAppDispatch';
 
 import cls from './WishesPageFilters.module.scss';
-import { Button, ButtonTheme } from 'shared/ui/Button/Button';
-import { Select } from 'shared/ui/Select/Select';
-import { WishesSortField, WishSortSelector } from 'entities/Wish';
-import { getWishesPageSort, getWishesPageSearch, getWishesPageOrder, getWishesPageFilter } from '../../model/selectors/wishesPageSelectors';
-import { SortFilter, SortOrder } from 'shared/types';
-import { wishesPageActions } from 'pages/WishesPage/model/slice/wishesPageSlice';
-import { fetchWishesList } from 'pages/WishesPage/model/services/fetchWishesList/fetchWishesList';
-import { Input } from 'shared/ui/Input/Input';
-import { useDebounce } from 'shared/lib/hooks/useDebounce/useDebounce';
+import { Button, ButtonTheme } from '@/shared/ui/Button/Button';
+import { Select } from '@/shared/ui/Select/Select';
+import { WishesSortField, WishSortSelector } from '@/entities/Wish';
+import { getWishesPageSort, getWishesPageSearch, getWishesPageOrder, getWishesPageScope, getWishesPageStatus } from '../../model/selectors/wishesPageSelectors';
+import { ScopeFilter, SortOrder, StatusFilter } from '@/shared/types';
+import { wishesPageActions } from '@/pages/WishesPage/model/slice/wishesPageSlice';
+import { fetchWishesList } from '@/pages/WishesPage/model/services/fetchWishesList/fetchWishesList';
+import { Input } from '@/shared/ui/Input/Input';
+import { useDebounce } from '@/shared/lib/hooks/useDebounce/useDebounce';
 
 
 
@@ -29,8 +29,8 @@ export const WishesPageFilters = memo((props: WishesPageFiltersProps) => {
     const sort = useSelector(getWishesPageSort);
     const order = useSelector(getWishesPageOrder);
     const search = useSelector(getWishesPageSearch);
-    const filter = useSelector(getWishesPageFilter);
-    // const type = useSelector(getWishesPageType);
+    const scope = useSelector(getWishesPageScope);
+    const status = useSelector(getWishesPageStatus);
 
     const fetchData = useCallback(() => {
         dispatch(fetchWishesList({ replace: true }));
@@ -56,11 +56,17 @@ export const WishesPageFilters = memo((props: WishesPageFiltersProps) => {
         debouncedFetchData();
     }, [ dispatch, debouncedFetchData ]);
 
-    const handleFilterChange = useCallback((newFilter: SortFilter) => {
-        dispatch(wishesPageActions.setFilter(newFilter));
+    const handleFilterChange = useCallback((newFilter: ScopeFilter) => {
+        dispatch(wishesPageActions.setScope(newFilter));
         dispatch(wishesPageActions.setPage(1));
         fetchData();
     }, [dispatch, fetchData ]);
+
+    const onChangeStatus = useCallback((newStatus: StatusFilter) => {
+        dispatch(wishesPageActions.setStatus(newStatus));
+        dispatch(wishesPageActions.setPage(1));
+        fetchData();
+      }, [dispatch, fetchData]);
 
     return (
         <div className={classNames(cls.WishesPageFilters, {}, [className])}>
@@ -68,28 +74,32 @@ export const WishesPageFilters = memo((props: WishesPageFiltersProps) => {
                 <WishSortSelector
                     order={order}
                     sort={sort}
+                    status={status}
                     onChangeOrder={onChangeOrder}
                     onChangeSort={onChangeSort}
+                    onChangeStatus={onChangeStatus}
                 />
                 <div className={cls.btn}>
                     <Button 
                         onClick={() => handleFilterChange('all')} 
-                        theme={filter === 'all' ? ButtonTheme.BACKGROUND : ButtonTheme.CLEAR}
+                        theme={scope === 'all' ? ButtonTheme.BACKGROUND : ButtonTheme.CLEAR}
                     >Все</Button>
 
                     <Button 
                         onClick={() => handleFilterChange('subscriptions')}
-                        theme={filter === 'subscriptions' ? ButtonTheme.BACKGROUND : ButtonTheme.CLEAR}
-                    >Подписки</Button>
+                        theme={scope === 'subscriptions' ? ButtonTheme.BACKGROUND : ButtonTheme.CLEAR}
+                    >Друзья</Button>
                 </div>
             
             </div>
             <div className={cls.search}>
-                    <Input
-                        onChange={onChangeSearch}
-                        value={search}
-                        placeholder={'Поиск '}
-                    />
+                <svg className={cls.svg} xmlns="http://www.w3.org/2000/svg" width="26" height="26" viewBox="0 0 24 24" fill="none" stroke="#000000" strokeWidth="1" strokeLinecap="round" strokeLinejoin="round"><circle cx="11" cy="11" r="8"></circle><line x1="21" y1="21" x2="16.65" y2="16.65"></line></svg>
+                <Input
+                    className={cls.search_input}
+                    onChange={onChangeSearch}
+                    value={search}
+                    placeholder={''}
+                />
             </div>
         </div>
     );

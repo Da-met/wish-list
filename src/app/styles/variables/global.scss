@@ -2,28 +2,38 @@
 @import url('https://fonts.googleapis.com/css2?family=Pixelify+Sans:wght@400..700&family=Tiny5&display=swap');
 @import url('https://fonts.googleapis.com/css2?family=Unbounded:wght@200..900&display=swap');
 @import url('https://fonts.googleapis.com/css2?family=Jura:wght@300..700&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Comfortaa:wght@300..700&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Rubik+Vinyl&display=swap');
+
+@import url('https://fonts.googleapis.com/css2?family=Rubik+Puddles&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Love+Ya+Like+A+Sister&display=swap');
 
 
 :root {
     // --font-family-main: consolas, "Times New Roman", serif;
     // --font-family-main: "Pixelify Sans", serif;
     // --font-family-main: "Tiny5", sans-serif;
-    --font-family-main: "Jura", sans-serif;
+    // --font-family-main: "Jura", sans-serif;
+    --font-family-main: "Comfortaa", sans-serif;
+    // --font-family-logo: "Rubik Vinyl", system-ui;
+    // --font-family-logo: "Rubik Puddles", system-ui;
+    --font-family-logo: "Love Ya Like A Sister", cursive;
+
     // --letter-spacing-1: 1px;
-    --font-size-s: 14px;
-    --font-line-s: 20px;
+    --font-size-s: 12px;
+    --font-line-s: 18px;
     --font-s: var(--font-size-s) / var(--font-line-s) var(--font-family-main) ;
 
-    --font-size-m: 16px;
-    --font-line-m: 24px;
+    --font-size-m: 14px;
+    --font-line-m: 20px;
     --font-m: var(--font-size-m) / var(--font-line-m) var(--font-family-main) ;
 
-    --font-size-l: 24px;
-    --font-line-l: 32px;
+    --font-size-l: 20px;
+    --font-line-l: 30px;
     --font-l: var(--font-size-l) / var(--font-line-l) var(--font-family-main);
 
-    --font-size-xl: 32px;
-    --font-line-xl: 40px;
+    --font-size-xl: 30px;
+    --font-line-xl: 38px;
     --font-xl: var(--font-size-xl) / var(--font-line-xl) var(--font-family-main);
 
     // Размеры
@@ -32,7 +42,8 @@
     --sidebar-width-collapsed: 80px;
 
     // z - Индексы
-    --modal-z-index: 10;
+    --modal-z-index: 1000;
+    --overlay-z-index: 100;
 
     // Цвета
     --overlay-color: rgba(0 0 0 / 60%);

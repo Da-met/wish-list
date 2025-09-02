@@ -1,15 +1,16 @@
-import { classNames, Mods } from 'shared/lib/classNames/classNames';
+import { classNames, Mods } from '@/shared/lib/classNames/classNames';
 import React, {
     InputHTMLAttributes, memo, useEffect, useRef, useState,
 } from 'react';
 import cls from './InputImg.module.scss';
+import UserIcon from '../../assets/icons/user-circle.svg';
 
 type HTMLInputProps = Omit<InputHTMLAttributes<HTMLInputElement>, 'value' | 'onChange' | 'readOnly'>
 
 interface InputImgProps extends HTMLInputProps{
     className?: string;
     value?: string ; 
-    onChange?: (base64: string | null) => void; // Обработчик изменения с Base64
+    onChange?: (base64: string ) => void; // Обработчик изменения с Base64
     readonly?: boolean;
 }
 
@@ -28,7 +29,7 @@ export const InputImg = memo((props: InputImgProps) => {
 
     // Обновляем превью, если value изменилось
     useEffect(() => {
-        setPreview(value || null);
+        setPreview(value || '');
     }, [value]);
 
     // Обработчик загрузки файла
@@ -43,8 +44,8 @@ export const InputImg = memo((props: InputImgProps) => {
             };
             reader.readAsDataURL(file);
         } else {
-            setPreview(null); // Если файл не выбран, сбрасываем превью
-            onChange?.(null); // Очищаем значение
+            setPreview(''); // Если файл не выбран, сбрасываем превью
+            onChange?.(''); // Очищаем значение
         }
     };
 
@@ -58,6 +59,11 @@ export const InputImg = memo((props: InputImgProps) => {
         [cls.readonly]: readonly,
     };
 
+
+    // if (errorFallback) {
+    //     return ( <UserIcon className={cls.userIcon}/>);;
+    // }
+
     return (
         
         <div className={classNames(cls.InputImgWrapper, {}, [className])} onClick={handleClick}>
@@ -68,7 +74,6 @@ export const InputImg = memo((props: InputImgProps) => {
             ) : (
                 <img
                     src={preview}
-                    // src={preview?.startsWith('blob:') ? preview : `http://localhost:5000/${preview}`}
                     alt="Uploaded preview"
                     className={classNames(cls.ImagePreview, mods, [className])}
                 />

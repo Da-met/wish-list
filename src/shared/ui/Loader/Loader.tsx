@@ -1,4 +1,4 @@
-import { classNames } from 'shared/lib/classNames/classNames';
+import { classNames } from '@/shared/lib/classNames/classNames';
 import './Loader.scss';
 
 interface LoaderProps {
@@ -6,7 +6,10 @@ interface LoaderProps {
 }
 
 export const Loader = ({ className }: LoaderProps) => (
-    <div className={classNames('lds-heart', {}, [className])}>
-        <div></div>
+    <div className={classNames('wrapper')}>
+        <div className={classNames('lds-heart', {}, [className])}>
+            <div></div>
+        </div>
     </div>
+
 );

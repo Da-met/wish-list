@@ -1,38 +1,94 @@
 .Navbar {
     width: 100%;
-    height: var(--navbar-height);
-    background: var(--secondary-bg-color);
-
+    background: var(--navbar-cl);
     display: flex;
     align-items: center;
-    padding: 20px 30px;
+    padding: 10px 30px 10px 30px;
+    justify-content: space-between;
+    border-radius: 0 0 25px 25px ;
+
+    @media (max-width: 1015px) {
+        padding: 5px 30px 5px 30px;
+    }
+    @media (max-width: 830px) {
+        padding: 2px 20px 2px 20px;
+    }
+    @media (max-width: 350px) {
+        padding: 2px 10px 2px 10px;
+    }
+
 }
+
+.Navbar svg {
+    stroke: var(--primary-color);
+}
+
+
+.logo {
+    font-family: var(--font-family-logo);
+    color: var(--accent-color-4);
+    font-size: 35px;
+    font-weight: 700;
+
+    @media (max-width: 830px) {
+        font-size: 28px !important;
+    }
+    @media (max-width: 480px) {
+        font-size: 20px !important;
+    }
+    
+}
+
 
 .links {
     margin-left: auto;
     display: flex;
     align-items: center;
     text-align: center;
+
+    @media (max-width: 830px) {
+        font-size: 12px !important;
+    }
+    @media (max-width: 480px) {
+        font-size: 10px !important;
+    }
 }
 
+.links button+button {
+    margin-left: 25px;
+}   
+.padding {
+    margin-right: 25px;
+    @media (max-width: 480px) {
+        margin-right: 12px;
+    }
+}
 
 .mainLink {
     margin-right: 15px;
 }
 
-.links button {
-    // margin-left: 30px;
+.avatar img{
+    @media (max-width: 480px) {
+        height: 30px !important;
+        width: 30px !important;
+    }
 }
 
-.avatar {
-    // align-items: center;
-    height: 40px;
 
-    margin-top: 5px;
+
+.bell {
+    height: 26px;
+    margin-left: 26px;
+}
+
+
+.into {
     margin-left: 30px;
-    
-    border-radius: 50px;
-    // background: red;
-    object-fit: cover;
+    margin-top: 14px;
+    margin-bottom: 14px;
 
+    @media (max-width: 410px) {
+        margin-left: 15px;
+    }
 }

@@ -1,0 +1,22 @@
+.btn {
+    // padding: 7px 13px;
+    // @media (max-width: 620px) {
+    //     font-size: 12px !important;
+    // }
+}
+
+.btnCancel{
+    font-size: 14px !important;
+    @media (max-width: 620px) {
+        padding: 7px 15px;
+        font-size: 12px !important;
+    }
+    @media (max-width: 460px) {
+        padding: 5px 15px;
+        font-size: 10px !important;
+    }
+}
+
+.wrapp {
+
+}

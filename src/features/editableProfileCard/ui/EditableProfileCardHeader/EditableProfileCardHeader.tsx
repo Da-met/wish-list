@@ -1,30 +1,26 @@
-import { getUserAuthData } from "entities/User";
-import { getProfileData } from "../../model/selectors/getProfileData/getProfileData";
 import { getProfileReadonly } from "../../model/selectors/getProfileReadonly/getProfileReadonly";
 import { updateProfileData } from "../../model/services/updateProfileData/updateProfileData";
 import { profileActions } from "../../model/slice/profileSlice";
 import { memo, useCallback } from "react";
 import { useSelector } from "react-redux";
-import { classNames } from "shared/lib/classNames/classNames";
-import { useAppDispatch } from "shared/lib/hooks/useAppDispatch/useAppDispatch";
-import { Button, ButtonTheme } from "shared/ui/Button/Button";
-import { Text } from 'shared/ui/Text/Text';
+import { classNames } from "@/shared/lib/classNames/classNames";
+import { useAppDispatch } from "@/shared/lib/hooks/useAppDispatch/useAppDispatch";
+import { Button, ButtonTheme } from "@/shared/ui/Button/Button";
+import cls from './EditableProfileCardHeader.module.scss'
+import { userActions } from "@/entities/User";
 
 
 interface EditableProfileCardHeaderProps {
     className?: string;
+    canEdit?: boolean;
 }
 
 export const EditableProfileCardHeader = memo((props: EditableProfileCardHeaderProps) => {
     const {
-        className,
+        className, canEdit
     } = props;
 
     const dispatch = useAppDispatch();
-    const authData = useSelector(getUserAuthData);
-    const profileData = useSelector(getProfileData);
-    const canEdit = authData?.id === profileData?.id;
-
     const readonly = useSelector(getProfileReadonly);
 
     const onEdit = useCallback(() => {
@@ -39,35 +35,55 @@ export const EditableProfileCardHeader = memo((props: EditableProfileCardHeaderP
         dispatch(updateProfileData());
     }, [dispatch]);
 
+    const onLogout = useCallback(() => {
+        const confirmed = window.confirm('Вы действительно хотите выйти?');
+        if (confirmed) {
+            dispatch(userActions.logout());
+        }
+    }, [dispatch]);
+
 
     return (
         <div className={classNames('', {}, [className])}>
-            <Text title='Профиль' />
             {canEdit && (
-                <div>
+                <div className={cls.wrapp}>
                     { readonly 
                         ? (
-                        <Button
-                                theme={ButtonTheme.OUTLINE}
-                                onClick={onEdit}
-                                data-testid="EditableProfileCardHeader.EditButton"
+                        <div>
+                            <Button
+                                    theme={ButtonTheme.OUTLINE}
+                                    onClick={onEdit}
+                                    data-testid="EditableProfileCardHeader.EditButton"
+                                    className={cls.btn}
+                                >
+                                    Редактировать
+                            </Button>
+                            <Button
+                                theme={ButtonTheme.ACCENT}
+                                onClick={onLogout}
+                                data-testid="EditableProfileCardHeader.LogOutButton"
+                                className={cls.btnCancel}
                             >
-                                Редактировать
-                        </Button>) 
+                                Выйти
+                            </Button>
+                        </div>
+                        ) 
                         : ( 
                         <div>
                             <Button
-                                theme={ButtonTheme.OUTLINE}
+                                theme={ButtonTheme.ACCENT}
                                 onClick={onCancelEdit}
                                 data-testid="EditableProfileCardHeader.CancelButton"
+                                className={cls.btnCancel}
                             >
                                 Отменить
                             </Button>
 
                             <Button
-                                theme={ButtonTheme.RED}
+                                theme={ButtonTheme.BACKGROUND}
                                 onClick={onSave}
                                 data-testid="EditableProfileCardHeader.SaveButton"
+                                className={cls.btn}
                             >
                                 Сохранить
                             </Button>

@@ -2,12 +2,8 @@
 
 
 .app_dark_theme {
-    --img: url("https://mir-s3-cdn-cf.behance.net/project_modules/2800_opt_1/c19a7325131907.56341f9b314cf.jpg");
-    --bg-color: rgb(65,69,106);
-    --secondary-bg-color: rgb(16,17,99);
-
-    --primary-color: rgb(255, 231, 231);
-    --secondary-color: rgb(255, 231, 231);
+    // --img: url("https://mir-s3-cdn-cf.behance.net/project_modules/2800_opt_1/c19a7325131907.56341f9b314cf.jpg");
+    // --img: url("https://1.downloader.disk.yandex.ru/preview/d7c5a1a9fc32afa92a9cdba70f0a148fa786d71375c42f99d5c20c0c69fd5eb9/inf/8eDUR_u6xYVYbNAGtNb1p5JvDLRFf5T0DB65LKLSFvPofxs7IvrE8hXfBYDjbZu8JVavM0ZOVHDUiXrQsU6R2g%3D%3D?uid=1425542110&filename=slide04.jpg&disposition=inline&hash=&limit=0&content_type=image%2Fjpeg&owner_uid=1425542110&tknv=v2&size=1830x1956");
 
 
 
@@ -23,11 +19,49 @@
     // --btn-color-3: rgb(41, 48, 100);
 
 
-    --skeleton-color: #1515ad;
-    --skeleton-shadow: #2b2be8;
+    --skeleton-color: #1d1d1d;
+    --skeleton-shadow: #585858;
 
 
     --listbox-bg: #0d0d6b;
-    --secondary-listbox-bg: rgb(5, 6, 63);
+    // --secondary-listbox-bg: rgb(5, 6, 63);
+    // --secondary-listbox-bg: rgb(176, 176, 176);
+    
+
+    // --highlighting-one: #fdf4e494;
+    // --highlighting-two: #fce4ba;
+
+    // --glass-background: rgba(37, 37, 37, 0.774);
+    // --glass-background2: rgba(37, 37, 37, 0.954);
+    // --glass-border: rgba(51, 51, 51, 0.5);
+
+
+
+    --bg-color: rgb(66, 66, 66);
+    --secondary-bg-color: rgb(0, 0, 0);
+
+    
+
+    --accent-color-1: #725340;
+    --accent-color-2: #3a3a3a;
+    --accent-color-3: #6d6d5c;
+    --accent-color-4: rgb(254, 119, 66);
+
+    --search-color: rgb(97, 97, 97);
+
+    --white-black: rgb(59, 59, 59);
+    
+    --navbar-cl: rgb(46, 46, 46);
+
+    --primary-color: #f1f8fe;
+    --secondary-color: #a8acad;
+    --grey: rgb(77, 77, 77);
+
+    --background: #4c4c4c;
+    --gradient:  #0c0c0c80;
+
+    --shadow: rgba(27, 53, 72, 0.263);
+
+    --pin: #725340;
 }
 

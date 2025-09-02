@@ -1,10 +1,11 @@
 
 
 export interface User {
-    id?: number;
+    id: number;
     name?: string;
     img?: string;
     email?: string;
+    birthday?: string;
 }
 
 // export interface AuthDataUserSchema {

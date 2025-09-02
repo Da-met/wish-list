@@ -1,0 +1,42 @@
+.popup {
+    position: relative;
+}
+
+.trigger {
+    background: none;
+    outline: none;
+    margin: 0;
+    padding: 0;
+    border: none;
+    cursor: pointer;
+    // margin-left: 30px;
+}
+
+.active {
+    background: var(--secondary-listbox-bg);
+    // border-radius: 45px;
+}
+
+.optionsBottomLeft {
+    top: 100%;
+    right: 0;
+}
+
+.optionsBottomRight {
+    top: 100%;
+    left: 0;
+}
+
+.optionsTopRight {
+    bottom: 100%;
+    left: 0;
+}
+
+.optionsTopLeft {
+    right: 0;
+    bottom: 100%;
+}
+
+.disabled {
+    opacity: 0.7;
+}

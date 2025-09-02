@@ -1,11 +1,18 @@
 import { createAsyncThunk } from '@reduxjs/toolkit';
-import { ThunkConfig } from 'app/providers/StoreProvider';
+import { ThunkConfig } from '@/app/providers/StoreProvider';
 
-import { Wish } from 'entities/Wish';
-import { getWishesPageFilter, getWishesPageLimit, getWishesPageNum, getWishesPageOrder, getWishesPageSearch, getWishesPageSort } from '../../selectors/wishesPageSelectors';
+import { Wish } from '@/entities/Wish';
+import { 
+    getWishesPageLimit, 
+    getWishesPageNum, 
+    getWishesPageOrder, 
+    getWishesPageScope, 
+    getWishesPageSearch, 
+    getWishesPageSort, 
+    getWishesPageStatus} from '../../selectors/wishesPageSelectors';
 import { useSelector } from 'react-redux';
-import { addQueryParams } from 'shared/lib/url/addQueryParams/addQueryParams';
-import { getUserAuthData } from 'entities/User';
+import { addQueryParams } from '@/shared/lib/url/addQueryParams/addQueryParams';
+import { getUserAuthData } from '@/entities/User';
 
 interface FetchWishesListProps {
     replace?: boolean;
@@ -21,14 +28,15 @@ export const fetchWishesList = createAsyncThunk<
             const { extra, rejectWithValue, getState } = thunkApi;
             // const {page = 1} = props;
             const limit = getWishesPageLimit(getState());
-            
             const sort = getWishesPageSort(getState());
             const order = getWishesPageOrder(getState());
             const search = getWishesPageSearch(getState());
             const page = getWishesPageNum(getState());
-            const filter = getWishesPageFilter(getState());
             const user = getUserAuthData(getState());
-            // console.log(user)
+
+            const scope = getWishesPageScope(getState());   // 'all' | 'subscriptions'
+            const status = getWishesPageStatus(getState());
+
             try {
                 addQueryParams({
                     sort, order
@@ -40,8 +48,10 @@ export const fetchWishesList = createAsyncThunk<
                         sort,
                         order,
                         q: search,
-                        filter,
-                        u: user?.id
+                        u: user?.id,
+
+                        scope,
+                        status,
                     },
                 });
 

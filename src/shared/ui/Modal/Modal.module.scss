@@ -8,61 +8,21 @@
     pointer-events: none;
     z-index: -1;
     color: var(--primary-color);
-}
 
-//----------------------------------
-// .border {
-//     padding: 10px 0 0 0;
-//     position: relative;
-//     box-shadow: 
-//         0 -4px 0 0 var(--beige),   /* верхняя линия */
-//         0 7px 0 0 var(--dark),    /* нижняя линия */
-//         -4px 0 0 0 var(--light-beige),   /* левая линия */
-//         5px 0 0 0 var(--dark);    /* правая линия */
-// }
-//----------------------------------
-
-.overlay {
-    width: 100%;
-    height: 100%;
-    background: var(--overlay-color);
     display: flex;
-    align-items: center;
     justify-content: center;
+    align-items: center;
 }
-
-// .content {
-//     // padding: 10px;
-//     // border-radius: 12px;
-//     // background: var(--border-first);
-//     transition: 0.3s transform;
-//     transform: scale(0.5);
-//     max-width: 100%;
-//     background: 
-//         radial-gradient(var(--dark) 20%, transparent 20%) 0 0, 
-//         radial-gradient(rgba(0,0,0,20%) 1%, transparent 1%) 50px 50px;
-//     background-size: 5px 5px;
-// }
-
 
 .content {
-    padding: 10px;
-    position: relative;
-    max-width: 100%;
-
+    padding: 25px;
     border-radius: 12px;
-
+    background: var(--bg-color);
     transition: 0.3s transform;
     transform: scale(0.5);
-
-    z-index: 1;
-	color: #fff;
-    border-top: 2px solid rgba(255,255,255,0.5);
-    border-left: 2px solid rgba(255,255,255,0.5);	
-	backdrop-filter: blur(5px);
-	
-	background: rgba(255, 255, 255, 0.139);
+    max-width: 60%;
 }
+
 
 
 .opened {
@@ -72,6 +32,7 @@
 
     .content {
         transform: scale(1);
+        z-index: var(--modal-z-index);
     }
 }
 
@@ -83,14 +44,20 @@
 
 .btn {
     display: flex;
-    align-items: center;
-    text-align: center;
-    padding: 3px 3px 3px 9px;
+    // align-items: center;
+    // text-align: center;
+    // padding: 3px 3px 3px 5px;
     margin-left: auto;
     margin-top: 0;
     margin-right: 10px;
     font-size: var(--font-size-l);
+
+
+    border-radius: 50px;
+    border: 1.4px var(--accent-color-4) solid;
+    stroke: var(--accent-color-4);
 }
+    
 
 .field {
     margin-bottom: 10px;

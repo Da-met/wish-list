@@ -1,8 +1,12 @@
 
 .Input {
     color: var(--secondary-color);
-    display: flex;
+    // display: flex; - потому что импуты разные
+    align-items: center;
+
+    width: auto;
 }
+
 
 .InputPlaceholder {
     margin-right: 10px;
@@ -11,6 +15,7 @@
 .InputText {
     color: var(--primary-color);
     width: auto;
+    font-weight: 800;
 } 
 
 .readonly {

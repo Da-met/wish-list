@@ -1,0 +1,28 @@
+
+
+
+.wrapper {
+    min-width: 500px;
+    max-width: 60%;
+}
+
+.text {
+    margin-bottom: 20px;
+}
+
+.inputName {
+    display: flex;
+    background: rgb(245, 243, 239);
+    padding: 2px 8px;
+    border-radius:35px;
+}
+
+.inputName input {
+    width: 50%;
+    // background: var(--glass-background);
+
+}
+
+.btn {
+    margin-top: 30px;
+}

@@ -8,7 +8,8 @@ body {
 }
 
 .app,
-.app_modal {
+.app_modal,
+.app_drawer {
     font: var(--font-m);
     color: var(--primary-color);
 }
@@ -17,14 +18,19 @@ body {
     background-image: var(--img);
     background-repeat: no-repeat;
     background-size: cover;
-    // background: var(--bg-color);
+    
+    background: var(--bg-color);
     min-height: 100vh;
 }
 
 .content-page {
+    position: relative;
     display: flex;
+    // padding-left: 40px;
 }
-
+.sidebar {
+    position: absolute;
+}
 
 
 a {

@@ -1,0 +1,70 @@
+
+.GiftsFriendsList {
+    max-width: 1200px;
+    margin: 0 auto;
+    display: grid;
+    grid-template-columns: repeat(3, 1fr); // всегда три колонки
+    gap: 30px;
+    padding: 0 20px; 
+
+    @media (max-width: 1100px) {
+        grid-template-columns: repeat(2, 1fr); // на планшете — две
+      }
+    
+      @media (max-width: 715px) {
+        grid-template-columns: 1fr; // на мобилке — одна
+      }
+}
+
+
+.wrapper {
+    display: contents;
+}
+
+// .card {
+//     margin: 15px 15px;
+// }
+
+
+
+
+.notFound {
+    padding: 20px 40px;
+}
+
+.wrap {
+    position: relative;
+}
+
+.pin {
+    position: absolute;
+    height: 30px;
+    width: 30px;
+    background-color: var(--pin);
+    border-radius: 8px;
+    // right: 200px;
+    top: 20px;
+    right: 20px;
+
+    display: flex;
+    align-items: center;
+    justify-content: center;
+
+    opacity: 70%;
+}
+
+.pin svg {
+    stroke: var(--accent-color-4);
+    width: 30px;
+    height: 30px;
+}
+
+.err { 
+    @media (max-width: 680px) {
+        font-size: 12px !important;
+    }
+    @media (max-width: 570px) {
+        font-size: 10px !important;
+        padding: 0 15px;
+    }
+}

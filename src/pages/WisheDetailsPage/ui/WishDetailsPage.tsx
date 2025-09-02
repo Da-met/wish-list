@@ -1,9 +1,9 @@
-import { classNames } from 'shared/lib/classNames/classNames';
+import { classNames } from '@/shared/lib/classNames/classNames';
 import { memo } from 'react';
 import cls from './WishDetailsPage.module.scss';
-import { WishDetails } from 'entities/Wish';
+import { WishDetails } from '@/entities/Wish';
 import { useParams } from 'react-router-dom';
-import { Page } from 'widgets/Page/Page';
+import { Page } from '@/widgets/Page/Page';
 
 interface WishDetailsPageProps {
     className?: string;
@@ -23,7 +23,10 @@ const WishDetailsPage = (props: WishDetailsPageProps) => {
 
     return (
         <Page className={classNames(cls.WishDetailsPage, {}, [className])}>
-            <WishDetails id={id}/>
+            <div className={cls.wrapper}>
+                <WishDetails id={id}/>
+            </div>
+            
         </Page>
     );
 };

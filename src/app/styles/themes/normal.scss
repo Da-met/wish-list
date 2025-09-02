@@ -1,13 +1,18 @@
 
 
-.app_light_theme {
-    --img: url("https://thumbor.forbes.com/thumbor/fit-in/0x0/filters%3Aformat%28jpg%29/https://specials-images.forbesimg.com/imageserve/6233b2383719f76ff0e707ee/0x0.jpg");
-    
-    --bg-color:  rgb(255, 251, 247);
-    --secondary-bg-color: rgb(232,212,222);
 
-    --primary-color: rgb(51, 43, 140);
-    --secondary-color: rgb(41, 36, 97);
+.app_light_theme {
+
+    // --img: url("https://thumbor.forbes.com/thumbor/fit-in/0x0/filters%3Aformat%28jpg%29/https://specials-images.forbesimg.com/imageserve/6233b2383719f76ff0e707ee/0x0.jpg");
+    // --img: url("https://4.downloader.disk.yandex.ru/preview/e8bbc0d5a419d48c83f435eae1cee545ffe7b8eac5dfe1d76ceb6202f53618f9/inf/7Bn4GGvKyVUzRxruDikvstrEad18zW6w8iT2zYgdvhH5PLD8lYU2wPUPAHyiim6V3ZAXCd0dGa290SKW9pz5Pw%3D%3D?uid=1425542110&filename=texture_white_wavy_154861_3840x2400.jpg&disposition=inline&hash=&limit=0&content_type=image%2Fjpeg&owner_uid=1425542110&tknv=v2&size=1863x1956");
+    // --img: url("../../../shared/assets/background-Img/normal-background-Img.jpg");
+    // --img: url("https://i.pinimg.com/originals/80/5d/9a/805d9a927459159b75fc23fa707faea1.png");
+
+
+
+    // --primary-color: rgb(44, 44, 44);
+    // --secondary-color: rgb(0, 0, 0);
+
 
 
 
@@ -17,16 +22,47 @@
 
     --border-first: rgb(186, 102, 100);
     --inverted-border-first: rgb(65,69,106);
-    
-    // --btn-color-1: rgb(252, 208, 208);
-    // --btn-color-2: rgb(210, 145, 144);
-    // --btn-color-3: rgb(165, 89, 87);
-    
+
 
     --skeleton-color: #ffffff;
     --skeleton-shadow: rgba( 0 0 0 / 20%);
 
 
     --listbox-bg: #d5d5d7;
-    --secondary-listbox-bg: rgb(232,212,222);
+    // --secondary-listbox-bg: rgb(215, 178, 197);
+    // --secondary-listbox-bg: rgb(228, 228, 228);
+
+    // --highlighting-one: #62628b94;
+    // --highlighting-two: #6868a7;
+
+
+    // --glass-background: rgba(255, 255, 255, 0.32);
+    // --glass-background2: rgba(255, 255, 255, 0.701);
+    // --glass-border: rgba(255,255,255,0.5);
+
+    --bg-color:  #fbfaf8;
+    --secondary-bg-color: rgb(207, 207, 207);
+
+    
+    --accent-color-1: #f1d2bf;
+    --accent-color-2: #f0e6dc;
+    --accent-color-3: #9bb0c0;
+    --accent-color-4: rgb(182, 87, 49);
+
+    --search-color: rgb(230, 230, 230);
+
+    --white-black: rgb(255, 255, 255);
+    
+    --navbar-cl: rgb(236, 233, 228);
+
+    --primary-color: #4c6373;
+    --secondary-color: #a8acad;
+    --grey: rgb(77, 77, 77);
+
+    --background: #f4f4f4;
+    --gradient:  #ece9e4;
+
+    --shadow: rgba(145, 161, 173, 0.2);
+
+    --pin: rgb(255, 255, 255);
 }

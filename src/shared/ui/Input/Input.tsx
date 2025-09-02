@@ -1,4 +1,4 @@
-import { classNames, Mods } from 'shared/lib/classNames/classNames';
+import { classNames, Mods } from '@/shared/lib/classNames/classNames';
 import React, {
     InputHTMLAttributes, memo, useEffect, useRef, useState,
 } from 'react';
@@ -28,7 +28,6 @@ export const Input = memo((props: InputProps) => {
 
     const onChangeHandler = (e: React.ChangeEvent<HTMLInputElement>) => {
         onChange?.(e.target.value);
-        
     }
 
     const mods: Mods = {
@@ -37,7 +36,7 @@ export const Input = memo((props: InputProps) => {
 
     return (
         <div className={classNames(cls.Input, mods, [className])}>
-            <div className={classNames(cls.InputPlaceholder)}>{`${placeholder} >`}</div>
+            <div className={classNames(cls.InputPlaceholder)}>{`${placeholder}`}</div>
             <input 
                 className={classNames(cls.InputText, {}, [className])}
                 type={type} 

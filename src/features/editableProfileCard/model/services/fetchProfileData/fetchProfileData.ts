@@ -1,8 +1,8 @@
 import { createAsyncThunk } from "@reduxjs/toolkit";
-import { ThunkConfig } from "app/providers/StoreProvider";
+import { ThunkConfig } from "@/app/providers/StoreProvider";
 import { Profile } from "../../../../../entities/Profile/model/types/profile";
 import { useSelector } from "react-redux";
-import { getUserAuthData } from "entities/User";
+import { getUserAuthData } from "@/entities/User";
 
 
 
@@ -19,7 +19,7 @@ export const fetchProfileData = createAsyncThunk<Profile, string, ThunkConfig<st
             return response.data;
         } catch (error) {
             console.log(error)
-            return rejectWithValue('Некорректные данные');
+            return rejectWithValue('Некорректные данные 4');
         }
     }
 )

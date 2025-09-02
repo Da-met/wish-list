@@ -2,8 +2,36 @@
     display: flex;
     align-items: center;
     text-align: center;
+
+    @media (max-width: 1110px) {
+        justify-content: center;
+    }
+    @media (max-width: 880px) {
+        display: block;
+    }
 }
 
+.sortBy {
+    @media (max-width: 480px) {
+        font-size: 12px;
+    }
+}
 .order {
-    margin-left: 8px;
+    margin-left: 10px;
+
+    @media (max-width: 880px) {
+        margin-top: 10px;
+        margin-left: 0;
+    }
+    @media (max-width: 480px) {
+        font-size: 12px;
+    }
+}
+
+.order select{
+    margin-right: 0;
+
+    @media (max-width: 880px) {
+        width: 100%;
+    }
 }

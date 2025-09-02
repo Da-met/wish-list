@@ -1,0 +1,193 @@
+
+
+.SheetListItem{
+    border-radius: 35px;
+    color: var(--accent-color-4);
+    transition: 0.2s;
+    margin-bottom: 35px;
+
+    //ТЕНЬ
+    -webkit-box-shadow: 1px 9px 14px 12px var(--shadow);
+    -moz-box-shadow: 1px 9px 14px 12px var(--shadow);
+    box-shadow: 1px 9px 14px 12px var(--shadow);
+
+    @media (max-width: 830px) {
+        margin-bottom: 25px;
+    }
+    @media (max-width: 600px) {
+        margin-bottom: 15px;
+    }
+
+}
+
+
+.wrapper_img{
+    display: flex;
+    overflow: auto;
+    margin: 0 10px 10px 10px;
+}
+
+
+
+.img {
+    display: flex;
+    height: 100px;
+    width: 100px;
+    object-fit: cover;
+    cursor: pointer;
+    border-radius: 30px;
+    border: 1.4px var(--accent-color-1) solid;
+    padding: 5px;
+    margin: 15px;
+
+    @media (max-width: 830px) {
+        margin: 8px 8px 15px 8px;
+    }
+    @media (max-width: 670px) {
+        height: 90px;
+        width: 90px;
+    }
+    @media (max-width: 480px) {
+        height: 80px;
+        width: 80px;
+    }
+}
+
+.btn_empty {
+    // height: 90px;
+    width: 90px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    font-size: 30px;
+    cursor: pointer;
+    border-radius: 30px;
+}
+
+.btn_empty:hover {
+    background: rgba(137, 137, 137, 0.174);
+}
+
+.text {
+    padding: 20px 30px;
+    position: relative;
+
+    @media (max-width: 830px) {
+        padding: 12px 30px;
+    }
+    @media (max-width: 480px) {
+        padding: 8px 25px;
+    }
+}
+
+.btn {
+    display: flex;
+    position: absolute; 
+    height: 100%;
+    right: 24px;
+    top: 0;
+    stroke: var(--primary-color);
+}
+.btnDelete svg{
+    border-radius: 35px;
+    border: 1.4px var(--accent-color-4) solid;
+    stroke: var(--accent-color-4);
+
+    @media (max-width: 480px) {
+        width: 27px;
+        height: 27px;
+    }
+}
+.btn button {
+    padding: 0 8px;
+}
+
+
+
+
+
+
+.completed {
+    // ФИЛЬТР ИСПОЛНЕНО
+    opacity: 0.7;
+    filter: grayscale(70%) brightness(20%) blur(0.7px);
+}
+
+.isReserved {
+    // ФИЛЬТР ЗАРЕЗЕРВИРОВАНО
+    filter: grayscale(70%);
+    opacity: 0.7;
+}
+
+.wrap {
+    position: relative;
+}
+
+.pin {
+    position: absolute;
+    height: 24px;
+    width: 24px;
+    background-color: var(--pin);
+    border-radius: 8px;
+    top: 78px;
+    right: 30px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    opacity: 75%;
+
+    @media (max-width: 830px) {
+        top: 70px;
+        right: 22px;
+    }
+    @media (max-width: 480px) {
+        height: 20px;
+        width: 20px;
+        top: 55px;
+        right: 22px;
+    }
+}
+
+.pin svg {
+    stroke: var(--accent-color-4);
+    width: 20px;
+    height: 20px;
+}
+
+.name p{
+    @media (max-width: 830px) {
+        font-size: 14px !important;
+    }
+    @media (max-width: 480px) {
+        font-size: 12px !important;
+    }
+}
+
+.description p{
+    @media (max-width: 830px) {
+        font-size: 12px !important;
+    }
+    @media (max-width: 480px) {
+        font-size: 10px !important;
+    }
+}
+
+
+
+::-webkit-scrollbar {
+    height: 5px ; /* ширина нового скроллбара */
+}       
+
+// ::-webkit-scrollbar-track {
+//     background: var(--glass-background); /* цвет фона у дорожки */
+//     box-shadow: 0 0 2px rgba(0, 0, 0, .2) inset; /* тень у дорожки */
+// }    
+::-webkit-scrollbar-thumb {
+    background: var(--shadow); /* цвет фона у дорожки */
+    border-radius: 8px; /* скругление углов */
+    // border: 2px solid var(--glass-background); /* толщина, стиль и цвет рамки */
+}
+
+::-webkit-scrollbar-thumb:hover {
+    background: var(--highlighting-one); /* ползунок меняет цвет при наведении */
+}

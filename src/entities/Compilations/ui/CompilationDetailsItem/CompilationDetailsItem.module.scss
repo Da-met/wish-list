@@ -1,0 +1,118 @@
+
+.CompilationDetailsItem {
+    display: block;
+
+    width: 100%;
+    min-height: auto;
+    // max-height: 400px;
+    // padding: 20px;
+
+	color: #fff;
+    
+    border-top: 2px solid var(--glass-border);
+    border-left: 2px solid var(--glass-border);	
+	backdrop-filter: blur(5px);
+	background: var(--glass-background);
+	
+    transition: 0.2s;
+    margin-bottom: 45px;
+
+}
+.CompilationsListItem:hover {
+    transform: scale(1.02);
+}
+
+
+.wrapper {
+    display: flex;
+    // padding-bottom: 10px;
+    justify-content: space-between;
+    position: relative;
+}
+
+.img {
+    // height: 320px;
+    // height: 100%;
+    position: absolute;
+    object-fit: cover;
+    width: 35%;
+    height: 100%;
+    // object-fit: contain;
+    opacity: 0.65;
+
+    right: 0;
+}
+
+.text {
+    width: 60%;
+    margin-left: 20px;
+    margin-top: 5px;
+    margin-right: 20px;
+    margin-bottom: 30px;
+
+    display: block;
+    // justify-content: space-between; /* Размещает верхний текст и нижнюю часть */
+}
+
+.description {
+    margin-top: 15px;
+}
+
+
+
+.name {
+    margin-top: 15px;
+    margin-bottom: 20px;
+}
+
+.name p {
+    // overflow: hidden;
+    // text-overflow: ellipsis;
+    // // white-space: nowrap;
+    // display: -webkit-box;
+    // -webkit-line-clamp: 2;
+    // -webkit-box-orient: vertical;  
+
+
+
+}
+
+
+.user {
+    display: flex;
+    align-items: center;
+    // margin-bottom: 40px;
+    padding: 0;
+}
+
+.user img {
+    height: 40px;
+    width: 40px;
+
+    border-radius: 50%;
+    margin-right: 20px;
+}
+
+.bottom {
+    display: flex;
+    justify-content: space-between; /* Разделяет аватар/имя и кнопку */
+    align-items: center; /* Выравнивает элементы по вертикали */
+    // margin-top: 25px;
+    // margin-bottom: 20px;
+    
+    margin: 25px 20px 20px 20px;
+}
+
+
+
+.btnCancellation {
+    display: flex;
+    margin-left: auto;
+    margin-right: auto;
+    margin-bottom: 14px;
+    padding: 5px 30px;
+}
+
+.look {
+    margin-top: 20px;
+}

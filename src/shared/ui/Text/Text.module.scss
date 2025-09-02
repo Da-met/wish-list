@@ -1,12 +1,30 @@
 
+h1 {
+    font-size: 22px !important;
+    font-family: var(--font-family-logo) !important;
+    color: var(--accent-color-4);
+    @media (max-width: 830px) {
+        font-size: 18px !important;
+    }
+    @media (max-width: 480px) {
+        font-size: 16px !important;
+    }
+    @media (max-width: 360px) {
+        font-size: 14px !important;
+    }
+}
 
 .title {
-    color: var(--primary-color);
-    font-weight: 1000 !important;
+    // color: var(--primary-color);
+    // font-weight: 1000 !important;
+
+    // @media (max-width: 830px) {
+    //     font-size: 16px !important;
+    // }
 }
 
 .text {
-    color: var(--secondary-color);
+    // color: var(--secondary-color);
 }
 
 .error {
@@ -35,10 +53,24 @@
 .size_s {
     .title {
         font: var(--font-m);
+
+        @media (max-width: 830px) {
+            font-size: 12px;
+        }
+        @media (max-width: 480px) {
+            line-height: 14px;
+        }
     }
 
     .text {
         font: var(--font-s);
+
+        @media (max-width: 830px) {
+            font-size: 10px;
+        }
+        @media (max-width: 480px) {
+            line-height: 14px;
+        }
     }
 }
 
@@ -52,13 +84,24 @@
     }
 }
 
+
 .size_l {
+    .title {
+        font: var(--font-xl);
+    }
+
+    .text {
+        font: var(--font-l);
+    }
+}
+
+.size_xl {
     .title {
         font: var(--font-xl);
         // font-weight: 900 !important;
     }
 
     .text {
-        font: var(--font-l);
+        font: var(--font-xl);
     }
 }

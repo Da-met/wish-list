@@ -1,4 +1,6 @@
-import { Profile } from 'entities/Profile';
+import { Profile } from '@/entities/Profile';
+import { User } from '@/entities/User';
+import { Wish } from '@/entities/Wish';
 
 export enum ValidateProfileError {
     INCORRECT_USER_DATA = 'INCORRECT_USER_DATA',

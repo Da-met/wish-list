@@ -1,6 +1,50 @@
 .WishesPageFilters {
-    max-width: 1500px;
+    // max-width: 1500px;
     margin-left: auto;
     margin-right: auto;
     margin-bottom: 30px;
+
+    @media (max-width: 480px) {
+        margin-bottom: 15px;
+    }
+}
+
+.btns {
+    margin-left: auto;
+    margin-right: auto;
+}
+
+.btn {
+    font-weight: 800;
+    margin:  20px;
+    @media (max-width: 830px) {
+        margin: 10px;
+    }
+    @media (max-width: 620px) {
+        margin: 13px;
+    }
+    @media (max-width: 480px) {
+        margin: 13px;
+    }
+}
+
+
+
+.active {
+    border-bottom: 2px solid var(--highlighting-two);
+    color:  var(--highlighting-two);
+}
+
+.pointer {
+    max-width: 1400px;
+
+    margin-left: auto;
+    margin-right: auto;
+    padding-bottom: 40px;
+    // padding: 40px;
+
+    // border-color: var(--accent-color-4);
+    border-radius: 35px;
+    // border: 3px var(--accent-color-4) dashed ;
+    background-color: var(--background);
 }

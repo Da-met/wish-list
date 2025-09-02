@@ -8,6 +8,8 @@ export { WishesSortField } from './model/consts/wishConsts'
 export type { wishDetailsSchema } from './model/types/wishDetailsSchema';
 
 export { WishList } from './ui/WishList/WishList';
+// export { WishCreate } from '../../features/addWishForm/index';
 
 export { WishSortSelector } from './ui/WishSortSelector/WishSortSelector'
+
 

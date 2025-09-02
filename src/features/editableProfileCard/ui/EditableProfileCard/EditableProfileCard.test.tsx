@@ -1,8 +1,8 @@
 import { fireEvent, screen } from '@testing-library/react';
-import { ComponentRender } from "shared/lib/tests/componentRender/ComponentRender"
+import { ComponentRender } from "@/shared/lib/tests/componentRender/ComponentRender"
 import { EditableProfileCard } from "./EditableProfileCard"
-import { Profile } from "entities/Profile";
-import { profileReducer } from "features/editableProfileCard/model/slice/profileSlice";
+import { Profile } from "@/entities/Profile";
+import { profileReducer } from "@/features/editableProfileCard/model/slice/profileSlice";
 import userEvent from '@testing-library/user-event';
 
 

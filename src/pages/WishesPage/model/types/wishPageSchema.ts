@@ -1,7 +1,7 @@
 import { EntityState } from '@reduxjs/toolkit';
-import { Wish } from 'entities/Wish';
-import { WishesSortField } from 'entities/Wish';
-import { SortFilter, SortOrder } from 'shared/types';
+import { Wish } from '@/entities/Wish';
+import { WishesSortField } from '@/entities/Wish';
+import { ScopeFilter, SortOrder, StatusFilter } from '@/shared/types';
 
 
 export interface WishPageSchema extends EntityState<Wish> {
@@ -18,7 +18,10 @@ export interface WishPageSchema extends EntityState<Wish> {
     search: string;
     _inited: boolean;
 
-    filter: SortFilter; 
+    // НОВОЕ
+    scope: ScopeFilter;   // все / друзья
+    status: StatusFilter; // активные / все
+    // filter: SortFilter; 
 }
 
 // export interface WishPageSchema {

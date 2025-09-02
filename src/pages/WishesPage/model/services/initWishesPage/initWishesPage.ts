@@ -1,11 +1,11 @@
 import { createAsyncThunk } from '@reduxjs/toolkit';
-import { ThunkConfig } from 'app/providers/StoreProvider';
+import { ThunkConfig } from '@/app/providers/StoreProvider';
 
 import { getWishesPageInited } from '../../selectors/wishesPageSelectors';
 import { wishesPageActions } from '../../slice/wishesPageSlice';
 import { fetchWishesList } from '../fetchWishesList/fetchWishesList';
-import { SortOrder } from 'shared/types';
-import { WishesSortField } from 'entities/Wish';
+import { SortOrder } from '@/shared/types';
+import { WishesSortField } from '@/entities/Wish';
 
 
 

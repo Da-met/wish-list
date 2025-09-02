@@ -1,11 +1,19 @@
 .Page {
     flex-grow: 1;
-    padding: 20px 20px 20px 45px;
+    padding: 30px 30px 30px 130px;
     height: calc(100vh - var(--navbar-height));
     overflow-y: auto;
 
     flex-shrink: 100;
     // width: 100%;
+
+    @media (max-width: 830px) {
+        padding: 30px 10px 20px 75px;
+    }
+    @media (max-width: 480px) {
+        padding: 20px 10px 20px 60px;
+    }
+
 }
 
 .trigger {

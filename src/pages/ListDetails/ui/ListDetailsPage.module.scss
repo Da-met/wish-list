@@ -1,0 +1,56 @@
+.ListDetailsPage{ 
+
+}
+
+.wrapper {
+    max-width: 1400px;
+    margin-left: auto;
+    margin-right: auto;
+    padding-bottom: 40px;
+    border-radius: 35px;
+    background-color: var(--background);
+}
+
+.textWrapper {
+    padding: 30px 40px;
+
+    @media (max-width: 830px) {
+        padding: 20px 30px;
+    }
+    @media (max-width: 480px) {
+        padding: 15px 20px;
+    }
+}
+.wrappName {
+    background-color: var(--white-black);
+    padding: 20px 40px;
+    @media (max-width: 830px) {
+        padding: 20px 30px;
+    }
+    @media (max-width: 480px) {
+        padding: 15px 20px ;
+    }
+}
+
+.wrapperCards {
+    // max-width: 1200px;
+    // margin: 0 auto;
+    // display: grid;
+
+    // justify-content: center;
+}
+
+.name { 
+    color: var(--primary-color);
+    font-size: 20px;
+    @media (max-width: 830px) {
+        font-size: 16px !important;
+    }
+    @media (max-width: 480px) {
+        font-size: 14px !important;
+    }
+    @media (max-width: 360px) {
+        font-size: 12px !important;
+    }
+}
+
