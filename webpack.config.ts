@@ -15,7 +15,8 @@ export default (env: BuildEnv) => {
 
     const mode = env.mode || 'development';
     const PORT = env.port || 3000;
-    const apiUrl = env.apiUrl || 'http://localhost:5000/api'
+    // const apiUrl = env.apiUrl || 'http://localhost:5000/api'
+    const apiUrl = env.apiUrl || process.env.API_URL || 'http://localhost:5000/api';
 
     const isDev = mode === 'development';
 

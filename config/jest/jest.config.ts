@@ -8,7 +8,8 @@ import path from 'path';
 export default {
     globals: {
         __IS_DEV__: true,
-        __API__: '',
+        __API__: process.env.API_URL || process.env.VITE_API_URL || 'http://localhost:5000/api',
+        // __API__: '', БЫЛО
         __PROJECT__: 'jest',
     },
     clearMocks: true,
