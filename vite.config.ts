@@ -58,11 +58,11 @@ export default ({ mode }) => {
   const apiURL = env.VITE_API_URL;
 
   return defineConfig({
+    plugins: [svgr({ exportAsDefault: true }), react()],
+    resolve: { alias: [{ find: '@', replacement: '/src' }] },
     define: {
       __API__: JSON.stringify(apiURL),
     },
-    plugins: [react(), svgr()],
-    resolve: { alias: [{ find: '@', replacement: '/src' }] },
     esbuild: { target: 'es2018' },
   });
 };
