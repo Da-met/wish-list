@@ -34,6 +34,11 @@ export default ({ mode }) => {
   const viteApi = env.VITE_API_URL; // из .env или .env.production
   const fallback = 'http://localhost:5000/api';
 
+
+  console.log('VITE_API_URL env:', viteApi);
+  console.log('__API__ will be:', process.env.API_URL || viteApi || fallback);
+
+
   return defineConfig({
     plugins: [svgr({ exportAsDefault: true }), react()],
     resolve: { alias: [{ find: '@', replacement: '/src' }] },
@@ -47,3 +52,4 @@ export default ({ mode }) => {
     esbuild: { target: 'es2018' },
   });
 };
+
