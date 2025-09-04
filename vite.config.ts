@@ -62,7 +62,7 @@ export default ({ mode }) => {
   const env = loadEnv(mode, process.cwd(), '');
   const apiURL = env.VITE_API_URL || 'http://localhost:5000/api';
 
-  console.log('__API__:', apiURL); // временно, чтобы проверить, что prod берет правильный URL
+  console.log('⚡ Building with API URL:', apiURL); // проверка во время сборки
 
   return defineConfig({
     plugins: [svgr({ exportAsDefault: true }), react()],
@@ -70,5 +70,6 @@ export default ({ mode }) => {
     define: {
       __API__: JSON.stringify(apiURL),
     },
+    esbuild: { target: 'es2018' },
   });
 };
