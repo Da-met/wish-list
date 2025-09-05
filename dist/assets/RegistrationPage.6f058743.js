@@ -1,0 +1,1 @@
+import{l as t,d as s,P as i,R as n}from"./index.3996ea3a.js";const o="_RegistrationPage_dl3c7_1",c={RegistrationPage:o},r=()=>{const a=t(),e=()=>{a("/wishes")};return s(i,{children:s("div",{className:c.RegistrationPage,children:s(n,{onSuccess:e})})})};export{r as default};

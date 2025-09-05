@@ -1,3 +1,4 @@
+
 {
     "compilerOptions": {
       "outDir": "./dist/",
@@ -36,6 +37,9 @@
       // import React from 'react';
       "allowSyntheticDefaultImports": true,
       "isolatedModules": true,
+
+      // Ограничиваем типы только тем, что реально используем
+      "types": ["node", "jest", "vite/client"]
     },
     "ts-node": {
       "compilerOptions": {

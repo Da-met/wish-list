@@ -1,0 +1,1 @@
+import{r as n,d as r,e as c}from"./index.3996ea3a.js";const d="_Skeleton_1o1l8_1",m="_load_1o1l8_1",S={Skeleton:d,load:m},i=n.exports.memo(e=>{const{className:s,height:o,width:t,border:l}=e,a={width:t,height:o,borderRadius:l};return r("div",{className:c(S.Skeleton,{},[s]),style:a})});export{i as S};

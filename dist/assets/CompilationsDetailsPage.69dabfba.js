@@ -1,0 +1,1 @@
+import{r as e,o as i,d as s,P as m,e as r}from"./index.3996ea3a.js";import{C as l}from"./CompilationDetails.d65c23dd.js";import"./Text.d7c5cc0a.js";import"./AppImage.c08ece6e.js";import"./Skeleton.6dbd9952.js";const c={},n=a=>{const{className:o}=a,{id:t}=i();return s(m,{className:r(c.WishDetailsPage,{},[o]),children:s(l,{id:t})})},D=e.exports.memo(n);export{D as default};

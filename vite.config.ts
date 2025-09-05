@@ -1,3 +1,23 @@
+import { defineConfig, loadEnv } from 'vite';
+import react from '@vitejs/plugin-react';
+import svgr from 'vite-plugin-svgr';
+import tsconfigPaths from 'vite-tsconfig-paths';
+
+export default defineConfig(({ mode }) => {
+  const env = loadEnv(mode, process.cwd(), '');
+  const apiURL = env.VITE_API_URL;
+
+  return {
+    plugins: [react(), svgr({ exportAsDefault: true }), tsconfigPaths()],
+    define: {
+      __API__: JSON.stringify(apiURL),
+      __IS_DEV__: JSON.stringify(mode === 'development'),
+      __PROJECT__: JSON.stringify('frontend'), // <--- фикс
+    },
+  };
+});
+
+
 // import { defineConfig } from 'vite';
 // import react from '@vitejs/plugin-react';
 // import svgr from 'vite-plugin-svgr';
@@ -54,22 +74,4 @@
 // };
 
 
-import { defineConfig, loadEnv } from 'vite';
-import react from '@vitejs/plugin-react';
-import svgr from 'vite-plugin-svgr';
 
-export default ({ mode }) => {
-  const env = loadEnv(mode, process.cwd(), '');
-  const apiURL = env.VITE_API_URL || 'http://localhost:5000/api';
-
-  console.log('⚡ Building with API URL:', apiURL); // проверка во время сборки
-
-  return defineConfig({
-    plugins: [svgr({ exportAsDefault: true }), react()],
-    resolve: { alias: [{ find: '@', replacement: '/src' }] },
-    define: {
-      __API__: JSON.stringify(apiURL),
-    },
-    esbuild: { target: 'es2018' },
-  });
-};
