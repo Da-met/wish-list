@@ -19,7 +19,7 @@ interface SidebarProps {
 export const Sidebar = memo(({className}: SidebarProps ) => {
     const [ collapsed, setCollapsed ] = useState(true);
     const sidebarItemsList = useSelector(getSidebarItems);
-    const mobileHeight = useMobileHeight();
+    // const mobileHeight = useMobileHeight();
     
     const onToggle = () => {
         setCollapsed(prev => !prev)
@@ -42,14 +42,14 @@ export const Sidebar = memo(({className}: SidebarProps ) => {
     );
 
     // Вычисляем высоту с учетом мобильной панели
-    const sidebarHeight = mobileHeight - 50 - 70; // navbar + отступы
+    // const sidebarHeight = mobileHeight - 50 - 70; // navbar + отступы
 
 
     return (
         <div 
             data-testid='sidebar' 
             className={classNames(cls.Sidebar, {[cls.collapsed]: collapsed}, [className])}
-            style={{ height: `${sidebarHeight}px` }} // ЖЕСТКО задаем высоту
+            // style={{ height: `${sidebarHeight}px` }}
         >
 
             <div className={cls.items}>

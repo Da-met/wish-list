@@ -134,19 +134,19 @@
 
 
 
-/* ФИКС ТОЛЬКО для мобильных Яндекс.Браузера */
-@media (max-width: 768px) {
-    .Sidebar {
-        /* Для нормальных браузеров */
-        height: calc(100vh - var(--navbar-height) - 70px);
+// /* ФИКС ТОЛЬКО для мобильных Яндекс.Браузера */
+// @media (max-width: 768px) {
+//     .Sidebar {
+//         /* Для нормальных браузеров */
+//         height: calc(100vh - var(--navbar-height) - 70px);
         
-        /* Для Яндекс.Браузера */
-        height: calc(var(--mobile-height, 100vh) - var(--navbar-height) - 70px) !important;
-    }
+//         /* Для Яндекс.Браузера */
+//         height: calc(var(--mobile-height, 100vh) - var(--navbar-height) - 70px) !important;
+//     }
     
-    @media (max-width: 480px) {
-        .Sidebar {
-            height: calc(var(--mobile-height, 100vh) - var(--navbar-height) - 40px) !important;
-        }
-    }
-}
+//     @media (max-width: 480px) {
+//         .Sidebar {
+//             height: calc(var(--mobile-height, 100vh) - var(--navbar-height) - 40px) !important;
+//         }
+//     }
+// }

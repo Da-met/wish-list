@@ -12,5 +12,35 @@
 <body>
 <div id="root"></div>
 <script type="module" src="/src/index.tsx"></script>
+<script>
+    // ЖЕСТКИЙ ФИКС ТОЛЬКО ДЛЯ ЯНДЕКСА
+    if (navigator.userAgent.includes('YaBrowser')) {
+        console.log('💣 Активируем ядерный фикс для сайдбара');
+        
+        function fixSidebar() {
+            const sidebar = document.querySelector('.Sidebar');
+            if (sidebar) {
+                const navbarHeight = 50; // Высота навбара
+                const realHeight = window.innerHeight;
+                const sidebarHeight = realHeight - navbarHeight - 70;
+                
+                sidebar.style.height = sidebarHeight + 'px';
+                sidebar.style.position = 'fixed';
+                sidebar.style.top = '80px'; // Ниже навбара
+                sidebar.style.left = '20px';
+                sidebar.style.zIndex = '1000';
+            }
+        }
+
+        // Запускаем несколько раз с задержками
+        setTimeout(fixSidebar, 100);
+        setTimeout(fixSidebar, 500);
+        setTimeout(fixSidebar, 1000);
+        
+        // И при каждом изменении
+        window.addEventListener('resize', fixSidebar);
+        window.addEventListener('orientationchange', fixSidebar);
+    }
+</script>
 </body>
 </html>
