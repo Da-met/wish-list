@@ -9,6 +9,7 @@ import { ThemeSwitcher } from "@/shared/ui/ThemeSwitcher";
 import SidebarItem from "../SidebarItem/SidebarItem";
 import { useSelector } from "react-redux";
 import { getSidebarItems } from '../../model/selectors/getSidebarItems';
+import { useMobileHeight } from "@/shared/lib/hooks/useMobileHeight/useMobileHeight";
 
 
 interface SidebarProps {
@@ -18,6 +19,7 @@ interface SidebarProps {
 export const Sidebar = memo(({className}: SidebarProps ) => {
     const [ collapsed, setCollapsed ] = useState(true);
     const sidebarItemsList = useSelector(getSidebarItems);
+    const mobileHeight = useMobileHeight();
     
     const onToggle = () => {
         setCollapsed(prev => !prev)
@@ -39,14 +41,20 @@ export const Sidebar = memo(({className}: SidebarProps ) => {
         [collapsed, sidebarItemsList]
     );
 
+    // Вычисляем высоту с учетом мобильной панели
+    const sidebarHeight = mobileHeight - 50 - 70; // navbar + отступы
+
 
     return (
         <div 
             data-testid='sidebar' 
             className={classNames(cls.Sidebar, {[cls.collapsed]: collapsed}, [className])}
+            style={{ height: `${sidebarHeight}px` }} // ЖЕСТКО задаем высоту
         >
-            <div className={cls.items}>
-                {itemsList}
+            <div className={cls.sidebarContent}> {/* ← Новый контейнер */}
+                <div className={cls.items}>
+                    {itemsList}
+                </div>
             </div>
 
             <div className={ cls.btnWrap }>
