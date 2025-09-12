@@ -6,7 +6,7 @@
 
 html, body, #root {
     height: 100%;
-    overflow: hidden;
+    // overflow: hidden;
 }
 
 body {
@@ -22,12 +22,17 @@ body {
 
 .app {
     background: var(--bg-color);
-    min-height: 100vh;
+    width: 100%;
 }
 
 .content-page {
-    position: relative;
+    // position: relative;
     display: flex;
+}
+// удалить
+.main-content {
+    flex: 1;
+    padding: 20px;
 }
 
 .sidebar {
@@ -43,29 +48,3 @@ a {
 
 
 
-/* ФИКС ТОЛЬКО для мобильных браузеров */
-@media (max-width: 768px) {
-    .app {
-        height: 100vh;
-        overflow: hidden;
-        position: fixed;
-        width: 100vw;
-    }
-    
-    .content-page {
-        height: calc(100vh - var(--navbar-height));
-        overflow: hidden;
-    }
-    
-    /* Сайдбар - фиксированная высота */
-    .Sidebar {
-        height: calc(100vh - var(--navbar-height) - 80px) !important;
-        overflow: hidden;
-    }
-    
-    /* Контент - прокрутка */
-    .Page {
-        height: calc(100vh - var(--navbar-height)) !important;
-        overflow-y: auto;
-    }
-}

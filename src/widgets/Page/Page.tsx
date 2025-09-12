@@ -12,7 +12,7 @@ import { useInitialEffect } from '@/shared/lib/hooks/useInitialEffect/useInitial
 import { useSelector } from 'react-redux';
 import { StateSchema } from '@/app/providers/StoreProvider';
 import { useThrottle } from '@/shared/lib/hooks/useThrottle/useThrottle';
-import { useMobileHeight } from '@/shared/lib/hooks/useMobileHeight/useMobileHeight';
+
 
 interface PageProps {
     className?: string;
@@ -32,9 +32,6 @@ export const Page = memo((props: PageProps) => {
         (state: StateSchema) => getScrollSaveByPath(state, pathname),
     );
 
-    // 🔧 Добавляем определение высоты для мобильных
-    // const mobileHeight = useMobileHeight();
-    // const isYandex = navigator.userAgent.includes('YaBrowser');
 
     useInfiniteScroll({
         triggerRef,

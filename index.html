@@ -13,18 +13,16 @@
 <div id="root"></div>
 <script type="module" src="/src/index.tsx"></script>
 <script>
-    // Простой фикс для мобильных браузеров
-    function fixMobileView() {
-        const isMobile = window.innerWidth <= 768;
-        if (isMobile) {
-            document.documentElement.style.height = window.innerHeight + 'px';
-            document.body.style.height = window.innerHeight + 'px';
+    // Принудительный фикс для мобильных
+    function preventScrollHide() {
+        const app = document.querySelector('.app');
+        if (app) {
+            app.style.height = window.innerHeight + 'px';
         }
     }
     
-    window.addEventListener('load', fixMobileView);
-    window.addEventListener('resize', fixMobileView);
-    window.addEventListener('orientationchange', fixMobileView);
+    setInterval(preventScrollHide, 200);
+    window.addEventListener('resize', preventScrollHide);
 </script>
 </body>
 </html>
