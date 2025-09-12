@@ -4,52 +4,9 @@
 @import "themes/dark";
 
 
-
-
-
-
-// =================================================================
-/* 🔧 СТРОГО ТОЛЬКО для Яндекс.Браузера */
-body.yandex-browser-only {
-    height: 100vh !important;
-    overflow: hidden !important;
-    
-    .app {
-        height: 100vh !important;
-        min-height: 100vh !important;
-        position: fixed;
-        top: 0;
-        left: 0;
-        right: 0;
-        bottom: 0;
-    }
-    
-    .content-page {
-        height: calc(100vh - var(--navbar-height, 50px)) !important;
-    }
-    
-    .Sidebar {
-        height: calc(100vh - var(--navbar-height, 50px) - 20px) !important;
-        max-height: calc(100vh - var(--navbar-height, 50px) - 20px) !important;
-    }
+html, body, #root {
+    height: 100%;
 }
-
-/* Альтернатива с кастомным свойством */
-body.yandex-browser-only {
-    .app {
-        height: var(--yandex-vh, 100vh) !important;
-    }
-    
-    .content-page {
-        height: calc(var(--yandex-vh, 100vh) - var(--navbar-height, 50px)) !important;
-    }
-    
-    .Sidebar {
-        height: calc(var(--yandex-vh, 100vh) - var(--navbar-height, 50px) - 20px) !important;
-    }
-}
-// =================================================================
-
 
 body {
     letter-spacing: 2px;
@@ -74,7 +31,6 @@ body {
 .content-page {
     position: relative;
     display: flex;
-    // padding-left: 40px;
 }
 .sidebar {
     position: absolute;
@@ -84,4 +40,4 @@ body {
 a {
     color: var(--primary-color);
     text-decoration: none; /* no underline */
-  }
+}

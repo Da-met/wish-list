@@ -7,9 +7,57 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
     <title>Document</title>
+    <style>
+        /* ЖЕСТКИЙ ФИКС ДЛЯ ЯНДЕКСА */
+        .yandex-browser-force {
+            position: fixed !important;
+            top: 0 !important;
+            left: 0 !important;
+            right: 0 !important;
+            bottom: 0 !important;
+            width: 100vw !important;
+            height: 100vh !important;
+            overflow: hidden !important;
+        }
+        .yandex-browser-force .content-page {
+            height: calc(100vh - 50px) !important;
+            overflow: hidden !important;
+        }
+        .yandex-browser-force .Sidebar {
+            height: calc(100vh - 120px) !important;
+            overflow: hidden !important;
+        }
+    </style>
 </head>
 <body>
 <div id="root"></div>
 <script type="module" src="/src/index.tsx"></script>
+<!-- ЯДЕРНЫЙ ФИКС -->
+<script>
+    if (navigator.userAgent.includes('YaBrowser')) {
+        console.log('💣 Применяем ядерный фикс для Яндекс.Браузера');
+        
+        function applyYandexFix() {
+            const root = document.getElementById('root');
+            if (root) {
+                root.classList.add('yandex-browser-force');
+            }
+            
+            // Принудительно фиксируем размеры
+            document.documentElement.style.height = '100vh';
+            document.body.style.height = '100vh';
+            document.body.style.overflow = 'hidden';
+            
+            // Запрещаем скролл вообще
+            document.addEventListener('scroll', function(e) {
+                e.preventDefault();
+                window.scrollTo(0, 0);
+            }, { passive: false });
+        }
+        
+        document.addEventListener('DOMContentLoaded', applyYandexFix);
+        setTimeout(applyYandexFix, 100);
+    }
+</script>
 </body>
 </html>

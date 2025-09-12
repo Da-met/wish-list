@@ -22,13 +22,6 @@ const App = () => {
     const inited = useSelector(getUserInited);
     const authData = useSelector(getUserAuthData);
 
-    // 🔧 ТОЛЬКО детектор Яндекс.Браузера
-    useEffect(() => {
-        const isYandexBrowser = /YaBrowser|Yowser/.test(navigator.userAgent);
-        if (isYandexBrowser) {
-            document.body.classList.add('yandex-browser-only');
-        }
-    }, []);
 
     useEffect(() => {
         dispatch(userActions.initAuthData());
