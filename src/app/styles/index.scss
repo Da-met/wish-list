@@ -6,7 +6,7 @@
 
 html, body, #root {
     height: 100%;
-    // overflow: hidden;
+    overflow: hidden;
 }
 
 body {
@@ -22,18 +22,14 @@ body {
 
 .app {
     background: var(--bg-color);
-    width: 100%;
+    // min-height: 100vh;
 }
 
 .content-page {
-    // position: relative;
+    position: relative;
     display: flex;
 }
-// удалить
-.main-content {
-    flex: 1;
-    padding: 20px;
-}
+
 
 .sidebar {
     position: absolute;

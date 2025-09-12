@@ -12,17 +12,5 @@
 <body>
 <div id="root"></div>
 <script type="module" src="/src/index.tsx"></script>
-<script>
-    // Принудительный фикс для мобильных
-    function preventScrollHide() {
-        const app = document.querySelector('.app');
-        if (app) {
-            app.style.height = window.innerHeight + 'px';
-        }
-    }
-    
-    setInterval(preventScrollHide, 200);
-    window.addEventListener('resize', preventScrollHide);
-</script>
 </body>
 </html>

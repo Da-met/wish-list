@@ -32,7 +32,6 @@ export const Page = memo((props: PageProps) => {
         (state: StateSchema) => getScrollSaveByPath(state, pathname),
     );
 
-
     useInfiniteScroll({
         triggerRef,
         wrapperRef,
@@ -50,21 +49,12 @@ export const Page = memo((props: PageProps) => {
         }));
     }, 500)
 
-    // // 🔧 Вычисляем высоту для Яндекс.Браузера
-    // const pageHeight = isYandex 
-    // ? `calc(${mobileHeight}px - var(--navbar-height))`
-    // : 'auto';
-
     return (
         <section
             ref={wrapperRef}
             className={classNames(cls.Page, {}, [className])}
             onScroll={onScroll}
             id={PAGE_ID}
-            // style={isYandex ? { 
-            //     height: pageHeight,
-            //     overflowY: 'auto'
-            // } : undefined}
         >
             {children}
             {onScrollEnd ? <div className={cls.trigger} ref={triggerRef} /> : null}

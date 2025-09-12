@@ -6,7 +6,7 @@
 
 
     flex-shrink: 100;
-    // width: 100%;
+    width: 100%;
 
     @media (max-width: 830px) {
         padding: 30px 10px 20px 75px;
@@ -16,13 +16,6 @@
     }
 
 
-    /* 🔧 ФИКС ДЛЯ ЯНДЕКС.БРАУЗЕРА НА МОБИЛЬНЫХ */
-    // @media (max-width: 768px) {
-    //     .yandex-browser & {
-    //         height: calc(var(--mobile-height, 100vh) - var(--navbar-height)) !important;
-    //         max-height: calc(var(--mobile-height, 100vh) - var(--navbar-height)) !important;
-    //     }
-    // }
 }
 
 // .trigger {

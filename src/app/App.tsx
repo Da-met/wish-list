@@ -22,7 +22,6 @@ const App = () => {
     const dispatch = useAppDispatch();
     const inited = useSelector(getUserInited);
     const authData = useSelector(getUserAuthData);
-    const safeHeight = useSafeHeight();
 
     useEffect(() => {
         dispatch(userActions.initAuthData());
@@ -37,38 +36,12 @@ const App = () => {
 
 
     return (
-        <div 
-            className={classNames('app', {}, [theme])}
-            style={{ 
-                height: safeHeight,
-                overflow: 'hidden',
-                position: 'fixed',
-                top: 0,
-                left: 0,
-                right: 0,
-                bottom: 0
-            }}
-        >
+        <div className={classNames('app', {}, [theme])} >
             <Suspense fallback="">
                 <Navbar />
-                <div 
-                    className="content-page"
-                    style={{ 
-                        height: safeHeight - 50, // минус высота навбара
-                        overflow: 'hidden'
-                    }}
-                >
+                <div className="content-page" >
                     <Sidebar className="sidebar"/>
-                    {/* {inited && <AppRouter />} */}
-                    <div 
-                        className="main-content"
-                        style={{ 
-                            height: safeHeight - 50,
-                            overflowY: 'auto'
-                        }}
-                    >
-                        {inited && <AppRouter />}
-                    </div>
+                    {inited && <AppRouter />}
                 </div>
             </Suspense>    
         </div>
