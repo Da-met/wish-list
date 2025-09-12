@@ -16,6 +16,9 @@ const addListSlice = createSlice({
         setName: (state, action: PayloadAction<string>) => {
             state.name = action.payload;
         },
+        setError: (state, action: PayloadAction<string>) => {
+            state.error = action.payload;
+        }
     },
     // extraReducers: (builder) => {
     //     builder

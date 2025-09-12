@@ -1,15 +1,10 @@
 .WishListItem {
-    // border-radius: 35px;
-    // padding: 4px;
-
-    // //ТЕНЬ
-    // box-shadow: 1px 9px 14px 12px var(--shadow);
-    // margin: 15px 15px;
-
     border-radius: 35px;
     padding: 4px;
     box-shadow: 1px 9px 14px 12px var(--shadow);
     width: 100%; 
+    display: flex;
+    overflow: hidden;
 }
 
 
@@ -17,7 +12,6 @@
 .imgWrapper {
     display: block;
     width: 100%;
-    
 	color: #fff;
     transition: 0.2s;
 }

@@ -29,6 +29,7 @@ import { ListDetailsSchema } from "@/entities/List";
 
 
 export interface StateSchema {
+    // addList: addSheetSchema;
     // counter: CounterSchema;
     user: UserSchema;
     scrollSave: ScrollSaveSchema;

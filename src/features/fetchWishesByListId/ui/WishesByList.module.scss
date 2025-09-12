@@ -1,31 +1,25 @@
 .WishesByList {
-    // display: flex;
-    // // margin: 15px 15px;
-    // flex-wrap: wrap;
-    // justify-content: center;
-
     max-width: 1200px;
     margin: 20px auto 0 auto;
     display: grid;
-    grid-template-columns: repeat(3, 1fr); // всегда три колонки
+    grid-template-columns: repeat(3, minmax(280px, 1fr)); // всегда три колонки
     gap: 30px;
     padding: 0 20px; 
 
     @media (max-width: 1100px) {
-        grid-template-columns: repeat(2, 1fr); // на планшете — две
-      }
+        grid-template-columns: repeat(2, minmax(280px, 1fr)); // на планшете — две
+    }
     
       @media (max-width: 715px) {
         grid-template-columns: 1fr; // на мобилке — одна
-      }
-
+        display: flex;
+    }
 }
 
 .wrap {
-    display: flex;
-    position: relative;
-    // flex-wrap: wrap;
-    // justify-content: center;
+    display: block; /* или flex */
+    width: 100%;
+    max-width: 100%;
 }
 
 .pin {
@@ -34,14 +28,11 @@
     width: 30px;
     background-color: var(--pin);
     border-radius: 8px;
-    // right: 200px;
     top: 20px;
     right: 20px;
-
     display: flex;
     align-items: center;
     justify-content: center;
-
     opacity: 70%;
 }
 
@@ -49,4 +40,14 @@
     stroke: var(--accent-color-4);
     width: 30px;
     height: 30px;
+}
+
+.empty {
+    padding: 30px 40px 0 40px;
+    @media (max-width: 830px) {
+        padding: 20px 30px 0 30px;
+    }
+    @media (max-width: 480px) {
+        padding: 15px 20px 0 20px;
+    }
 }

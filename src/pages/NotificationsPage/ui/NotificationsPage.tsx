@@ -103,7 +103,6 @@ const NotificationsPage = ({className}: NotificationsPageProps) => {
                 <div className={cls.wrapper}>
                     <Text title={'Ближайшие события'} className={cls.title} titleTag="h1"/>
 
-                    
                     <ul className={cls.listEvent}>
                         {events.length === 0 && <p className={cls.p}>Пока ничего нет ✨</p>}
                         {events.map((event, idx) => (

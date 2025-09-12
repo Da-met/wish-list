@@ -1,5 +1,5 @@
 import { classNames } from '@/shared/lib/classNames/classNames';
-import { memo, useCallback, useState } from 'react';
+import { memo, useCallback, useEffect, useMemo, useState } from 'react';
 import cls from './WishCreate.module.scss';
 import { DynamicModuleLoader, ReducersList } from '@/shared/lib/components/DynamicModuleLoader/DynamicModuleLoader';
 import { useAppDispatch } from '@/shared/lib/hooks/useAppDispatch/useAppDispatch';
@@ -25,6 +25,8 @@ import { updateWish } from '../model/services/updateWish';
 import { getRouteList, getRouteWishDetails } from '@/shared/const/router';
 import { fetchWishesByList } from '@/features/fetchWishesByListId';
 import { fetchLists } from '@/entities/Sheets/model/services/fetchLists/fetchLists';
+import { StateSchema } from '@/app/providers/StoreProvider';
+import { useWishValidation } from '@/shared/lib/hooks/useWishValidation/useWishValidation';
 
 
 
@@ -45,121 +47,199 @@ const reducers: ReducersList = {
 
 export const WishCreate = memo((props: WishCreateProps) => {
     const { className, id, isEdit } = props;
-    const user = useSelector(getUserAuthData);
-    
+    const navigate = useNavigate();
     const location = useLocation(); 
+    const dispatch = useAppDispatch();
+
     const state = location.state as LocationState | undefined;
     const listId = state?.listId;
-    
-    const dispatch = useAppDispatch();
-    const isLoading = useSelector(getWishDetailsIsLoading);
-    const error = useSelector(getWishDetailsError);
+
+    const debugGetAddWishListIdState = (state: StateSchema) => {
+        const listId = state.addWishForm?.list_id;
+        return listId;
+    };
+
+    const { 
+        wishName, 
+        wishDescription, 
+        wishImg, 
+        wishUrl, 
+        wishListId,
+        isLoading,
+        error,
+        user,
+        listsUser
+    } = useSelector((state: StateSchema) => ({
+        // Данные формы
+        wishName: getAddWishNameState(state),
+        wishDescription: getAddWishDescriptionState(state),
+        wishImg: getAddWishImgState(state),
+        wishUrl: getAddWishUrlState(state),
+        wishListId: debugGetAddWishListIdState(state),
+        
+        // Статус и пользователь
+        isLoading: getWishDetailsIsLoading(state),
+        error: getWishDetailsError(state),
+        user: getUserAuthData(state),
+        
+        // Списки пользователя
+        listsUser: getLists.selectAll(state),
+    }));
+
+    const [highlightCreateList, setHighlightCreateList] = useState(false);
+
+    const {
+        errors,
+        touched,
+        validateField,
+        validateForm,
+        markFieldAsTouched,
+        clearError,
+    } = useWishValidation();
+
+    useEffect(() => {
+        if (listsUser.length > 0 && highlightCreateList) {
+            setHighlightCreateList(false);
+        }
+    }, [listsUser.length, highlightCreateList]);
+
+    useEffect(() => {
+        // Через 5 секунд подсветка сама сбрасывается
+        if (highlightCreateList) {
+            const timer = setTimeout(() => {
+                setHighlightCreateList(false);
+            }, 5000);
+            
+            return () => clearTimeout(timer);
+        }
+    }, [highlightCreateList]);
+
+    const transformedlistsUser = useMemo(() => 
+        listsUser.map(item => ({
+            value: String(item.id),
+            content: item.name
+        })),
+        [listsUser]
+    );
 
 
-    if (isEdit == true) {
-        console.log(`IS EDIT IS EDIT`)
-    }
-
-    const navigate = useNavigate();
 
     useInitialEffect(() => {
         if (!isEdit && listId) {
+            // Создание с указанием листа
             dispatch(addWishFormActions.setWishListId(Number(listId)));
-        }
-        if (isEdit && id) {
+        } else if (!isEdit && !listId && listsUser.length > 0) {
+            // Создание без указания листа (автовыбор)
+            dispatch(addWishFormActions.setWishListId(listsUser[0]?.id));
+        } else if (isEdit && id) {
+            // Редактирование (полная загрузка данных)
             dispatch(fetchWishById(id)).then((action) => {
-                if (action.meta.requestStatus === 'fulfilled' && typeof action.payload === 'object' && action.payload !== null) {
+                if (action.meta.requestStatus === 'fulfilled') {
                     const wish = action.payload as Wish;
                     dispatch(addWishFormActions.setWishName(wish.name));
                     dispatch(addWishFormActions.setWishDescription(wish.description));
                     dispatch(addWishFormActions.setWishImg(wish.img));
                     dispatch(addWishFormActions.setWishUrl(wish.url));
                     dispatch(addWishFormActions.setWishListId(wish.list_id));
-                } else {
-                    console.error('Не удалось загрузить данные подарка для редактирования');
                 }
             });
         }
-    })
+    });
 
-
-    const listsUser = useSelector(getLists.selectAll)
-    const transformedlistsUser = listsUser.map(item => ({
-        value: String(item.id),
-        content: item.name
-    }));
-
-
-    const wishName = useSelector(getAddWishNameState);
-    const wishDescription = useSelector(getAddWishDescriptionState);
-    const wishImg = useSelector(getAddWishImgState);
-    const wishUrl = useSelector(getAddWishUrlState);
-    const wishListId = useSelector(getAddWishListIdState);
 
     const onChangeWishName = useCallback((value: string) => {
-        dispatch(addWishFormActions.setWishName(value))
-    }, [dispatch]);
+        dispatch(addWishFormActions.setWishName(value));
+        validateField('name', value);
+        if (value.trim()) clearError('name');
+    }, [dispatch, validateField, clearError]);
+
     const onChangeWishDescription = useCallback((value: string) => {
-        dispatch(addWishFormActions.setWishDescription(value))
+        dispatch(addWishFormActions.setWishDescription(value));
     }, [dispatch]);
+
     const onChangeWishImg = useCallback((value: string) => {
-        dispatch(addWishFormActions.setWishImg(value))
-    }, [dispatch]);
+        dispatch(addWishFormActions.setWishImg(value));
+        validateField('img', value); // ← ДОБАВИЛИ
+        if (value.trim()) clearError('img'); // ← ДОБАВИЛИ
+    }, [dispatch, validateField, clearError]);
+
     const onChangeWishUrl = useCallback((value: string) => {
-        dispatch(addWishFormActions.setWishUrl(value))
+        dispatch(addWishFormActions.setWishUrl(value));
     }, [dispatch]);
+
+
     const onChangeWishListId = useCallback((value: any) => {
-        dispatch(addWishFormActions.setWishListId(value))
-    }, [dispatch]);
+        const numericValue = Number(value);
+        dispatch(addWishFormActions.setWishListId(numericValue));
+        validateField('list', numericValue); 
 
-    const [errors, setErrors] = useState<{ [key: string]: string }>({});
-    const REQUIRED_MESSAGE = 'Это поле обязательно';
-    const validateForm = () => {
-        const newErrors: { [key: string]: string } = {};
-        if (!wishName?.trim()) newErrors.name = REQUIRED_MESSAGE;
-        if (!wishDescription?.trim()) newErrors.description = REQUIRED_MESSAGE;
-        if (!wishImg?.trim()) newErrors.img = REQUIRED_MESSAGE;
-        if (!wishListId) newErrors.list = REQUIRED_MESSAGE;
+        if (numericValue > 0) {
+            clearError('list');
+        } 
+    }, [dispatch, validateField, clearError]);
 
-        setErrors(newErrors);
-        return Object.keys(newErrors).length === 0;
-    };
     
-    const onSendWish = async () => {
-        if (!validateForm()) return;
 
-        if (!user) return;
-        let formData = {
+    const onSendWish = async () => {
+        // Помечаем все обязательные поля как "тронутые"
+        markFieldAsTouched('name');
+        markFieldAsTouched('list');
+        markFieldAsTouched('img');
+
+        if (noLists) {
+            setHighlightCreateList(true); // ← ВКЛЮЧАЕМ ПОДСВЕТКУ
+            
+            // Валидируем остальные поля тоже
+            const formErrors = validateForm({
+                name: wishName,
+                list: undefined, // нет списка
+                img: wishImg,
+            });
+            
+            // Устанавливаем ошибки (если есть)
+            if (Object.keys(formErrors).length > 0) {
+                // Можно показать ошибки для других полей
+                console.log('Ошибки при отсутствии списков:', formErrors);
+            }
+            
+            return;
+        }
+
+        // Валидируем всю форму
+        const isValid = validateForm({
+            name: wishName,
+            list: wishListId,
+            img: wishImg,
+        });
+
+        if (!isValid || !user) return;
+
+        const formData = {
             name: wishName, 
             description: wishDescription, 
             img: wishImg, 
             url: wishUrl, 
             list_id: wishListId,
             user_id: user.id,
-        }
+        };
 
         if (isEdit && id) {
             const result = await dispatch(updateWish({ id, data: formData }));
             if (updateWish.fulfilled.match(result)) {
-                console.log('Подарок обновлён!');
                 navigate(getRouteWishDetails(String(id)));
-            } else {
-                console.error('Ошибка при обновлении подарка');
             }
         } else {
             const result = await dispatch(addWish(formData));
             if (addWish.fulfilled.match(result)) {
-                // console.log('Подарок создан!');
                 if (wishListId) {
                     dispatch(fetchLists({ idUser: user.id }));
                 }
-            
                 navigate(getRouteWishDetails(String(result.payload.id)));
-            } else {
-                console.error('Ошибка при создании подарка');
             }
         }
     };
+
+
 
  
     let content; 
@@ -185,37 +265,58 @@ export const WishCreate = memo((props: WishCreateProps) => {
                     className={cls.wishImg}
                     value={wishImg}
                     onChange={onChangeWishImg}
+                    onFocus={() => markFieldAsTouched('img')}
+                    hasError={!!(touched.img && errors.img)} 
+                    errorMessage={errors.img}
                 />
 
+
                 <div className={cls.wrapperInfo}>
-                    
                     {noLists ? (
-                        <Button
-                            theme={ButtonTheme.OUTLINE}
-                            onClick={() => navigate(getRouteList())}
-                        >
-                            Создать лист
-                        </Button>
+                        <div className={cls.noListsContainer}>
+                            <Button
+                                className={classNames(cls.btnAddNewList, {
+                                    [cls.highlight]: highlightCreateList // ← ПОДСВЕТКА
+                                })}
+                                theme={ButtonTheme.OUTLINE}
+                                onClick={() => navigate(getRouteList())}
+                                onFocus={() => setHighlightCreateList(false)} // ← СБРАСЫВАЕМ ПРИ ФОКУСЕ
+                            >
+                                Создать лист
+                            </Button>
+                            
+                            {/* Простое сообщение */}
+                            {highlightCreateList && (
+                                <span className={cls.hintText}>
+                                    Сначала нужно создать список
+                                </span>
+                            )}
+                        </div>
                     ) : (
                         <Select 
                             options={transformedlistsUser} 
                             label={'Выберете список'}
                             className={cls.list}
                             onChange={onChangeWishListId}
-                            value={wishListId?.toString()}  
+                            value={wishListId?.toString()}
+                            onFocus={() => markFieldAsTouched('list')} // ← ДОБАВИЛИ
+                            hasError={!!(touched.list && errors.list)} // ← ДОБАВИЛИ  
                         />
                     )}
 
                     <div className={cls.part_one}>
-                        {errors.name && <span className={cls.error}>{errors.name}</span>}
+                        {/* ДОБАВИЛИ ОШИБКУ ДЛЯ НАЗВАНИЯ */}
+                        {touched.name && errors.name && (
+                            <span className={cls.errorText}>{errors.name}</span>
+                        )}
                         <Input
                             placeholder='Название подарка'
                             className={cls.fields}
                             value={wishName}
                             onChange={onChangeWishName}
+                            onFocus={() => markFieldAsTouched('name')} // ← ДОБАВИЛИ
+                            hasError={!!(touched.name && errors.name)} // ← ДОБАВИЛИ
                         />
-                        
-
                         <Input
                             placeholder='Описание'
                             className={cls.fields}
@@ -228,13 +329,14 @@ export const WishCreate = memo((props: WishCreateProps) => {
                             value={wishUrl}
                             onChange={onChangeWishUrl}
                         />
-
                     </div>
+
                     <Button 
                         className={cls.btnAdd}
                         theme={ButtonTheme.BACKGROUND}
                         onClick={onSendWish}
-                    >Сохранить
+                    >
+                        Сохранить
                     </Button>
                 </div>
             </div>

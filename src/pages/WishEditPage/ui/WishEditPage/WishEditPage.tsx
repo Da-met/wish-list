@@ -55,4 +55,4 @@ const WishEditPage = memo((props: WishEditPageProps) => {
     )
 })
 
-export default WishEditPage
+export default WishEditPage;

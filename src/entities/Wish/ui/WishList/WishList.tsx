@@ -9,6 +9,7 @@ import { Text, TextAlign, TextSize } from '@/shared/ui/Text/Text';
 import { Loader } from '@/shared/ui/Loader/Loader';
 import CircleIcon from '@/shared/assets/icons/circle.svg'
 import CheckIcon from '@/shared/assets/icons/check.svg'
+import { Skeleton } from '@/shared/ui/Skeleton/Skeleton';
 
 
 interface WishListProps {
@@ -41,21 +42,40 @@ export const WishList = memo((props: WishListProps) => {
     if(!isLoading && !wishes.length) {
         return (
             <div className={classNames(cls.WishList, {}, [className])}>
-                <Text className={cls.notFound} title={'Не найдено'} size={TextSize.M}/>
+                <div className={cls.notFound}>Не найдено</div>
             </div>
         )
     }
 
+
     return (
-        <div className={classNames(cls.WishList, {}, [className])}>
-            <div className={cls.wrapper}>
-                {wishes.length > 0
-                    ? wishes.map(renderWish)
-                    : null
-                } 
-                {isLoading && (<Loader/>)}
-            </div>
-            
-        </div>
+        <>
+            <>
+                <>
+                    {isLoading ? 
+                        <div className={cls.skeleton}>
+                            <div className={cls.wrapperSceleton}>
+                                <Skeleton className={cls.sceletonLi}/>
+                                <Skeleton className={cls.sceletonLi}/>
+                                <Skeleton className={cls.sceletonLi}/>
+                            </div>
+                        </div> 
+                        : 
+                        <div className={classNames(cls.WishList, {}, [className])}>
+                            <div className={cls.wrapper}>
+                                {wishes.length > 0
+                                    ? wishes.map(renderWish)
+                                    : null
+                                }
+                            </div>
+
+                        </div> 
+                    }
+
+                </>
+            </>
+
+        </>
+        
     );
 });

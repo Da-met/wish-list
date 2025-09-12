@@ -27,7 +27,7 @@ import {
     getRouteList, 
     getRouteListDetails, 
     getRouteLogin, 
-    // getRouteMain, 
+    getRouteMain, 
     getRouteNotifications, 
     getRouteProfile, 
     getRouteRegistration, 
@@ -39,12 +39,13 @@ import {
 } from "@/shared/const/router"
 import { AppRoutesProps } from "@/shared/types/router"
 
-export const getRouteMain = () => getRouteWishes();
+// export const getRouteMain = () => getRouteWishes();
+
 export const routeConfig: Record<AppRoutes, AppRoutesProps> = {
-    // [AppRoutes.MAIN]: {
-    //     path: getRouteMain(),
-    //     element: <MainPage />
-    // },
+    [AppRoutes.MAIN]: {
+        path: getRouteMain(),
+        element: <WishesPage />
+    },
     [AppRoutes.ABOUT]: {
         path: getRouteAbout(),
         element: <AboutPage />

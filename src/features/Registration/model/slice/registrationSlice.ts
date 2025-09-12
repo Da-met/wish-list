@@ -34,7 +34,12 @@ export const registrationSlice = createSlice({
         setPassword: (state, action: PayloadAction<string>) => {
             state.password = action.payload;
         },
-
+        setError: (state, action: PayloadAction<string>) => { 
+            state.error = action.payload;
+        },
+        setIsLoading: (state, action: PayloadAction<boolean>) => {
+            state.isLoading = action.payload;
+        },
     },
     extraReducers: (builder) => {
         builder

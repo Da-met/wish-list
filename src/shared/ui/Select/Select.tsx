@@ -13,6 +13,8 @@ interface SelectProps<T extends string> {
     options?: SelectOption<T>[];
     value?: string;
     onChange?: (value: T) => void;
+    onFocus?: () => void;
+    hasError?: boolean; 
     readonly?: boolean;
 }
 
@@ -23,6 +25,8 @@ export const Select = <T extends string>(props: SelectProps<T>) => {
         options,
         onChange,
         value,
+        onFocus,
+        hasError = false,
         readonly,
     } = props;
 
@@ -43,10 +47,16 @@ export const Select = <T extends string>(props: SelectProps<T>) => {
         </option>
     )), [options]);
 
-    const mods: Mods = {};
+    const mods: Mods = {
+        [cls.error]: hasError, 
+    };
 
     return (
-        <div className={classNames(cls.Wrapper, mods, [className])}>
+        <div 
+            className={classNames(cls.Wrapper, mods, [className])}
+            onFocus={onFocus} 
+            tabIndex={0}     
+        >
             {label && (
                 <span className={cls.label}>
                     {`${label}`}
@@ -57,9 +67,17 @@ export const Select = <T extends string>(props: SelectProps<T>) => {
                 className={cls.select}
                 value={value}
                 onChange={onChangeHandler}
+                onFocus={onFocus}
             >
                 {optionsList}
             </select>
+
+            {/* ПОКАЗЫВАЕМ ОШИБКУ ЕСЛИ ЕСТЬ */}
+            {hasError && (
+                <div className={cls.errorText}>
+                    ⚠️ Выберите список
+                </div>
+            )}
         </div>
     );
 };

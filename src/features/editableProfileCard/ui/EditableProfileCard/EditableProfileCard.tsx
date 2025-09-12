@@ -1,5 +1,5 @@
 import { classNames } from '@/shared/lib/classNames/classNames';
-import { memo, useCallback, useEffect } from 'react';
+import { memo, useCallback, useEffect, useMemo, useState } from 'react';
 import { useAppDispatch } from '@/shared/lib/hooks/useAppDispatch/useAppDispatch';
 import { useSelector } from 'react-redux';
 import { useInitialEffect } from '@/shared/lib/hooks/useInitialEffect/useInitialEffect';
@@ -23,6 +23,8 @@ import { ProfileWishesList } from '../ProfileWishesList/ProfileWishesList';
 import { Loader } from '@/shared/ui/Loader/Loader';
 import { SeoHead } from '@/shared/ui/SeoHead/SeoHead';
 import { APP_NAME } from '@/shared/config/appName/appName';
+import { StateSchema } from '@/app/providers/StoreProvider';
+import { Skeleton } from '@/shared/ui/Skeleton/Skeleton';
 
 
 
@@ -43,16 +45,23 @@ export const EditableProfileCard = memo((props: EditableProfileCardProps) => {
     const { className, id } = props;
     
     const dispatch = useAppDispatch();
-    const formData = useSelector(getProfileForm);
-    const isLoading = useSelector(getProfileIsLoading);
-    const error = useSelector(getProfileError);
-    const readonly = useSelector(getProfileReadonly);
+    const [isInitialized, setIsInitialized] = useState(false);
+
+    const profileState = useSelector((state: StateSchema) => ({
+        formData: getProfileForm(state),
+        isLoading: getProfileIsLoading(state),
+        error: getProfileError(state),
+        readonly: getProfileReadonly(state),
+        validateErrors: getProfileValidateErrors(state),
+        profileData: getProfileData(state),
+    }));
 
     const authData = useSelector(getUserAuthData);
-    const profileData = useSelector(getProfileData);
-    const canEdit = authData?.id === profileData?.id;
-
-
+    
+    const canEdit = useMemo(() => 
+        authData?.id === profileState.profileData?.id, 
+        [authData?.id, profileState.profileData?.id]
+    );
 
     const validateErrors = useSelector(getProfileValidateErrors);
     const validateErrorTranslates = {
@@ -62,15 +71,16 @@ export const EditableProfileCard = memo((props: EditableProfileCardProps) => {
     };
 
     useEffect(() => {
-        if (id) {
-            dispatch(fetchProfileData(id));
+        if (id && !isInitialized) {
+            dispatch(fetchProfileData(id)).finally(() => {
+                setIsInitialized(true);
+            });
         }
         return () => {
-            dispatch(profileActions.clearProfile()); 
+            dispatch(profileActions.clearProfile());
+            setIsInitialized(false);
         };
     }, [id, dispatch]);
-    
-
 
     const onChangeName = useCallback((value?: string) => {
         dispatch(profileActions.updateProfile({ name: value || '' }));
@@ -82,12 +92,12 @@ export const EditableProfileCard = memo((props: EditableProfileCardProps) => {
 
  
     const title = canEdit 
-        ? `Профиль ${profileData?.name || ''} — ${APP_NAME}`
+        ? `Профиль ${profileState.profileData?.name || ''} — ${APP_NAME}`
         : `Профиль пользователя — ${APP_NAME}`;
 
     const description = canEdit 
         ? `Редактируйте свой профиль: имя, фото и личные данные.`
-        : `Профиль ${profileData?.name || 'пользователя'} в ${APP_NAME}.`;
+        : `Профиль ${profileState.profileData?.name || 'пользователя'} в ${APP_NAME}.`;
 
     return (
         <DynamicModuleLoader reducers={reducers}>
@@ -107,21 +117,36 @@ export const EditableProfileCard = memo((props: EditableProfileCardProps) => {
                 ))}
             <Text title='Профиль' className={cls.title} titleTag="h1"/>
 
-            <ProfileCard 
-                data={formData}
-                // idUser={authData?.id}
-                profileId={authData?.id}
-                isLoading={isLoading}
-                error={error}
-                readonly={readonly}
-                onChangeName={onChangeName}
-                onChangeImg={onChangeImg}
-                canEdit={canEdit}
-            />
-            <EditableProfileCardHeader canEdit={canEdit} className={cls.header} />
-            <ProfileFriendsList canEdit={canEdit} className={cls.list} isLoading={isLoading}/>
-            <ProfileWishesList canEdit={canEdit} className={cls.list} isLoading={isLoading}/>
-            {isLoading && <Loader/>}
+            {profileState.isLoading 
+                ?   
+                    <div className={cls.wrapperSkeleton}>
+                        <Skeleton className={cls.skeletonProfile}/>
+                        <Skeleton className={cls.skeletonLi}/>
+                        <Skeleton className={cls.skeletonLi}/>
+                    </div>
+                :
+                    <div>
+                        <ProfileCard 
+                            data={profileState.formData}
+                            // idUser={authData?.id}
+                            profileId={authData?.id}
+                            isLoading={profileState.isLoading}
+                            error={profileState.error}
+                            readonly={profileState.readonly}
+                            onChangeName={onChangeName}
+                            onChangeImg={onChangeImg}
+                            canEdit={canEdit}
+                        />
+                        <EditableProfileCardHeader canEdit={canEdit} className={cls.header} />
+                        {!canEdit && (
+                            <>
+                                <ProfileFriendsList canEdit={canEdit} className={cls.list} isLoading={profileState.isLoading}/>
+                                <ProfileWishesList canEdit={canEdit} className={cls.list} isLoading={profileState.isLoading}/>
+                            </>
+                        )}
+                    </div>
+            }
+
         </DynamicModuleLoader>
     )
 });

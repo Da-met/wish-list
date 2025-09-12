@@ -32,9 +32,9 @@ export const WishesByList = ({ listId, className }: WishesByListProps) => {
         }
     }, [listId, dispatch]);
 
-    if (isLoading) return <div>Загрузка подарков...</div>;
-    if (error) return <div>Ошибка: {error}</div>;
-    if (!wishes.length) return <div>Подарков пока нет</div>;
+    if (isLoading) return <div className={cls.empty}>Загрузка подарков...</div>;
+    if (error) return <div className={cls.empty}>Ошибка: {error}</div>;
+    if (!wishes.length) return <div className={cls.empty}>Подарков пока нет</div>;
 
     return (
         <div className={cls.WishesByList}>

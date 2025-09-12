@@ -1,5 +1,5 @@
 import { classNames } from '@/shared/lib/classNames/classNames';
-import { memo, useCallback } from 'react';
+import { memo, useCallback, useEffect, useState } from 'react';
 import { getRouteProfile } from "@/shared/const/router";
 
 import { Dropdown } from '@/shared/ui/Popups';
@@ -19,6 +19,8 @@ export const AvatarDropdown = memo((props: AvatarDropdownProps) => {
     const { className } = props;
     const dispatch = useDispatch();
     const authData = useSelector(getUserAuthData);
+    console.log(authData)
+    const [avatarError, setAvatarError] = useState(false);
 
     const onLogout = useCallback(() => {
         const confirmed = window.confirm('Вы действительно хотите выйти?');
@@ -27,15 +29,27 @@ export const AvatarDropdown = memo((props: AvatarDropdownProps) => {
         }
     }, [dispatch]);
 
+    const handleImageError = useCallback(() => {
+        console.error('Avatar load error:', authData?.img); // Добавим лог
+        setAvatarError(true);
+    }, [authData?.img]);
+
     if (!authData) {
         return null;
     }
+
+    // console.log('Avatar data:', {
+    //     hasImg: !!authData.img,
+    //     imgUrl: authData.img,
+    //     username: authData.name
+    // });
+
+
 
     return (
         <>
         <Dropdown 
             direction="bottom left"
-            // className={cls.dropdown}
             className={classNames( cls.dropdown, {}, [className])}
             items={[
                 {
@@ -43,13 +57,33 @@ export const AvatarDropdown = memo((props: AvatarDropdownProps) => {
                     href: getRouteProfile(String(authData.id)),
                 },
                 {
-                    content: 'выйти',
+                    content: 'Выйти',
                     onClick: onLogout,
                 },
             ]} 
             trigger={
                 <img className={cls.avatar} src={authData.img } alt="" />
             }
+
+            // trigger={
+            //     <div className={cls.avatarWrapper}>
+            //         {authData.img && !avatarError ? (
+            //             <img 
+            //                 className={cls.avatar}
+            //                 src={authData.img} 
+            //                 alt={authData.name || 'User'}
+            //                 onError={handleImageError}
+            //                 onLoad={() => console.log('Avatar loaded successfully')}
+            //             />
+            //         ) : (
+            //             <div className={cls.avatarFallback}>
+            //                 {authData.name?.[0]?.toUpperCase() || 'U'}
+            //             </div>
+            //         )}
+            //     </div>
+            // }
+
+
         />
         {/* <Button onClick={onLogout}>DELETE</Button> */}
         </>

@@ -3,7 +3,7 @@ import cls from './RegistrationForm.module.scss';
 import { Button, ButtonTheme } from "@/shared/ui/Button/Button";
 import { Input } from "@/shared/ui/Input/Input";
 import { useSelector } from "react-redux";
-import { memo, useCallback } from "react";
+import { memo, useCallback, useEffect, useRef } from "react";
 import { DynamicModuleLoader, ReducersList } from "@/shared/lib/components/DynamicModuleLoader/DynamicModuleLoader";
 import { useAppDispatch } from "@/shared/lib/hooks/useAppDispatch/useAppDispatch";
 import { InputImg } from "@/shared/ui/InputImg/InputImg";
@@ -16,8 +16,10 @@ import { getRegistrationEmail } from "../../model/selectors/getRegistrationEmail
 import { getRegistrationBirthday } from "../../model/selectors/getRegistrationBirthday/getRegistrationBirthday";
 import { getRegistrationImg } from "../../model/selectors/getRegistrationImg/getRegistrationImg";
 import { getRegistrationError } from "../../model/selectors/getRegistrationError/getRegistrationError";
+import { getRegistrationIsLoading } from "../../model/selectors/getRegistrationIsLoading/getRegistrationIsLoading";
 import { SeoHead } from "@/shared/ui/SeoHead/SeoHead";
 import { APP_NAME } from "@/shared/config/appName/appName";
+import { StateSchema } from "@/app/providers/StoreProvider";
 
 
 
@@ -33,44 +35,77 @@ const initialReducers: ReducersList = {
 
 const RegistrationForm = memo(({className, onSuccess}: RegistrationFormProps) => {
     const dispatch = useAppDispatch();
+    const firstInputRef = useRef<HTMLInputElement>(null);
+    
+    const { username, email, password, birthday, img, error, isLoading } = 
+        useSelector((state: StateSchema) => ({
+            username: getRegistrationUsername(state),
+            email: getRegistrationEmail(state),
+            password: getRegistrationPassword(state),
+            birthday: getRegistrationBirthday(state),
+            img: getRegistrationImg(state),
+            error: getRegistrationError(state),
+            isLoading: getRegistrationIsLoading(state),
+    }));
 
-    const username = useSelector(getRegistrationUsername);
-    const email = useSelector(getRegistrationEmail);
-    const password = useSelector(getRegistrationPassword);
-    const birthday = useSelector(getRegistrationBirthday);
-    const img = useSelector(getRegistrationImg);
-    const error = useSelector(getRegistrationError);
-    // const isLoading = useSelector(getRegistrationIsLoading);
+    useEffect(() => {
+        firstInputRef.current?.focus();
+    }, []);
 
 
     const onChangeUsername = useCallback((value: string) => {
-        dispatch(registrationActions.setUsername(value))
-    }, [dispatch]);
+        dispatch(registrationActions.setUsername(value));
+        if (error) dispatch(registrationActions.setError(''));
+    }, [dispatch, error]);
 
     const onChangePassword = useCallback((value: string) => {
-        dispatch(registrationActions.setPassword(value))
+        dispatch(registrationActions.setPassword(value));
+        if (error) dispatch(registrationActions.setError(''));
     }, [dispatch]);
 
     const onChangeEmail = useCallback((value: string) => {
-        dispatch(registrationActions.setEmail(value))
+        dispatch(registrationActions.setEmail(value));
+        if (error) dispatch(registrationActions.setError(''));
     }, [dispatch]);
 
     const onChangeBirthday = useCallback((value: string) => {
-        dispatch(registrationActions.setBirthday(value))
+        dispatch(registrationActions.setBirthday(value));
+        if (error) dispatch(registrationActions.setError(''));
     }, [dispatch]);
 
     const onChangeImg = useCallback((value: string ) => {
-        console.log(value)
-        dispatch(registrationActions.setImg(value))
+        dispatch(registrationActions.setImg(value));
+        if (error) dispatch(registrationActions.setError(''));
     }, [dispatch]);
 
     const onRegisterClick = useCallback(async () => {
-        console.log(error)
-        const result = await dispatch(registrationProfile({username, email, password, img, birthday}));
+        // ВАЛИДАЦИЯ
+        if (!username || !email || !password || !birthday) {
+            dispatch(registrationActions.setError('Все поля должны быть заполнены'));
+            return;
+        }
+
+        // ПРОВЕРКА EMAIL
+        const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+        if (!emailRegex.test(email)) {
+            dispatch(registrationActions.setError('Введите корректный email'));
+            return;
+        }
+
+        const result = await dispatch(registrationProfile({
+            username, email, password, img, birthday
+        }));
+        
         if (result.meta.requestStatus === 'fulfilled') {
             onSuccess();
         }
-    }, [onSuccess, dispatch, username, email, password, img, birthday]);
+    }, [username, email, password, img, birthday, dispatch, onSuccess]);
+
+    const handleKeyPress = useCallback((e: React.KeyboardEvent) => {
+        if (e.key === 'Enter') {
+            onRegisterClick();
+        }
+    }, [onRegisterClick]);
 
     
 
@@ -84,14 +119,13 @@ const RegistrationForm = memo(({className, onSuccess}: RegistrationFormProps) =>
                 image="/images/preview-wish.jpg"
             />
 
-            <div className={classNames(cls.RegistrationForm, {}, [className])} >
+            <div className={classNames(cls.RegistrationForm, {}, [className])} onKeyPress={handleKeyPress}>
                 <Text title={'Форма регистрации'}  className={cls.title}/>
 
                 {/* // ДОБАВИТЬ ОБРАБОТКУ ОШИБКИ  */}
                 {error && 
                     <Text 
-                        title={error}
-                        text={"Ошибка: Все поля должны быть заполнены"} 
+                        text={error} 
                         theme={TextTheme.ERROR}
                         className={cls.error}
                     />
@@ -130,7 +164,7 @@ const RegistrationForm = memo(({className, onSuccess}: RegistrationFormProps) =>
                         </div>
                         
                         <Input 
-                            type="text" 
+                            type="password" 
                             className={cls.input} 
                             placeholder="Пароль"
                             onChange={onChangePassword}
@@ -146,7 +180,7 @@ const RegistrationForm = memo(({className, onSuccess}: RegistrationFormProps) =>
                     onClick={onRegisterClick}
                     // disabled={isLoading}
                 >
-                    зарегистрироваться 
+                    {isLoading ? 'Регистрация...' : 'Зарегистрироваться'} 
                 </Button>
             </div>
         </DynamicModuleLoader>

@@ -14,6 +14,7 @@ import { getUserAuthData } from '@/entities/User';
 import { getFriendsPageIsLoading } from '../model/selectors/friendsPageSelectors';
 import { SeoHead } from '@/shared/ui/SeoHead/SeoHead';
 import { APP_NAME } from '@/shared/config/appName/appName';
+import { Skeleton } from '@/shared/ui/Skeleton/Skeleton';
 
 
 interface FriendsPageProps {
@@ -51,11 +52,20 @@ const FriendsPage = ({className}: FriendsPageProps) => {
                 <div className={cls.FriendsPage}>
 
                     <Text title={'Друзья'} className={cls.title} titleTag="h1"/>
-                    <FriendsList 
-                        isLoading={isLoading}
-                        friendsList={friendsList}
-                        userId={user?.id}
-                    />
+                    {isLoading 
+                        ? 
+                            <div className={cls.wrapperSkeleton}>
+                                <Skeleton className={cls.skeletonLi}/>
+                            </div> 
+                        :                     
+                            <FriendsList 
+                                isLoading={isLoading}
+                                friendsList={friendsList}
+                                userId={user?.id}
+                            />
+                    }
+
+
                 </div>
                 
             </Page>

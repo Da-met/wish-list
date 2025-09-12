@@ -10,6 +10,7 @@ import WishesIcon from '@/shared/assets/icons/grid.svg';
 import GiftIcon from '@/shared/assets/icons/gift.svg';
 import CalendarIcon from '@/shared/assets/icons/calendar.svg';
 import BellIcon from '@/shared/assets/icons/bell.svg';
+import QuestionIcon from '@/shared/assets/icons/question.svg';
 import { SidebarItemType } from "../types/sidebar";
 
 
@@ -25,7 +26,7 @@ export const getSidebarItems = createSelector (
             // },
             {
                 path: getRouteAbout(),
-                Icon: AboutIcon,
+                Icon: QuestionIcon,
                 text: "О сайте",
             },
             

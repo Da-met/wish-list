@@ -1,6 +1,6 @@
 
 export enum AppRoutes {
-    // MAIN = 'main',
+    MAIN = 'main',
     ABOUT = 'about',
 
     LOGIN = 'login',

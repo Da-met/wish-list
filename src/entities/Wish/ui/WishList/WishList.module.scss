@@ -2,28 +2,66 @@
     max-width: 1200px;
     margin: 0 auto;
     display: grid;
-    grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+    // grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
     // grid-template-columns: repeat(3, 1fr);
-    gap: 30px;
-    padding: 0 20px; 
     
-    @media (max-width: 715px) {
-        grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+    padding: 0 20px;
+
+    // gap: 30px;
+    // grid-template-columns: repeat(3, minmax(280px, 1fr));
+    // @media (max-width: 1100px) {
+    //     grid-template-columns: repeat(2, minmax(280px, 1fr)); // на планшете — две
+    // }
+    
+      @media (max-width: 715px) {
+        padding: 0 50px;
+    }
+    @media (max-width: 550px) {
+        padding: 0 20px;
     }
 }
 
 
 .wrapper {
-    display: contents; 
+    display: grid ; /* или flex */
+    width: 100%;
+    max-width: 100%;
+    gap: 30px;
+
+    justify-items: center; // ← ЦЕНТРИРУЕМ ЭЛЕМЕНТЫ ПО ГОРИЗОНТАЛИ
+    align-items: start;    // ← ВЫРАВНИВАЕМ ПО ВЕРХНЕМУ КРАЮ
+
+    grid-template-columns: repeat(3, minmax(280px, 1fr));
+    @media (max-width: 1100px) {
+        grid-template-columns: repeat(2, minmax(280px, 1fr)); // на планшете — две
+    }
+    
+      @media (max-width: 715px) {
+        grid-template-columns: subgrid; 
+        justify-items: center;
+    }
+}
+
+
+.wrap {
+    position: relative;
+    width: 100%;
+    // max-width: 400px;
+    min-width: 200px;
 }
 
 
 .notFound {
     padding: 20px 40px;
-}
 
-.wrap {
-    position: relative;
+    @media (max-width: 620px) {
+        font-size: 12px !important;
+        padding: 15px 30px;
+    }
+    @media (max-width: 620px) {
+        font-size: 10px !important;
+        padding: 10px 20px;
+    }
 }
 
 .pin {
@@ -47,4 +85,39 @@
     stroke: var(--accent-color-4);
     width: 30px;
     height: 30px;
+}
+
+
+
+.skeleton {
+    max-width: 1200px;
+    margin: 0 auto;
+    display: grid;
+    padding: 0 20px;
+
+    @media (max-width: 715px) {
+        padding: 0 50px;
+    }
+    @media (max-width: 550px) {
+        padding: 0 20px;
+    }
+}
+
+.wrapperSceleton {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+    gap: 30px;
+
+    @media (max-width: 715px) {
+        grid-template-columns: subgrid; 
+    }
+}
+
+.sceletonLi {
+    height: 300px;
+    width: 100%;
+
+    @media (max-width: 715px) {
+        height: 270px;
+    }
 }

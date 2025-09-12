@@ -11,6 +11,7 @@ import { Page } from '@/widgets/Page/Page';
 import { getReservedWishes, reservedWishesReducer } from '@/features/fetchReservedWishes/model/slice/reservedWishesSlice';
 import { getReservedWishesError, getReservedWishesLoading } from '@/features/fetchReservedWishes/model/selectors/reservedWishesSelectors';
 import { DynamicModuleLoader, ReducersList } from '@/shared/lib/components/DynamicModuleLoader/DynamicModuleLoader';
+import { Skeleton } from '@/shared/ui/Skeleton/Skeleton';
 
 
 interface GiftsFriendsListProps {
@@ -19,21 +20,10 @@ interface GiftsFriendsListProps {
     // isLoading?: boolean;
 }
 
-const getSkeletons = new Array(9)
-    .fill(0)
-    .map((item, index) => (
-        // <WishListItemSkeleton className={cls.card} key={index} />
-        ''
-    ));
-
-    
-
+ 
 
 export const GiftsFriendsList = memo((props: GiftsFriendsListProps) => {
-    const {
-        className,
-    } = props;
-
+    const { className } = props;
     const dispatch = useAppDispatch();
     const wishes = useSelector(getReservedWishes);
     const isLoading = useSelector(getReservedWishesLoading);
@@ -46,16 +36,33 @@ export const GiftsFriendsList = memo((props: GiftsFriendsListProps) => {
     const reducers: ReducersList = {
         reservedWishes: reservedWishesReducer,
     };
+    const SKELETONS = Array(3).fill(0).map((_, index) => (
+        <Skeleton key={index} className={cls.sceletonLi}/>
+    ));
 
     return (
-
         <DynamicModuleLoader reducers={reducers} removeAfterUnmount>
-            <div className={cls.GiftsFriendsList}>
-                {isLoading && <div>Загрузка...</div>}
-                {error && <div className={cls.err}>{error}</div>}
-                {!isLoading && !error && wishes.length === 0 && (
+            {isLoading && 
+                <div className={cls.skeleton}>
+                    <div className={cls.wrapper}>
+                        <div className={cls.wrapperSceleton}>
+                            {SKELETONS}
+                        </div>
+                    </div>
+                </div>
+            }
+            {error && 
+                <div className={cls.empty}>
+                    <div className={cls.err}>{error}</div>
+                </div>
+            }
+            {!isLoading && !error && wishes.length === 0 && (
+                <div className={cls.empty}>
                     <div>Пока ничего не зарезервировано</div>
-                )}
+                </div>
+            )}
+ 
+            <div className={cls.GiftsFriendsList}>
                 {!isLoading && !error && wishes.length > 0 && (
                     wishes.map((wish) => (
                         <GiftsFriendsListItem key={wish.id} wish={wish} />

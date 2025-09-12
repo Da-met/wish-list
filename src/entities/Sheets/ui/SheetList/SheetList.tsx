@@ -21,7 +21,7 @@ interface SheetListProps {
 const getSkeletons = new Array(3)
     .fill(0)
     .map((item, index) => (
-        <Skeleton height={112} className={cls.card} key={index} />
+        <Skeleton height={220} className={cls.card} key={index} />
     ));
 
 
@@ -46,7 +46,6 @@ export const SheetList = memo((props: SheetListProps) => {
             list={list}
             className={cls.card}
             canEdit={canEdit}
-
         />
     );
     
@@ -56,11 +55,17 @@ export const SheetList = memo((props: SheetListProps) => {
     return (
         <div className={classNames(cls.SheetList, {}, [className])}>
             <div className={cls.wrapper}>
-                {myLists.length > 0
-                    ? myLists.map(renderWish)
-                    : null
+                { isLoading 
+                    ? getSkeletons 
+                    : <>
+                        { myLists.length > 0
+                            ? myLists.map(renderWish)
+                            : null
+                        }
+                    </>
                 }
-                {isLoading && getSkeletons}
+                
+                {/* {isLoading && getSkeletons} */}
             </div>
         </div>
     );

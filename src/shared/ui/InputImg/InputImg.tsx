@@ -12,6 +12,9 @@ interface InputImgProps extends HTMLInputProps{
     value?: string ; 
     onChange?: (base64: string ) => void; // Обработчик изменения с Base64
     readonly?: boolean;
+    onFocus?: () => void; 
+    hasError?: boolean;
+    errorMessage?: string; // ← ДОБАВИМ ПРОП ДЛЯ ТЕКСТА ОШИБКИ 
 }
 
 export const InputImg = memo((props: InputImgProps) => {
@@ -21,6 +24,9 @@ export const InputImg = memo((props: InputImgProps) => {
         onChange,
         type = 'file',
         readonly,
+        onFocus,
+        hasError = false,
+        errorMessage = 'Изображение обязательно',
         ...otherProps
     } = props;
     
@@ -31,6 +37,8 @@ export const InputImg = memo((props: InputImgProps) => {
     useEffect(() => {
         setPreview(value || '');
     }, [value]);
+
+    const shouldShowError = hasError && !preview;
 
     // Обработчик загрузки файла
     const handleFileChange = (event: React.ChangeEvent<HTMLInputElement>) => {
@@ -57,19 +65,19 @@ export const InputImg = memo((props: InputImgProps) => {
 
     const mods: Mods = {
         [cls.readonly]: readonly,
+        [cls.error]: shouldShowError,
     };
 
-
-    // if (errorFallback) {
-    //     return ( <UserIcon className={cls.userIcon}/>);;
-    // }
-
     return (
-        
-        <div className={classNames(cls.InputImgWrapper, {}, [className])} onClick={handleClick}>
+        <div 
+            className={classNames(cls.InputImgWrapper, mods, [className])} 
+            onClick={handleClick}
+            onFocus={onFocus} 
+            tabIndex={0}      
+        >
             {!preview ? (
                 <div className={cls.UploadButton}>
-                    Аватар
+                    {shouldShowError ? errorMessage : 'Изображение'}
                 </div>
             ) : (
                 <img
@@ -78,12 +86,21 @@ export const InputImg = memo((props: InputImgProps) => {
                     className={classNames(cls.ImagePreview, mods, [className])}
                 />
             )}
+
+            {/* ПОКАЗЫВАЕМ ОШИБКУ ПОД КОМПОНЕНТОМ */}
+            {shouldShowError && (
+                <div className={cls.errorText}>
+                    ⚠️ {errorMessage}
+                </div>
+            )}
+
             <input
                 ref={inputRef}
                 className={cls.InputFile}
                 type="file"
                 accept="image/*"
                 onChange={handleFileChange}
+                onFocus={onFocus} // ← ДОБАВИТЬ и сюда
                 readOnly={readonly}
                 {...otherProps}
             />

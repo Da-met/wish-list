@@ -60,9 +60,7 @@ const ListPage = () => {
                     </div>
 
                     <div className={cls.wrapper}>
-                        <div>
-                            <SheetList myLists={myLists} ownerId={authData?.id}/>
-                        </div>
+                        <SheetList myLists={myLists} ownerId={authData?.id} isLoading={isLoading}/>
                     </div>
 
                     { isSheetCreateModal &&  <SheetCreate 

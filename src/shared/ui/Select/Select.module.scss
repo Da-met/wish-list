@@ -1,5 +1,21 @@
 .Wrapper {
     display: flex;
+
+    &.error {
+        .label {
+            color: var(--error-color);
+        }
+        
+        .select {
+            border: 2px solid var(--error-color);
+            box-shadow: 0 0 0 2px var(--error-light);
+            
+            &:focus {
+                border-color: var(--error-color);
+                box-shadow: 0 0 0 2px var(--error-light);
+            }
+        }
+    }
 }
 
 .label {
@@ -17,6 +33,17 @@
     border: 1px solid var(--primary-color);
     border-radius: 40px;
     margin-right: 22px;
+
+    &:focus {
+        outline: none;
+        border-color: var(--primary-color);
+        box-shadow: 0 0 0 2px var(--primary-light);
+    }
+    
+    &:disabled {
+        opacity: 0.6;
+        cursor: not-allowed;
+    }
 }
 
 .option {

@@ -61,10 +61,6 @@ export const ProfileCard = (props: ProfileCardProps) => {
         return undefined;
     }, [data?.img]);
 
-    // const addFriendtoList = useCallback(async() => {
-    //     if (data?.id === undefined || profileId === undefined) return;
-    //     await dispatch(addFriend({ userId: profileId, subscriptionId: data.id }))
-    // }, [dispatch, data, profileId]);
 
     const addFriendtoList = useCallback(async () => {
         if (!data?.id || !profileId) return;

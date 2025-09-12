@@ -30,7 +30,5 @@ export const Skeleton = memo((props: SkeletonProps) => {
             className={classNames(cls.Skeleton, {}, [className])}
             style={styles}
         />
-
-        
     )
 })

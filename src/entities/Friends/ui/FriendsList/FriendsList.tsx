@@ -41,14 +41,9 @@ export const FriendsList = memo((props: FriendsListProps) => {
 
     if(!isLoading && !friendsList.length) {
         return (
-            <div className={classNames(cls.WishList, {}, [className])}>
+            <div className={classNames(cls.wrappNotFound, {}, [className])}>
                 <div className={cls.notFound}>
-                   <Text 
-                        title={'У вас пока нет друзей :('} 
-                        align={TextAlign.CENTER} 
-                        size={TextSize.M}
-                        className={cls.text}
-                    /> 
+                   <div className={cls.empty}>У вас пока нет друзей :(</div>
                 </div>
             </div>
         )
