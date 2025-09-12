@@ -64,13 +64,14 @@
 
 .name p {
     font-family: var(--font-family-logo) !important;
+    font-weight: 600 !important;
     color: var(--accent-color-4);
     width: 100%;
     overflow: hidden;
     text-overflow: ellipsis;
     white-space: nowrap;
 
-    font-size: 22px !important;
+    font-size: 20px !important;
 
     @media (max-width: 1110px) {
         font-size: 18px !important;
