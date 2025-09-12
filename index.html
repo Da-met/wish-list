@@ -12,5 +12,19 @@
 <body>
 <div id="root"></div>
 <script type="module" src="/src/index.tsx"></script>
+<script>
+    // Простой фикс для мобильных браузеров
+    function fixMobileView() {
+        const isMobile = window.innerWidth <= 768;
+        if (isMobile) {
+            document.documentElement.style.height = window.innerHeight + 'px';
+            document.body.style.height = window.innerHeight + 'px';
+        }
+    }
+    
+    window.addEventListener('load', fixMobileView);
+    window.addEventListener('resize', fixMobileView);
+    window.addEventListener('orientationchange', fixMobileView);
+</script>
 </body>
 </html>
