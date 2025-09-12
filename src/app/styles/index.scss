@@ -7,6 +7,39 @@ body {
     letter-spacing: 2px;
 }
 
+
+
+
+
+html, body, #root {
+    height: 100%;
+    margin: 0;
+    padding: 0;
+    overflow: hidden; // ← Важно: запрещаем скролл у корневых элементов
+}
+
+.app {
+    background: var(--bg-color);
+    height: 100vh;
+    height: 100dvh;
+    display: flex;
+    flex-direction: column;
+    overflow: hidden; // ← Запрещаем скролл у основного контейнера
+}
+
+.content-page {
+    flex: 1;
+    display: flex;
+    overflow: hidden; // ← Запрещаем скролл у контентной области
+    position: relative;
+}
+
+
+
+
+
+
+
 .app,
 .app_modal,
 .app_drawer {

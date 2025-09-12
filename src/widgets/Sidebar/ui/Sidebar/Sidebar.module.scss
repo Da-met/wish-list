@@ -1,14 +1,21 @@
 .Sidebar {
-    height: calc(100vh - var(--navbar-height) - 70px);
-    width: var(--sidebar-width);
-    // background: var(--secondary-bg-color);
+    // height: calc(100vh - var(--navbar-height) - 70px);
+    height: 100vh;
+    height: 100dvh;
+    height: -webkit-fill-available;
+    
+    // Добавляем flexbox для правильного расположения
+    display: flex;
+    flex-direction: column;
 
+
+    width: var(--sidebar-width);
     position: relative;
     transition: width 0.3s;
-
     // border: 4px var(--accent-color-1) solid;
     margin-left: 20px;
     margin-top: 30px;
+    margin-bottom: 30px;
     border-radius: 35px;
     background-color: var(--accent-color-1);
     z-index: 10;
@@ -19,6 +26,7 @@
     }
     @media (max-width: 480px) {
         margin-top: 20px;
+        margin-bottom: 20px;
         height: calc(100vh - var(--navbar-height) - 40px);
         width: calc(var(--sidebar-width) - 60px);
     }
@@ -35,7 +43,7 @@
 
 .btnWrap {
     display: flex;
-    position: absolute;
+    // position: absolute;
     width: 100%;
     align-items: center;
     padding-top: 30px;
