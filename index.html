@@ -2,9 +2,9 @@
 <html lang="en">
 <head>
     <meta charset="UTF-8">
-    <meta name="viewport"
-          content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
-    <!-- <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover"> -->
+    <!-- <meta name="viewport"
+          content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0"> -->
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover">
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
     <title>Document</title>
 
@@ -12,5 +12,14 @@
 <body>
 <div id="root"></div>
 <script type="module" src="/src/index.tsx"></script>
+<script>
+    // Фикс для iOS Safari
+    if (/iPhone|iPad|iPod/i.test(navigator.userAgent)) {
+        document.documentElement.style.height = '100%';
+        document.body.style.height = '100%';
+        document.body.style.overflow = 'auto';
+        document.body.style.WebkitOverflowScrolling = 'touch';
+    }
+</script>
 </body>
 </html>

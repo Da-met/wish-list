@@ -6,6 +6,7 @@
 
 html, body, #root {
     height: 100%;
+    min-height: 100vh;
     overflow: hidden;
 }
 
@@ -31,14 +32,33 @@ a {
 }
 
 
-.content-page {
-    position: relative;
-    display: flex;
-}
-
 .sidebar {
     position: absolute;
 }
 
 
+// .content-page {
+//     position: relative;
+//     display: flex;
+// }
 
+.app {
+    background: var(--bg-color);
+    min-height: 100vh;
+    min-height: -webkit-fill-available; // Для Safari
+    min-height: 100dvh; // Новый стандарт
+    display: flex;
+    flex-direction: column;
+}
+
+.content-page {
+    flex: 1;
+    display: flex;
+    min-height: 0; // Важно для Flexbox
+}
+
+// Добавляем безопасные области для notch-экранов
+body {
+    padding: env(safe-area-inset-top) env(safe-area-inset-right) 
+            env(safe-area-inset-bottom) env(safe-area-inset-left);
+}

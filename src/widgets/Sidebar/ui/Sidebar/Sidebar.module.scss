@@ -1,7 +1,8 @@
 
 
 .Sidebar {
-    height: calc(100vh - var(--navbar-height) - 70px);
+    // height: calc(100vh - var(--navbar-height) - 70px);
+    height: calc(100dvh - var(--navbar-height) - 70px); // Используем dvh
     
     // height: 100vh;
     // height: 100dvh;
