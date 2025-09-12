@@ -21,22 +21,42 @@ body {
 }
 
 .app {
-    background-image: var(--img);
-    background-repeat: no-repeat;
-    background-size: cover;
-    
     background: var(--bg-color);
-    min-height: 100vh;
+    // min-height: 100vh;
+
+    height: 100vh;
+    height: 100dvh;
+    height: -webkit-fill-available;
+    display: flex;
+    flex-direction: column;
+    overflow: hidden;
+}
+
+// Навбар - фиксированной высоты
+.navbar_wrapper {
+    flex-shrink: 0;
+    height: var(--navbar-height);
 }
 
 .content-page {
-    position: relative;
+    // position: relative;
+    // display: flex;
+
+    flex: 1;
     display: flex;
+    overflow: hidden;
+    min-height: 0; // Важно для Flexbox
 }
 .sidebar {
     position: absolute;
 }
 
+// Основной контент - прокручивается независимо
+.page-wrapper {
+    flex: 1;
+    overflow-y: auto;
+    padding: 20px;
+}
 
 a {
     color: var(--primary-color);

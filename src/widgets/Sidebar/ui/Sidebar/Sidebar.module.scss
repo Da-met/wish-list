@@ -1,11 +1,11 @@
 
 
 .Sidebar {
-    // height: calc(100vh - var(--navbar-height) - 70px);
+    height: calc(100vh - var(--navbar-height) - 70px);
     
-    height: 100vh;
-    height: 100dvh;
-    height: -webkit-fill-available;
+    // height: 100vh;
+    // height: 100dvh;
+    // height: -webkit-fill-available;
 
     // Добавляем flexbox для правильного расположения
     display: flex;
@@ -134,20 +134,18 @@
 
 
 
+.sidebarContent {
+    flex: 1;
+    overflow-y: auto;
+    padding: 20px 16px;
+}
 
-// /* ФИКС ТОЛЬКО для мобильных Яндекс.Браузера */
-// @media (max-width: 768px) {
-//     .Sidebar {
-//         /* Для нормальных браузеров */
-//         height: calc(100vh - var(--navbar-height) - 70px);
-        
-//         /* Для Яндекс.Браузера */
-//         height: calc(var(--mobile-height, 100vh) - var(--navbar-height) - 70px) !important;
-//     }
-    
-//     @media (max-width: 480px) {
-//         .Sidebar {
-//             height: calc(var(--mobile-height, 100vh) - var(--navbar-height) - 40px) !important;
-//         }
-//     }
-// }
+.footer {
+    padding: 20px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 16px;
+    flex-shrink: 0;
+    border-top: 1px solid var(--accent-color-2);
+}
