@@ -8,67 +8,6 @@ body {
 }
 
 
-
-
-// ====================================================================
-/* Жесткий фикс для мобильных */
-html, body, #root {
-    height: 100% !important;
-    width: 100% !important;
-    margin: 0 !important;
-    padding: 0 !important;
-    overflow: hidden !important;
-    position: fixed !important;
-    top: 0 !important;
-    left: 0 !important;
-    right: 0 !important;
-    bottom: 0 !important;
-}
-
-.app {
-    height: 100vh !important;
-    height: -webkit-fill-available !important;
-    width: 100vw !important;
-    display: flex !important;
-    flex-direction: column !important;
-    overflow: hidden !important;
-    position: fixed !important;
-    top: 0 !important;
-    left: 0 !important;
-    right: 0 !important;
-    bottom: 0 !important;
-}
-
-/* Для Яндекс.Браузера специальные стили */
-/* Специальные стили для Яндекс.Браузера */
-body.yandex-browser {
-    .app {
-        height: var(--mobile-height, 100vh) !important;
-        position: fixed;
-        top: 0;
-        left: 0;
-        right: 0;
-        bottom: 0;
-    }
-    
-    .content-page {
-        height: calc(var(--mobile-height, 100vh) - var(--navbar-height, 50px)) !important;
-    }
-    
-    .Sidebar {
-        height: 100% !important;
-        max-height: calc(var(--mobile-height, 100vh) - var(--navbar-height, 50px) - 20px) !important;
-    }
-
-}
-// ====================================================================
-
-
-
-
-
-
-
 .app,
 .app_modal,
 .app_drawer {
