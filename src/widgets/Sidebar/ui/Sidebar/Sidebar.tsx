@@ -19,7 +19,6 @@ interface SidebarProps {
 export const Sidebar = memo(({className}: SidebarProps ) => {
     const [ collapsed, setCollapsed ] = useState(true);
     const sidebarItemsList = useSelector(getSidebarItems);
-    const safeHeight = useSafeHeight();
     
     const onToggle = () => {
         setCollapsed(prev => !prev)
@@ -41,8 +40,6 @@ export const Sidebar = memo(({className}: SidebarProps ) => {
         [collapsed, sidebarItemsList]
     );
 
-    // Вычисляем высоту с учетом мобильной панели
-    // const sidebarHeight = mobileHeight - 50 - 70; // navbar + отступы
 
 
     return (

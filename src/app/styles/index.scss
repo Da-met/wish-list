@@ -25,22 +25,20 @@ body {
     // min-height: 100vh;
 }
 
-.content-page {
-    position: relative;
-    display: flex;
-}
-
-
-.sidebar {
-    position: absolute;
-}
-
 a {
     color: var(--primary-color);
     text-decoration: none; /* no underline */
 }
 
 
+.content-page {
+    position: relative;
+    display: flex;
+}
+
+.sidebar {
+    position: absolute;
+}
 
 
 

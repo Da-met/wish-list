@@ -42,6 +42,7 @@ const App = () => {
                 <div className="content-page" >
                     <Sidebar className="sidebar"/>
                     {inited && <AppRouter />}
+
                 </div>
             </Suspense>    
         </div>
