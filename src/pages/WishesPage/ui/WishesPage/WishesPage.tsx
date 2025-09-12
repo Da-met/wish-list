@@ -106,8 +106,10 @@ const WishesPage = (props: WishesPageProps) => {
 							/>
 						</div>
 						) 
-						: (
-						<CompilationsPage></CompilationsPage>)}
+						: ( ''
+						// <CompilationsPage></CompilationsPage>
+						)
+						}
 				</div>
 			</Page>	
 		</DynamicModuleLoader>

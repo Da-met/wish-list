@@ -22,6 +22,31 @@ const App = () => {
     const inited = useSelector(getUserInited);
     const authData = useSelector(getUserAuthData);
 
+
+    // 🔧 ФИКС для Яндекс.Браузера
+    useEffect(() => {
+        const isYandexBrowser = /YaBrowser|Yowser/.test(navigator.userAgent);
+        if (isYandexBrowser) {
+            console.log('🔧 Применяем фикс для Яндекс.Браузера');
+            
+            // Добавляем класс к body
+            document.body.classList.add('yandex-browser');
+            
+            // Фиксируем размеры
+            const updateHeight = () => {
+                const vh = window.innerHeight;
+                document.documentElement.style.setProperty('--mobile-height', `${vh}px`);
+            };
+            
+            updateHeight();
+            window.addEventListener('resize', updateHeight);
+            
+            return () => window.removeEventListener('resize', updateHeight);
+        }
+    }, []);
+
+
+
     useEffect(() => {
         dispatch(userActions.initAuthData());
     }, [dispatch])
@@ -32,6 +57,7 @@ const App = () => {
             dispatch(fetchLists({ idUser: Number(authData.id) }))
         }
     }, [dispatch, inited, authData?.id]);
+
 
     return (
         <div className={classNames('app', {}, [theme])}>

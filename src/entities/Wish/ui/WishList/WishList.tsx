@@ -50,32 +50,24 @@ export const WishList = memo((props: WishListProps) => {
 
     return (
         <>
-            <>
-                <>
-                    {isLoading ? 
-                        <div className={cls.skeleton}>
-                            <div className={cls.wrapperSceleton}>
-                                <Skeleton className={cls.sceletonLi}/>
-                                <Skeleton className={cls.sceletonLi}/>
-                                <Skeleton className={cls.sceletonLi}/>
-                            </div>
-                        </div> 
-                        : 
-                        <div className={classNames(cls.WishList, {}, [className])}>
-                            <div className={cls.wrapper}>
-                                {wishes.length > 0
-                                    ? wishes.map(renderWish)
-                                    : null
-                                }
-                            </div>
-
-                        </div> 
-                    }
-
-                </>
-            </>
-
+            {isLoading ? 
+                <div className={cls.skeleton}>
+                    <div className={cls.wrapperSceleton}>
+                        <Skeleton className={cls.sceletonLi}/>
+                        <Skeleton className={cls.sceletonLi}/>
+                        <Skeleton className={cls.sceletonLi}/>
+                    </div>
+                </div> 
+                : 
+                <div className={classNames(cls.WishList, {}, [className])}>
+                    <div className={cls.wrapper}>
+                        {wishes.length > 0
+                            ? wishes.map(renderWish)
+                            : null
+                        }
+                    </div>
+                </div> 
+            }
         </>
-        
     );
 });

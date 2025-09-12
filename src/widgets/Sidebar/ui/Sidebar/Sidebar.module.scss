@@ -3,6 +3,11 @@
     height: 100vh;
     height: 100dvh;
     height: -webkit-fill-available;
+
+    .yandex-browser & {
+        height: calc(100vh - 80px) !important;
+        max-height: calc(100vh - 80px) !important;
+    }
     
     // Добавляем flexbox для правильного расположения
     display: flex;
@@ -12,7 +17,6 @@
     width: var(--sidebar-width);
     position: relative;
     transition: width 0.3s;
-    // border: 4px var(--accent-color-1) solid;
     margin-left: 20px;
     margin-top: 30px;
     margin-bottom: 30px;
@@ -27,7 +31,7 @@
     @media (max-width: 480px) {
         margin-top: 20px;
         margin-bottom: 20px;
-        height: calc(100vh - var(--navbar-height) - 40px);
+        // height: calc(100vh - var(--navbar-height) - 40px);
         width: calc(var(--sidebar-width) - 60px);
     }
 }
