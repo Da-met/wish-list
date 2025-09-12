@@ -41,32 +41,34 @@ export const Sidebar = memo(({className}: SidebarProps ) => {
 
 
     return (
-        <div 
-            data-testid='sidebar' 
-            className={classNames(cls.Sidebar, {[cls.collapsed]: collapsed}, [className])}
-        >
-            <div className={cls.items}>
-                {itemsList}
-            </div>
+        <div className={cls.sidebarWrapper}>
+            <div 
+                data-testid='sidebar' 
+                className={classNames(cls.Sidebar, {[cls.collapsed]: collapsed}, [className])}
+            >
+                <div className={cls.items}>
+                    {itemsList}
+                </div>
 
-            <div className={ cls.btnWrap }>
-                <Button 
-                    data-testid='sidebar-toggle' 
-                    onClick={onToggle}
-                    className={ cls.collapseBtn } 
-                    theme={ButtonTheme.CLEAR}
-                    size={ButtonSize.L}
-                    square
-                >
-                    {collapsed ? '>' : '<'}
-                </Button>
-            </div>
-            
-            <div className={cls.switchers}>
-                <ThemeSwitcher />   
-            </div>
+                <div className={ cls.btnWrap }>
+                    <Button 
+                        data-testid='sidebar-toggle' 
+                        onClick={onToggle}
+                        className={ cls.collapseBtn } 
+                        theme={ButtonTheme.CLEAR}
+                        size={ButtonSize.L}
+                        square
+                    >
+                        {collapsed ? '>' : '<'}
+                    </Button>
+                </div>
+                
+                <div className={cls.switchers}>
+                    <ThemeSwitcher />   
+                </div>
 
-            {/* <BugButton /> */}
+                {/* <BugButton /> */}
+            </div>
         </div>
     );
 });

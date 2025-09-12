@@ -96,7 +96,7 @@ const WishesPage = (props: WishesPageProps) => {
 							Подборки
 						</Button> */}
 					</div>
-					{isLenta 
+					{/* {isLenta 
 						? (
 						<div>
 							<WishesPageFilters className={cls.WishesPageFilters}/>
@@ -106,10 +106,18 @@ const WishesPage = (props: WishesPageProps) => {
 							/>
 						</div>
 						) 
-						: ( ''
-						// <CompilationsPage></CompilationsPage>
-						)
-						}
+						: ( 
+							<CompilationsPage></CompilationsPage>
+							)
+						} */}
+					<div>
+						<WishesPageFilters className={cls.WishesPageFilters}/>
+						<WishList 
+							isLoading={isLoading}
+							wishes={wishes} 
+						/>
+					</div>
+
 				</div>
 			</Page>	
 		</DynamicModuleLoader>

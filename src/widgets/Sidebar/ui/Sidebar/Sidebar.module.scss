@@ -1,14 +1,29 @@
+.sidebarWrapper {
+    height: 100%;
+    display: flex;
+    flex-direction: column;
+}
+/* Для Яндекс.Браузера */
+body.yandex-browser-only {
+    .sidebarWrapper {
+        height: calc(100vh - var(--navbar-height) - 60px) !important;
+        
+        @media (max-width: 480px) {
+            height: calc(100vh - var(--navbar-height) - 40px) !important;
+        }
+    }
+    
+    .Sidebar {
+        height: 100% !important; /* Занимает всю высоту wrapper */
+    }
+}
+
 .Sidebar {
     // height: calc(100vh - var(--navbar-height) - 70px);
     height: 100vh;
     height: 100dvh;
     height: -webkit-fill-available;
-
-    .yandex-browser & {
-        height: calc(100vh - 80px) !important;
-        max-height: calc(100vh - 80px) !important;
-    }
-    
+   
     // Добавляем flexbox для правильного расположения
     display: flex;
     flex-direction: column;
