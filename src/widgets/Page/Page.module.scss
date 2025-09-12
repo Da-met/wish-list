@@ -15,6 +15,14 @@
         padding: 20px 10px 20px 60px;
     }
 
+
+    /* 🔧 ФИКС ДЛЯ ЯНДЕКС.БРАУЗЕРА НА МОБИЛЬНЫХ */
+    @media (max-width: 768px) {
+        .yandex-browser & {
+            height: calc(var(--mobile-height, 100vh) - var(--navbar-height)) !important;
+            max-height: calc(var(--mobile-height, 100vh) - var(--navbar-height)) !important;
+        }
+    }
 }
 
 // .trigger {

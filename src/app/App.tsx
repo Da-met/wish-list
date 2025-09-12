@@ -23,27 +23,20 @@ const App = () => {
     const authData = useSelector(getUserAuthData);
 
     // Простой фикс только для Яндекс.Браузера
-    useEffect(() => {
-        const isYandex = navigator.userAgent.includes('YaBrowser');
-        if (!isYandex) return;
+    // useEffect(() => {
+    //     const isYandex = navigator.userAgent.includes('YaBrowser');
+    //     if (!isYandex) return;
 
-        const updateHeight = () => {
-            const realHeight = window.innerHeight;
-            document.documentElement.style.setProperty('--mobile-height', realHeight + 'px');
-        };
+    //     const updateHeight = () => {
+    //         const realHeight = window.innerHeight;
+    //         document.documentElement.style.setProperty('--mobile-height', realHeight + 'px');
+    //     };
 
-        updateHeight();
-        window.addEventListener('resize', updateHeight);
+    //     updateHeight();
+    //     window.addEventListener('resize', updateHeight);
         
-        return () => window.removeEventListener('resize', updateHeight);
-    }, []);
-
-    useEffect(() => {
-        const isYandex = navigator.userAgent.includes('YaBrowser');
-        if (isYandex) {
-            document.body.classList.add('yandex-browser');
-        }
-    }, []);
+    //     return () => window.removeEventListener('resize', updateHeight);
+    // }, []);
 
 
 

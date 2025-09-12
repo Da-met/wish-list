@@ -45,23 +45,3 @@ a {
 
 
 
-
-/* ФИНАЛЬНЫЙ ФИКС ДЛЯ ЯНДЕКСА */
-@media (max-width: 768px) {
-    .yandex-browser {
-        .app {
-            height: var(--mobile-height, 100vh) !important;
-            overflow: hidden;
-        }
-        
-        .content-page {
-            height: calc(var(--mobile-height, 100vh) - 50px) !important;
-        }
-        
-        /* Основной контент */
-        .page-wrapper {
-            height: calc(var(--mobile-height, 100vh) - 50px) !important;
-            overflow-y: auto;
-        }
-    }
-}
