@@ -6,6 +6,7 @@
 
 html, body, #root {
     height: 100%;
+    overflow: hidden;
 }
 
 body {
@@ -44,8 +45,3 @@ a {
 
 
 
-
-/* ФИКС для контента в Яндекс.Браузере */
-.yandex-browser .content-page {
-    margin-top: 80px; /* Отступ под фиксированный сайдбар */
-}

@@ -2,10 +2,11 @@
 
 .Sidebar {
     // height: calc(100vh - var(--navbar-height) - 70px);
+    
     height: 100vh;
     height: 100dvh;
     height: -webkit-fill-available;
-   
+
     // Добавляем flexbox для правильного расположения
     display: flex;
     flex-direction: column;
