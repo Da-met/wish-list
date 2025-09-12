@@ -39,6 +39,15 @@ const App = () => {
     }, []);
 
     useEffect(() => {
+        const isYandex = navigator.userAgent.includes('YaBrowser');
+        if (isYandex) {
+            document.body.classList.add('yandex-browser');
+        }
+    }, []);
+
+
+
+    useEffect(() => {
         dispatch(userActions.initAuthData());
     }, [dispatch])
 

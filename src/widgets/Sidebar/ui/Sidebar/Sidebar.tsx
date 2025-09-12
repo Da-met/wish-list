@@ -51,10 +51,9 @@ export const Sidebar = memo(({className}: SidebarProps ) => {
             className={classNames(cls.Sidebar, {[cls.collapsed]: collapsed}, [className])}
             style={{ height: `${sidebarHeight}px` }} // ЖЕСТКО задаем высоту
         >
-            <div className={cls.sidebarContent}> {/* ← Новый контейнер */}
-                <div className={cls.items}>
-                    {itemsList}
-                </div>
+
+            <div className={cls.items}>
+                {itemsList}
             </div>
 
             <div className={ cls.btnWrap }>
