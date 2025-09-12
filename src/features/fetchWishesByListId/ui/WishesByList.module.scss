@@ -4,7 +4,7 @@
     display: grid;
     grid-template-columns: repeat(3, minmax(280px, 1fr)); // всегда три колонки
     gap: 30px;
-    padding: 0 20px; 
+    // padding: 0 20px; 
 
     @media (max-width: 1100px) {
         grid-template-columns: repeat(2, minmax(280px, 1fr)); // на планшете — две
@@ -12,14 +12,49 @@
     
       @media (max-width: 715px) {
         grid-template-columns: 1fr; // на мобилке — одна
-        display: flex;
+
+    }
+}
+
+.WishList {
+    max-width: 1200px;
+    margin: 0 auto;
+    display: grid;
+    padding: 0 20px;
+    
+    @media (max-width: 715px) {
+        padding: 0 50px;
+    }
+    @media (max-width: 550px) {
+        padding: 0 20px;
+    }
+}
+
+.wrapper {
+    display: grid ; /* или flex */
+    width: 100%;
+    max-width: 100%;
+    gap: 30px;
+
+    justify-items: center; // ← ЦЕНТРИРУЕМ ЭЛЕМЕНТЫ ПО ГОРИЗОНТАЛИ
+    align-items: start;    // ← ВЫРАВНИВАЕМ ПО ВЕРХНЕМУ КРАЮ
+
+    grid-template-columns: repeat(3, minmax(280px, 1fr));
+    @media (max-width: 1100px) {
+        grid-template-columns: repeat(2, minmax(280px, 1fr)); // на планшете — две
+    }
+    
+      @media (max-width: 715px) {
+        grid-template-columns: subgrid; 
+        justify-items: center;
     }
 }
 
 .wrap {
-    display: block; /* или flex */
+    position: relative;
     width: 100%;
-    max-width: 100%;
+    // max-width: 400px;
+    min-width: 200px;
 }
 
 .pin {
@@ -49,5 +84,40 @@
     }
     @media (max-width: 480px) {
         padding: 15px 20px 0 20px;
+    }
+}
+
+
+
+.skeleton {
+    max-width: 1200px;
+    margin: 0 auto;
+    display: grid;
+    padding: 20px 20px;
+    
+    @media (max-width: 715px) {
+        padding: 20px 50px;
+    }
+    @media (max-width: 550px) {
+        padding: 20px;
+    }
+}
+
+.wrapperSceleton {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+    gap: 30px;
+
+    @media (max-width: 715px) {
+        grid-template-columns: subgrid; 
+    }
+}
+
+.sceletonLi {
+    height: 300px;
+    width: 100%;
+
+    @media (max-width: 715px) {
+        height: 270px;
     }
 }
