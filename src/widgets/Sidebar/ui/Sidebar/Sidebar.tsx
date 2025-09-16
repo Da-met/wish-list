@@ -9,7 +9,7 @@ import { ThemeSwitcher } from "@/shared/ui/ThemeSwitcher";
 import SidebarItem from "../SidebarItem/SidebarItem";
 import { useSelector } from "react-redux";
 import { getSidebarItems } from '../../model/selectors/getSidebarItems';
-import { useSafeHeight } from "@/shared/lib/hooks/useSafeHeight/useSafeHeight";
+import { useWindowHeight } from "@/shared/lib/hooks/useWindowHeight/useWindowHeight";
 
 
 interface SidebarProps {
@@ -19,6 +19,10 @@ interface SidebarProps {
 export const Sidebar = memo(({className}: SidebarProps ) => {
     const [ collapsed, setCollapsed ] = useState(true);
     const sidebarItemsList = useSelector(getSidebarItems);
+
+    const windowHeight = useWindowHeight();
+    const sidebarHeight = windowHeight - 50 - 70; // navbar + отступы
+
     
     const onToggle = () => {
         setCollapsed(prev => !prev)
@@ -46,6 +50,7 @@ export const Sidebar = memo(({className}: SidebarProps ) => {
         <div 
             data-testid='sidebar' 
             className={classNames(cls.Sidebar, {[cls.collapsed]: collapsed}, [className])}
+            style={{ height: sidebarHeight }}
         >
             
             <div className={cls.items}>

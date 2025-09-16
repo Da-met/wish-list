@@ -9,7 +9,8 @@ import { getUserAuthData, getUserInited, userActions } from "@/entities/User";
 import { fetchFriendsList } from "@/pages/FriendsPage/model/services/fetchFriendsList/fetchFriendsList";
 import { useAppDispatch } from "@/shared/lib/hooks/useAppDispatch/useAppDispatch";
 import { fetchLists } from "@/entities/Sheets/model/services/fetchLists/fetchLists";
-import { useSafeHeight } from "@/shared/lib/hooks/useSafeHeight/useSafeHeight";
+
+import { SafeArea } from "@/shared/ui/SafeArea/SafeArea";
 
 
 
@@ -36,16 +37,18 @@ const App = () => {
 
 
     return (
-        <div className={classNames('app', {}, [theme])} >
-            <Suspense fallback="">
-                <Navbar />
-                <div className="content-page" >
-                    <Sidebar className="sidebar"/>
-                    {inited && <AppRouter />}
+        <SafeArea>
+            <div className={classNames('app', {}, [theme])} >
+                <Suspense fallback="">
+                    <Navbar />
+                    <div className="content-page" >
+                        <Sidebar className="sidebar"/>
+                        {inited && <AppRouter />}
 
-                </div>
-            </Suspense>    
-        </div>
+                    </div>
+                </Suspense>    
+            </div>
+        </SafeArea>
     );
 };
 
