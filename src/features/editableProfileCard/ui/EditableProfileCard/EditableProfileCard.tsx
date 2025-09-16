@@ -105,7 +105,11 @@ export const EditableProfileCard = memo((props: EditableProfileCardProps) => {
                 title={title}
                 description={description}
                 url={`https://vishi.ru/profile/${id}`}
-                image="/images/preview-profile.jpg"
+                image={
+                    typeof profileState.profileData?.img === 'string' 
+                        ? profileState.profileData.img 
+                        : '/images/default-avatar.jpg'
+                }
             />
             {validateErrors?.length && validateErrors.map((err) => (
                     <Text

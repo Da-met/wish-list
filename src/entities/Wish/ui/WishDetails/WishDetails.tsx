@@ -205,14 +205,20 @@ export const WishDetails = memo((props: WishDetailsProps) => {
                                 )
                             ) : (
                                 !canEdit ? (
-                                    <Button 
-                                        className={cls.btnReserve}
-                                        onClick={handleReserve}
-                                        theme={ButtonTheme.BACKGROUND}
-                                    >
-                                        Зарезервировать <CircleIcon/>
-                                    </Button>) : ('\u00A0')
-                                
+                                    user ? (
+                                        <Button 
+                                            className={cls.btnReserve}
+                                            onClick={handleReserve}
+                                            theme={ButtonTheme.BACKGROUND}
+                                        >
+                                            Зарезервировать <CircleIcon/>
+                                        </Button>
+                                    ) : (
+                                        <div className={cls.authHint}>
+                                            <Text text="Войдите, чтобы зарезервировать" size={TextSize.S} />
+                                        </div>
+                                    )
+                                ) : ('\u00A0')
                             )}
 
                             <AppLink to={getRouteListDetails(String(wish?.list_id))}>
@@ -232,7 +238,7 @@ export const WishDetails = memo((props: WishDetailsProps) => {
     const title = `${wish?.name} — ${APP_NAME}`;
     const description = wish?.description || 'Смотрите подробности подарка и возможность его зарезервировать.';
     const url = `https://vishi.ru/wish/${wish?.id}`;
-    const image = wish?.img || '/images/preview-wish.jpg';
+    const image = typeof wish?.img === 'string' ? wish.img : '/images/default-wish.jpg';
 
     return (
         <DynamicModuleLoader reducers={reducers} removeAfterUnmount={true}>

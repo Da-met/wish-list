@@ -324,3 +324,13 @@
     filter: grayscale(70%);
     opacity: 0.7;
 }
+
+
+.authHint {
+    padding: 10px;
+    text-align: center;
+    color: var(--secondary-color);
+    font-size: 14px;
+    display: flex;
+    justify-content: center;
+}

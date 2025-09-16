@@ -14,6 +14,7 @@ import { wishesPageActions } from '@/pages/WishesPage/model/slice/wishesPageSlic
 import { fetchWishesList } from '@/pages/WishesPage/model/services/fetchWishesList/fetchWishesList';
 import { Input } from '@/shared/ui/Input/Input';
 import { useDebounce } from '@/shared/lib/hooks/useDebounce/useDebounce';
+import { getUserAuthData } from '@/entities/User';
 
 
 
@@ -31,6 +32,10 @@ export const WishesPageFilters = memo((props: WishesPageFiltersProps) => {
     const search = useSelector(getWishesPageSearch);
     const scope = useSelector(getWishesPageScope);
     const status = useSelector(getWishesPageStatus);
+
+    // проверка авторизации
+    const authData = useSelector(getUserAuthData);
+    const isAuth = Boolean(authData); 
 
     const fetchData = useCallback(() => {
         dispatch(fetchWishesList({ replace: true }));
@@ -79,18 +84,20 @@ export const WishesPageFilters = memo((props: WishesPageFiltersProps) => {
                     onChangeSort={onChangeSort}
                     onChangeStatus={onChangeStatus}
                 />
-                <div className={cls.btn}>
-                    <Button 
-                        onClick={() => handleFilterChange('all')} 
-                        theme={scope === 'all' ? ButtonTheme.BACKGROUND : ButtonTheme.CLEAR}
-                    >Все</Button>
+                
+                {isAuth && (
+                    <div className={cls.btn}>
+                        <Button 
+                            onClick={() => handleFilterChange('all')} 
+                            theme={scope === 'all' ? ButtonTheme.BACKGROUND : ButtonTheme.CLEAR}
+                        >Все</Button>
 
-                    <Button 
-                        onClick={() => handleFilterChange('subscriptions')}
-                        theme={scope === 'subscriptions' ? ButtonTheme.BACKGROUND : ButtonTheme.CLEAR}
-                    >Друзья</Button>
-                </div>
-            
+                        <Button 
+                            onClick={() => handleFilterChange('subscriptions')}
+                            theme={scope === 'subscriptions' ? ButtonTheme.BACKGROUND : ButtonTheme.CLEAR}
+                        >Друзья</Button>
+                    </div>
+                )}
             </div>
             <div className={cls.search}>
                 <svg className={cls.svg} xmlns="http://www.w3.org/2000/svg" width="26" height="26" viewBox="0 0 24 24" fill="none" stroke="#000000" strokeWidth="1" strokeLinecap="round" strokeLinejoin="round"><circle cx="11" cy="11" r="8"></circle><line x1="21" y1="21" x2="16.65" y2="16.65"></line></svg>

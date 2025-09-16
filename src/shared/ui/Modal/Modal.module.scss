@@ -12,15 +12,33 @@
     display: flex;
     justify-content: center;
     align-items: center;
+
+    padding: 20px; // ← Добавляем отступы для мобильных
 }
 
 .content {
     padding: 25px;
-    border-radius: 12px;
+    border-radius: 30px;
     background: var(--bg-color);
     transition: 0.3s transform;
     transform: scale(0.5);
-    max-width: 60%;
+    
+    max-width: 90%; // ← Ограничиваем ширину
+    width: auto; // ← Автоматическая ширина
+    min-width: 280px; // ← Минимальная ширина
+    
+    // Для мобильных
+    @media (max-width: 768px) {
+        padding: 20px;
+        max-width: 95%;
+        margin: 10px;
+    }
+    
+    @media (max-width: 480px) {
+        padding: 15px;
+        max-width: 100%;
+    }
+
 }
 
 
@@ -50,12 +68,26 @@
     margin-left: auto;
     margin-top: 0;
     margin-right: 10px;
-    font-size: var(--font-size-l);
+
+    // font-size: var(--font-size-l);
 
 
     border-radius: 50px;
     border: 1.4px var(--accent-color-4) solid;
     stroke: var(--accent-color-4);
+
+    @media (max-width: 480px) {
+        width: 27px;
+        height: 27px;
+    }
+
+    svg {
+        @media (max-width: 480px) {
+            width: 27px;
+            height: 27px;
+            padding-bottom: 2px;
+        }
+    }
 }
     
 

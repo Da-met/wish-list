@@ -20,6 +20,7 @@ import { getFriendsIds } from "@/pages/FriendsPage/model/selectors/friendsPageSe
 import { getRouteFriends, getRouteList } from "@/shared/const/router";
 import { fetchFriendsList } from "@/pages/FriendsPage/model/services/fetchFriendsList/fetchFriendsList";
 import { formatBirthday } from "@/shared/lib/formatBirthday/formatBirthday";
+import { getUserAuthData } from "@/entities/User";
 
 
 interface ProfileCardProps {
@@ -36,9 +37,10 @@ interface ProfileCardProps {
 
 export const ProfileCard = (props: ProfileCardProps) => {
     const { className, data, error, readonly, isLoading, onChangeName, onChangeImg, canEdit, profileId} = props;
-    // console.log(data)
 
-
+    const authData = useSelector(getUserAuthData);
+    const isAuth = Boolean(authData);
+    
     if(isLoading) {
         return (<Loader />)
     }
@@ -61,73 +63,76 @@ export const ProfileCard = (props: ProfileCardProps) => {
         return undefined;
     }, [data?.img]);
 
-
     const addFriendtoList = useCallback(async () => {
         if (!data?.id || !profileId) return;
-    
         const res = await dispatch(addFriend({ userId: profileId, subscriptionId: data.id }));
     
         if (addFriend.fulfilled.match(res)) {
-            // заново получаем список друзей текущего пользователя
             dispatch(fetchFriendsList({ idUser: profileId }));
         }
     }, [dispatch, data?.id, profileId]);
-
 
     const friendsIdsList = useSelector(getFriendsIds);
     let friendsOrNo
     if (friendsIdsList !== undefined ) {
         friendsOrNo = Boolean(friendsIdsList.find((value) => value == data?.id))
     };
-    console.log(data)
+
     return (
         <div className={cls.paddingProfile}>
             <div className={cls.wrapp}>
                 <div className={classNames(cls.ProfileCard, {}, [className])}>
-                    <div className={cls.input}>
-                        <Input
-                            value={data?.name}
-                            placeholder=''
-                            onChange={onChangeName}
-                            readonly={readonly}
-                            data-testid="ProfileCard.firstname"
-                        />
+                    <div className={cls.profileContent}>
+                        <div className={cls.input}>
+                            <Input
+                                value={data?.name}
+                                placeholder=''
+                                onChange={onChangeName}
+                                readonly={readonly}
+                                data-testid="ProfileCard.firstname"
+                            />
+                        </div>
+
+                        <div  className={cls.dr}>
+                            <Cake className={cls.cake}/> 
+                            {formatBirthday(data?.birthday)}
+                        </div>
+
+                        <div className={cls.friendOrNo}>
+                            {/* 🔐 Показываем кнопку только авторизованным пользователям */}
+                            {!canEdit && isAuth && (
+                                friendsOrNo == false ? (
+                                    <Button 
+                                        className={cls.addFriends} 
+                                        onClick={addFriendtoList}
+                                        theme={ButtonTheme.ACCENT}
+                                    >
+                                        <UserPlus /> Добавить в друзья
+                                    </Button>
+                                ) : (
+                                    <div className={cls.inFr}>У вас в друзьях</div>
+                                )
+                            )}
+                        </div>  
                     </div>
 
-                    <div  className={cls.dr}>
-                        <Cake className={cls.cake}/> 
-                        {formatBirthday(data?.birthday)}
-                    </div>
-
-                    <div className={cls.friendOrNo}>
-                        {!canEdit && (
-                            friendsOrNo == false ? (
-                                <Button 
-                                    className={cls.addFriends} 
-                                    onClick={addFriendtoList}
-                                    theme={ButtonTheme.ACCENT}
-                                >
-                                    <UserPlus /> Добавить в друзья
-                                </Button>
-                            ) : (
-                                <div className={cls.inFr}>У вас в друзьях</div>
-                            )
-                        )}
-                    </div>
+                    {/* 🔐 Подсказка для неавторизованных пользователей */}
+                    {!canEdit && !isAuth && (
+                        <div className={cls.authHint}>
+                            Войдите, чтобы добавить в друзья
+                        </div>
+                    )}
                 </div>
+                
                 
                 <InputImg 
                     className={cls.inputImg}
-                    value={preparedImg} // URL текущей аватарки пользователя
-                    onChange={onChangeImg} // Callback для изменения картинки
+                    value={preparedImg} 
+                    onChange={onChangeImg} 
                     readonly={readonly}
                 /> 
-
             </div>
-
-            
         </div>
-        
     )
 };
 

@@ -101,13 +101,13 @@ const SheetCreate = ({className, isOpen, onClose, setIsSheetCreateModal}: SheetC
     return (
         <DynamicModuleLoader reducers={reducers} removeAfterUnmount>
             <Modal
-                // className={classNames(cls.RegistrationModal, {}, [className])}
+                className={classNames(cls.createListModal, {}, [className])}
                 isOpen={isOpen}
                 onClose={onClose}
             >
                 <Suspense fallback={<Loader/>}>
                     <div className={cls.wrapper}>
-                        <Text title={'Новый лист'} size={TextSize.M} className={cls.text}/>
+                        <Text title={'Новый лист'} className={cls.text}/>
                         <Input 
                             placeholder="Название листа"
                             type="text" 

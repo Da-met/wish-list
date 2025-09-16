@@ -20,7 +20,8 @@ import { Drawer } from "@/shared/ui/Drawer/Drawer";
 import { RegistrationModal } from "@/features/Registration";
 
 import { APP_NAME } from '@/shared/config/appName/appName';
-
+import LOGO from "../../../shared/assets/icons/LOGO.svg"
+// import IconList from '../../../shared/assets/icons/about-list.svg';
 
 
 interface NavbarProps {
@@ -63,6 +64,10 @@ export const Navbar = memo(({className}: NavbarProps) => {
         return (
             <div className={cls.navbar_wrapper}>
                 <div className={classNames( cls.Navbar, {}, [className])}>
+                    {/* <div className={cls.logoImg}> 
+                        <LOGO />
+                    </div> */}
+                    
                     <div className={cls.logo}>
                         {APP_NAME}
                     </div>

@@ -32,10 +32,8 @@ export const ProfileWishesList = memo((props: ProfileWishesListProps) => {
     // ДОБАВИТЬ ОВЕРАТОР "И" чтобы isLoading был FALSE
     if (!profile?.lists?.length) {
         return (
-            <div className={cls.wrapper}>
-                <div className={cls.wrapperText}>
-                    У пользователя нет листов
-                </div>
+            <div className={cls.wrapperText}>
+                У пользователя нет листов
             </div>
         );
     }

@@ -34,11 +34,11 @@ export const ProfileFriendsList = memo((props: ProfileFriendsListProps) => {
 
     if (!profile?.Subscriptions?.length) {
         return (
-            <div className={cls.wrapper}>
-                <div className={cls.wrapperText}>
+            // <div className={cls.wrapper}>
+                <p className={cls.wrapperText}>
                     У пользователя нет друзей
-                </div>
-            </div>
+                </p>
+            // </div>
         );
     }
 
