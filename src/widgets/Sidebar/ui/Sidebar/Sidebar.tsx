@@ -50,7 +50,7 @@ export const Sidebar = memo(({className}: SidebarProps ) => {
         <div 
             data-testid='sidebar' 
             className={classNames(cls.Sidebar, {[cls.collapsed]: collapsed}, [className])}
-            style={{ height: sidebarHeight }}
+            // style={{ height: sidebarHeight }}
         >
             
             <div className={cls.items}>
