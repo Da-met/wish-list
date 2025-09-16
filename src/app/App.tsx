@@ -41,11 +41,10 @@ const App = () => {
             <div className={classNames('app', {}, [theme])} >
                 <Suspense fallback="">
                     <Navbar />
-                    <div className="content-page" >
+                    {/* <div className="content-page" > */}
                         <Sidebar className="sidebar"/>
                         {inited && <AppRouter />}
-
-                    </div>
+                    {/* </div> */}
                 </Suspense>    
             </div>
         </SafeArea>

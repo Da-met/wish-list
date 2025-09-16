@@ -18,6 +18,18 @@
 
 }
 
+@media (max-width: 768px) {
+    .Page {
+        overflow-y: auto !important;
+        height: auto !important;
+    }
+    
+    // Отключаем сохранение скролла на мобильных
+    .main-content {
+        overflow-y: auto;
+    }
+}
+
 // .trigger {
 //     height: 20px;
 //     margin: 10px;

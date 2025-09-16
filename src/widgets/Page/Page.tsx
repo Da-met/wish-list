@@ -1,6 +1,7 @@
 import { classNames } from '@/shared/lib/classNames/classNames';
 import {
     memo, MutableRefObject, ReactNode, useRef, UIEvent,
+    useEffect,
 } from 'react';
 
 import cls from './Page.module.scss';
@@ -48,6 +49,28 @@ export const Page = memo((props: PageProps) => {
             path: pathname,
         }));
     }, 500)
+
+
+    useEffect(() => {
+        console.log('=== SCROLL CONTAINERS DEBUG ===');
+        
+        // Все элементы со скроллом
+        const allElements = document.querySelectorAll('*');
+        allElements.forEach(el => {
+            if (el instanceof HTMLElement) {
+                const style = getComputedStyle(el);
+                if (style.overflowY === 'auto' || style.overflowY === 'scroll') {
+                    console.log('Scroll container:', el.className, 
+                              'Height:', el.clientHeight, 
+                              'ScrollHeight:', el.scrollHeight);
+                }
+            }
+        });
+    
+        // Высота окна
+        console.log('Window height:', window.innerHeight);
+        console.log('Document height:', document.documentElement.scrollHeight);
+    }, []);
 
     return (
         <section
