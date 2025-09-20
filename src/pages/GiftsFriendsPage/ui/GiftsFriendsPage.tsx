@@ -4,7 +4,7 @@ import { Page } from '@/widgets/Page/Page';
 import { Text, TextSize } from '@/shared/ui/Text/Text';
 import { GiftsFriendsList } from '@/entities/GiftsFriends';
 import { SeoHead } from '@/shared/ui/SeoHead/SeoHead';
-import { APP_NAME } from '@/shared/config/appName/appName';
+import { APP_IMG, APP_NAME } from '@/shared/config/appName/appName';
 
 
 interface GiftsFriendsPageProps {
@@ -24,7 +24,7 @@ const GiftsFriendsPage = ({className}: GiftsFriendsPageProps) => {
                     Управляйте резервированием и идеями сюрпризов.
                 `}
                 url={`https://vishy.vercel.app/gifts_friends`}
-                image="/images/pre-png.png"
+                image={APP_IMG}
             />
             <Page >
                 <div className={cls.GiftsFriendsPage}>

@@ -16,7 +16,7 @@ import { useSearchParams } from 'react-router-dom';
 import { Button, ButtonTheme } from '@/shared/ui/Button/Button';
 import CompilationsPage from '../CompilationsPage/CompilationsPage';
 import { SeoHead } from '@/shared/ui/SeoHead/SeoHead';
-import { APP_NAME } from '@/shared/config/appName/appName';
+import { APP_IMG, APP_NAME } from '@/shared/config/appName/appName';
 import { Text, TextSize } from "@/shared/ui/Text/Text";
 
 
@@ -73,7 +73,7 @@ const WishesPage = (props: WishesPageProps) => {
 					${APP_NAME} — удобный сервис для выбора и хранения подарков.
 				`}
 				url="https://vishy.vercel.app/wishes"
-				image="/images/pre-png.png"
+				image={APP_IMG}
 			/>
 			<Page 
 				onScrollEnd={onLoadNextPart} 

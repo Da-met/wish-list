@@ -10,7 +10,7 @@ import { getLists } from "@/entities/Sheets/model/slice/listSlice";
 import { SheetCreate } from "@/features/addList";
 import { getUserAuthData } from "@/entities/User";
 import { SeoHead } from "@/shared/ui/SeoHead/SeoHead";
-import { APP_NAME } from "@/shared/config/appName/appName";
+import { APP_IMG, APP_NAME } from "@/shared/config/appName/appName";
 
 
 
@@ -38,7 +38,7 @@ const ListPage = () => {
                     ${APP_NAME} — удобный сервис для выбора и хранения подарков.
                 `}
                 url="https://vishy.vercel.app/list"
-                image="/images/pre-png.png"
+                image={APP_IMG}
             />
             <Page >
                 <div className={cls.background}>

@@ -13,7 +13,7 @@ import { useNavigate } from "react-router-dom";
 import { Button, ButtonTheme } from "@/shared/ui/Button/Button";
 import { getRouteList, getRouteRegistration } from "@/shared/const/router";
 import { SeoHead } from "@/shared/ui/SeoHead/SeoHead";
-import { APP_NAME } from "@/shared/config/appName/appName";
+import { APP_IMG, APP_NAME } from "@/shared/config/appName/appName";
 
 
 
@@ -39,7 +39,7 @@ const AboutPage = () => {
                     Просматривайте и управляйте всеми вашими списками подарков в ${APP_NAME}, добавляйте новые идеи и делитесь с друзьями.
                 `}
                 url="https://vishy.vercel.app/about"
-                image="/images/pre-png.png"
+                image={APP_IMG}
             />
             <Page >
                 <div className={cls.wrapper}>

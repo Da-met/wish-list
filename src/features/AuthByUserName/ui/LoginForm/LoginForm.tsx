@@ -15,7 +15,7 @@ import { getLoginIsLoading } from "../../model/selectors/getLoginIsLoading/getLo
 import { DynamicModuleLoader, ReducersList } from "@/shared/lib/components/DynamicModuleLoader/DynamicModuleLoader";
 import { useAppDispatch } from "@/shared/lib/hooks/useAppDispatch/useAppDispatch";
 import { SeoHead } from "@/shared/ui/SeoHead/SeoHead";
-import { APP_NAME } from "@/shared/config/appName/appName";
+import { APP_IMG, APP_NAME } from "@/shared/config/appName/appName";
 import { StateSchema } from "@/app/providers/StoreProvider";
 
 
@@ -91,7 +91,7 @@ const LoginForm = memo(({className, onSuccess}: LoginFormProps) => {
                 title={`Вход — ${APP_NAME}`}
                 description={`Войдите в свой аккаунт ${APP_NAME}, чтобы управлять списками желаемых подарков, просматривать идеи друзей и резервировать подарки.`}
                 url="https://vishy.vercel.app/login"
-                image="/images/pre-png.png"
+                image={APP_IMG}
             />
 
             <div className={classNames(cls.LoginForm, {}, [className])} >

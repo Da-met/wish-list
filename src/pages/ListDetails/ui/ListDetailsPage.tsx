@@ -14,7 +14,7 @@ import { ListById } from '@/entities/ListById/model/types';
 import { getListById } from '@/entities/ListById/model/api';
 import { listDetailsReducer } from '@/entities/List';
 import { SeoHead } from '@/shared/ui/SeoHead/SeoHead';
-import { APP_NAME } from '@/shared/config/appName/appName';
+import { APP_IMG, APP_NAME } from '@/shared/config/appName/appName';
 
 interface ListDetailsPageProps {
     className?: string;
@@ -68,7 +68,7 @@ const ListDetailsPage = (props: ListDetailsPageProps) => {
                 title={title}
                 description={description}
                 url="https://vishy.vercel.app/lists"
-                image="/images/pre-png.png"
+                image={APP_IMG}
             />
             <Page className={classNames(cls.ListDetailsPage, {}, [className])}>
                 <div className={cls.wrapper}>

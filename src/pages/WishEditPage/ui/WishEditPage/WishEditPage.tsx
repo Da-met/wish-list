@@ -10,7 +10,7 @@ import { DynamicModuleLoader, ReducersList } from "@/shared/lib/components/Dynam
 import { wishDetailsReducer } from "@/entities/Wish/model/slice/wishDetailsSlice";
 import { WishCreate } from "@/features/addWishForm";
 import { SeoHead } from "@/shared/ui/SeoHead/SeoHead";
-import { APP_NAME } from "@/shared/config/appName/appName";
+import { APP_IMG, APP_NAME } from "@/shared/config/appName/appName";
 
 
 
@@ -43,7 +43,7 @@ const WishEditPage = memo((props: WishEditPageProps) => {
                 title={title}
                 description={description}
                 url={`https://vishy.vercel.app/wishes/${id ? `${id}/edit` : 'new'}`}
-                image="/images/pre-png.png"
+                image={APP_IMG}
             />
             <Page>
                 <div className={cls.wrapper}>

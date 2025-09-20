@@ -28,7 +28,7 @@ import { setWishCompleted } from '../../model/services/setWishCompleted/setWishC
 import CheckIcon from '@/shared/assets/icons/check.svg'
 import CircleIcon from '@/shared/assets/icons/circle.svg'
 import { SeoHead } from '@/shared/ui/SeoHead/SeoHead';
-import { APP_NAME } from '@/shared/config/appName/appName';
+import { APP_IMG, APP_NAME } from '@/shared/config/appName/appName';
 
 
 
@@ -238,7 +238,7 @@ export const WishDetails = memo((props: WishDetailsProps) => {
     const title = `${wish?.name} — ${APP_NAME}`;
     const description = wish?.description || 'Смотрите подробности подарка и возможность его зарезервировать.';
     const url = `https://vishy.vercel.app/wishes/${wish?.id}`;
-    const image = typeof wish?.img === 'string' ? wish.img : '/images/pre-png.png';
+    const image = typeof wish?.img === 'string' ? wish.img : `${APP_IMG}`;
 
     return (
         <DynamicModuleLoader reducers={reducers} removeAfterUnmount={true}>

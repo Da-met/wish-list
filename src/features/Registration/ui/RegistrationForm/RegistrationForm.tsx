@@ -18,7 +18,7 @@ import { getRegistrationImg } from "../../model/selectors/getRegistrationImg/get
 import { getRegistrationError } from "../../model/selectors/getRegistrationError/getRegistrationError";
 import { getRegistrationIsLoading } from "../../model/selectors/getRegistrationIsLoading/getRegistrationIsLoading";
 import { SeoHead } from "@/shared/ui/SeoHead/SeoHead";
-import { APP_NAME } from "@/shared/config/appName/appName";
+import { APP_IMG, APP_NAME } from "@/shared/config/appName/appName";
 import { StateSchema } from "@/app/providers/StoreProvider";
 
 
@@ -116,7 +116,7 @@ const RegistrationForm = memo(({className, onSuccess}: RegistrationFormProps) =>
                 title={`Регистрация — ${APP_NAME}`}
                 description={`Создайте аккаунт в ${APP_NAME}, чтобы хранить списки желаемых подарков и делиться ими с друзьями.`}
                 url={`https://vishy.vercel.app/registration`}
-                image="/images/pre-png.png"
+                image={APP_IMG}
             />
 
             <div className={classNames(cls.RegistrationForm, {}, [className])} onKeyPress={handleKeyPress}>

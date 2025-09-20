@@ -22,7 +22,7 @@ import { ProfileFriendsList } from '../ProfileFriendsList/ProfileFriendsList';
 import { ProfileWishesList } from '../ProfileWishesList/ProfileWishesList';
 import { Loader } from '@/shared/ui/Loader/Loader';
 import { SeoHead } from '@/shared/ui/SeoHead/SeoHead';
-import { APP_NAME } from '@/shared/config/appName/appName';
+import { APP_IMG, APP_NAME } from '@/shared/config/appName/appName';
 import { StateSchema } from '@/app/providers/StoreProvider';
 import { Skeleton } from '@/shared/ui/Skeleton/Skeleton';
 
@@ -109,7 +109,7 @@ export const EditableProfileCard = memo((props: EditableProfileCardProps) => {
                 image={
                     typeof profileState.profileData?.img === 'string' 
                         ? profileState.profileData.img 
-                        : '/images/pre-png.png'
+                        : `${APP_IMG}`
                 }
             />
             {validateErrors?.length && validateErrors.map((err) => (
