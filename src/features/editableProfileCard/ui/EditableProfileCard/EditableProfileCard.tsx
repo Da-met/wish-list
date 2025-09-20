@@ -101,14 +101,15 @@ export const EditableProfileCard = memo((props: EditableProfileCardProps) => {
 
     return (
         <DynamicModuleLoader reducers={reducers}>
+            {/*  SEO */}
             <SeoHead
                 title={title}
                 description={description}
-                url={`https://vishi.ru/profile/${id}`}
+                url={`https://vishy.vercel.app/profile/${id}`}
                 image={
                     typeof profileState.profileData?.img === 'string' 
                         ? profileState.profileData.img 
-                        : '/images/default-avatar.jpg'
+                        : '/images/pre-png.png'
                 }
             />
             {validateErrors?.length && validateErrors.map((err) => (

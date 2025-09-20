@@ -115,8 +115,8 @@ const RegistrationForm = memo(({className, onSuccess}: RegistrationFormProps) =>
             <SeoHead
                 title={`Регистрация — ${APP_NAME}`}
                 description={`Создайте аккаунт в ${APP_NAME}, чтобы хранить списки желаемых подарков и делиться ими с друзьями.`}
-                url={`https://vishi.ru/wish/${``}`}
-                image="/images/preview-wish.jpg"
+                url={`https://vishy.vercel.app/registration`}
+                image="/images/pre-png.png"
             />
 
             <div className={classNames(cls.RegistrationForm, {}, [className])} onKeyPress={handleKeyPress}>

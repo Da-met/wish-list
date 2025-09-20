@@ -38,8 +38,8 @@ const AboutPage = () => {
                 description={`
                     Просматривайте и управляйте всеми вашими списками подарков в ${APP_NAME}, добавляйте новые идеи и делитесь с друзьями.
                 `}
-                url="/about"
-                image="/images/preview-about.jpg"
+                url="https://vishy.vercel.app/about"
+                image="/images/pre-png.png"
             />
             <Page >
                 <div className={cls.wrapper}>

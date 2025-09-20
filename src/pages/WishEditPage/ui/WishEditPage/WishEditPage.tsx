@@ -42,8 +42,8 @@ const WishEditPage = memo((props: WishEditPageProps) => {
             <SeoHead
                 title={title}
                 description={description}
-                url={`https://vishi.ru/wish/${id || 'new'}`}
-                image="/images/preview-wish.jpg"
+                url={`https://vishy.vercel.app/wishes/${id ? `${id}/edit` : 'new'}`}
+                image="/images/pre-png.png"
             />
             <Page>
                 <div className={cls.wrapper}>

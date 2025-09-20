@@ -72,8 +72,8 @@ const WishesPage = (props: WishesPageProps) => {
 					Создавайте списки подарков, бронируйте желания друзей и делитесь вдохновением. 
 					${APP_NAME} — удобный сервис для выбора и хранения подарков.
 				`}
-				url="https://giftflow.ru/"
-				image="https://giftflow.ru/images/preview-main.jpg"
+				url="https://vishy.vercel.app/wishes"
+				image="/images/pre-png.png"
 			/>
 			<Page 
 				onScrollEnd={onLoadNextPart} 

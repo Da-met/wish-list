@@ -237,8 +237,8 @@ export const WishDetails = memo((props: WishDetailsProps) => {
     // SEO данные
     const title = `${wish?.name} — ${APP_NAME}`;
     const description = wish?.description || 'Смотрите подробности подарка и возможность его зарезервировать.';
-    const url = `https://vishi.ru/wish/${wish?.id}`;
-    const image = typeof wish?.img === 'string' ? wish.img : '/images/default-wish.jpg';
+    const url = `https://vishy.vercel.app/wishes/${wish?.id}`;
+    const image = typeof wish?.img === 'string' ? wish.img : '/images/pre-png.png';
 
     return (
         <DynamicModuleLoader reducers={reducers} removeAfterUnmount={true}>

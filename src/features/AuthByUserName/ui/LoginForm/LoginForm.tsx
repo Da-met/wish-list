@@ -90,8 +90,8 @@ const LoginForm = memo(({className, onSuccess}: LoginFormProps) => {
             <SeoHead
                 title={`Вход — ${APP_NAME}`}
                 description={`Войдите в свой аккаунт ${APP_NAME}, чтобы управлять списками желаемых подарков, просматривать идеи друзей и резервировать подарки.`}
-                url={`https://vishi.ru/login`}
-                image="/images/preview-wish.jpg"
+                url="https://vishy.vercel.app/login"
+                image="/images/pre-png.png"
             />
 
             <div className={classNames(cls.LoginForm, {}, [className])} >
@@ -106,14 +106,14 @@ const LoginForm = memo(({className, onSuccess}: LoginFormProps) => {
                 
                 <div className={classNames(cls.inputs)}>
                     <div className={cls.testImputs}>
-                        <Input 
+                        {/* <Input 
                             // ref={firstInputRef}
                             type="text" 
                             className={cls.input} 
                             placeholder="Введите Имя"
                             onChange={onChangeUsername}
                             value={username}
-                        />
+                        /> */}
                         <Input 
                             type="email" 
                             className={cls.input} 

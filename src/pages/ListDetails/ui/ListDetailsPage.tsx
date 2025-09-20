@@ -67,8 +67,8 @@ const ListDetailsPage = (props: ListDetailsPageProps) => {
             <SeoHead
                 title={title}
                 description={description}
-                url="https://giftflow.ru/"
-                image="https://giftflow.ru/images/preview-main.jpg"
+                url="https://vishy.vercel.app/lists"
+                image="/images/pre-png.png"
             />
             <Page className={classNames(cls.ListDetailsPage, {}, [className])}>
                 <div className={cls.wrapper}>

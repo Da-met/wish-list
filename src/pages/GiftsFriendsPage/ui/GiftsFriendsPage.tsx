@@ -23,8 +23,8 @@ const GiftsFriendsPage = ({className}: GiftsFriendsPageProps) => {
                     Смотрите подарки, которые вы планируете подарить своим друзьям. 
                     Управляйте резервированием и идеями сюрпризов.
                 `}
-                url="https://giftflow.ru/"
-                image="https://giftflow.ru/images/preview-main.jpg"
+                url={`https://vishy.vercel.app/gifts_friends`}
+                image="/images/pre-png.png"
             />
             <Page >
                 <div className={cls.GiftsFriendsPage}>
