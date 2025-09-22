@@ -99,7 +99,7 @@
 
 
 .inputs div+div{
-    margin-top: 15px;
+    // margin-top: 15px;
 }
 
 .calendar {
@@ -111,6 +111,7 @@
 }
 
 .calendarText p{
+    
     color: var(--secondary-color);
     @media (max-width: 830px) {
         font-size: 12px !important;
@@ -118,7 +119,7 @@
 }
 
 .input  {
-
+    margin-bottom: 6px;
 }
 
 .input input {
@@ -129,7 +130,6 @@
 .error {
     padding: 0 40px;
 }
-
 
 
 
