@@ -160,6 +160,12 @@ const RegistrationForm = memo(({className, onSuccess}: RegistrationFormProps) =>
                                 type="date"  
                                 onChange={(e) => onChangeBirthday(e.target.value)}
                                 value={birthday}
+                                placeholder="Дата рождения"
+                                min="1900-01-01"
+                                max="2025-12-31"
+                                pattern="\d{4}-\d{2}-\d{2}"
+                                onFocus={(e) => e.target.type = 'date'}
+                                onBlur={(e) => e.target.type = 'text'}
                             />
                         </div>
                         
