@@ -1,27 +1,16 @@
 import { classNames } from "@/shared/lib/classNames/classNames";
 import cls from './Navbar.module.scss';
-import { Modal } from "@/shared/ui/Modal/Modal";
 import { Button, ButtonTheme } from "@/shared/ui/Button/Button";
 import { memo, useCallback, useState } from "react";
 import { LoginModal } from "@/features/AuthByUserName";
 import { useDispatch, useSelector } from "react-redux";
-import { getUserAuthData, userActions } from "@/entities/User";
-import { Text, TextSize } from "@/shared/ui/Text/Text";
+import { getUserAuthData } from "@/entities/User";
 import { AppLink } from "@/shared/ui/AppLink/AppLink";
 import { getRouteLogin, getRouteRegistration, getRouteWishCreate } from "@/shared/const/router";
-
-import Bell from '@/shared/assets/icons/bell.svg';
-import { Dropdown } from "@/shared/ui/Popups/components/Dropdown/Dropdown";
-import { Popover } from "@/shared/ui/Popups";
-import { NotificationList } from "@/entities/Notification/ui/NotificationList/NotificationList";
-import { NotificationButton } from "@/features/notificationButton";
 import { AvatarDropdown } from "@/features/avatarDropdown";
-import { Drawer } from "@/shared/ui/Drawer/Drawer";
 import { RegistrationModal } from "@/features/Registration";
-
 import { APP_NAME } from '@/shared/config/appName/appName';
-import LOGO from "../../../shared/assets/icons/LOGO.svg"
-// import IconList from '../../../shared/assets/icons/about-list.svg';
+
 
 
 interface NavbarProps {
@@ -39,11 +28,6 @@ export const Navbar = memo(({className}: NavbarProps) => {
         setIsAuthModal(false);
     }, []);
 
-    // const onShowAuthModal = useCallback(() => {
-    //     setIsAuthModal(true);
-    // }, []);
-
-
     const onCloseRegistrationModal = useCallback(() => {
         setIsRegistrationModal(false);
     }, []);
@@ -51,13 +35,6 @@ export const Navbar = memo(({className}: NavbarProps) => {
     const onShowRegistrationModal = useCallback(() => {
         setIsRegistrationModal(true);
     }, []);
-
-
-    // const onLogout = useCallback(() => {
-    //     dispatch(userActions.logout())
-    // }, [dispatch]);
-
-
 
 
     if(authData) {

@@ -7,7 +7,7 @@ import { memo, useCallback, useEffect, useRef } from "react";
 import { DynamicModuleLoader, ReducersList } from "@/shared/lib/components/DynamicModuleLoader/DynamicModuleLoader";
 import { useAppDispatch } from "@/shared/lib/hooks/useAppDispatch/useAppDispatch";
 import { InputImg } from "@/shared/ui/InputImg/InputImg";
-import { Text, TextTheme } from "@/shared/ui/Text/Text";
+import { Text, TextSize, TextTheme } from "@/shared/ui/Text/Text";
 import { registrationActions, registrationReducer } from "../../model/slice/registrationSlice";
 import { getRegistrationUsername } from "../../model/selectors/getRegistrationUsername/getRegistrationUsername";
 import { registrationProfile } from "../../model/services/registration";
@@ -20,6 +20,7 @@ import { getRegistrationIsLoading } from "../../model/selectors/getRegistrationI
 import { SeoHead } from "@/shared/ui/SeoHead/SeoHead";
 import { APP_IMG, APP_NAME } from "@/shared/config/appName/appName";
 import { StateSchema } from "@/app/providers/StoreProvider";
+import { InputDate } from "@/shared/ui/InputDate/InputDate";
 
 
 
@@ -51,6 +52,7 @@ const RegistrationForm = memo(({className, onSuccess}: RegistrationFormProps) =>
     useEffect(() => {
         firstInputRef.current?.focus();
     }, []);
+
 
 
     const onChangeUsername = useCallback((value: string) => {
@@ -153,7 +155,7 @@ const RegistrationForm = memo(({className, onSuccess}: RegistrationFormProps) =>
                             onChange={onChangeEmail}
                             value={email}
                         />
-                        <div >
+                        {/* <div >
                             <Text text="Дата Рождения" className={cls.calendarText}/>
                             <input 
                                 className={cls.calendar} 
@@ -167,6 +169,20 @@ const RegistrationForm = memo(({className, onSuccess}: RegistrationFormProps) =>
                                 onFocus={(e) => e.target.type = 'date'}
                                 onBlur={(e) => e.target.type = 'text'}
                             />
+                        </div> */}
+                        <div>
+                            <Text text="Дата Рождения" className={cls.calendarText}/>
+                            <InputDate
+                                value={birthday}
+                                onChange={onChangeBirthday}
+                                placeholder="дд.мм.гггг"
+                                className={cls.dateInput}
+                            />
+                            {/* <Text 
+                                text="Формат: дд.мм.гггг" 
+                                size={TextSize.S}
+                                className={cls.dateHint}
+                            /> */}
                         </div>
                         
                         <Input 
