@@ -73,7 +73,7 @@ const WishesPage = (props: WishesPageProps) => {
 					${APP_NAME} — удобный сервис для выбора и хранения подарков.
 				`}
 				url="https://vishy.vercel.app/wishes"
-				image={APP_IMG}
+				// image={APP_IMG}
 			/>
 			<Page 
 				onScrollEnd={onLoadNextPart} 

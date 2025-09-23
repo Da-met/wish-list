@@ -91,7 +91,7 @@ const LoginForm = memo(({className, onSuccess}: LoginFormProps) => {
                 title={`Вход — ${APP_NAME}`}
                 description={`Войдите в свой аккаунт ${APP_NAME}, чтобы управлять списками желаемых подарков, просматривать идеи друзей и резервировать подарки.`}
                 url="https://vishy.vercel.app/login"
-                image={APP_IMG}
+                // image={APP_IMG}
             />
 
             <div className={classNames(cls.LoginForm, {}, [className])} >

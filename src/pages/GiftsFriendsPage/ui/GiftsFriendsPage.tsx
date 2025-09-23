@@ -24,7 +24,7 @@ const GiftsFriendsPage = ({className}: GiftsFriendsPageProps) => {
                     Управляйте резервированием и идеями сюрпризов.
                 `}
                 url={`https://vishy.vercel.app/gifts_friends`}
-                image={APP_IMG}
+                // image={APP_IMG}
             />
             <Page >
                 <div className={cls.GiftsFriendsPage}>

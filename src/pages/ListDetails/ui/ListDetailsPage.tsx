@@ -68,7 +68,7 @@ const ListDetailsPage = (props: ListDetailsPageProps) => {
                 title={title}
                 description={description}
                 url="https://vishy.vercel.app/lists"
-                image={APP_IMG}
+                // image={APP_IMG}
             />
             <Page className={classNames(cls.ListDetailsPage, {}, [className])}>
                 <div className={cls.wrapper}>

@@ -238,13 +238,13 @@ export const WishDetails = memo((props: WishDetailsProps) => {
     const title = `${wish?.name} — ${APP_NAME}`;
     const description = wish?.description || 'Смотрите подробности подарка и возможность его зарезервировать.';
     const url = `https://vishy.vercel.app/wishes/${wish?.id}`;
-    const image = typeof wish?.img === 'string' ? wish.img : `${APP_IMG}`;
+    // const image = typeof wish?.img === 'string' ? wish.img : `${APP_IMG}`;
 
     return (
         <DynamicModuleLoader reducers={reducers} removeAfterUnmount={true}>
 
             {/*  SEO */}
-            <SeoHead title={title} description={description} url={url} image={image} />
+            <SeoHead title={title} description={description} url={url} />
 
             <div className={classNames(cls.WishDetails, {}, [className])}>
                 <div className={cls.glass}>

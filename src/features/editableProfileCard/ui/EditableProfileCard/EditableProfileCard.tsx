@@ -106,11 +106,11 @@ export const EditableProfileCard = memo((props: EditableProfileCardProps) => {
                 title={title}
                 description={description}
                 url={`https://vishy.vercel.app/profile/${id}`}
-                image={
-                    typeof profileState.profileData?.img === 'string' 
-                        ? profileState.profileData.img 
-                        : `${APP_IMG}`
-                }
+                // image={
+                //     typeof profileState.profileData?.img === 'string' 
+                //         ? profileState.profileData.img 
+                //         : `${APP_IMG}`
+                // }
             />
             {validateErrors?.length && validateErrors.map((err) => (
                     <Text

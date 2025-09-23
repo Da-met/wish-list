@@ -38,7 +38,7 @@ const ListPage = () => {
                     ${APP_NAME} — удобный сервис для выбора и хранения подарков.
                 `}
                 url="https://vishy.vercel.app/list"
-                image={APP_IMG}
+                // image={APP_IMG}
             />
             <Page >
                 <div className={cls.background}>

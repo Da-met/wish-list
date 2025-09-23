@@ -43,7 +43,7 @@ const WishEditPage = memo((props: WishEditPageProps) => {
                 title={title}
                 description={description}
                 url={`https://vishy.vercel.app/wishes/${id ? `${id}/edit` : 'new'}`}
-                image={APP_IMG}
+                // image={APP_IMG}
             />
             <Page>
                 <div className={cls.wrapper}>
